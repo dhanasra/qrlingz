@@ -1,4 +1,4 @@
-package com.example.qrlingz_app
+package com.spiderlingz.qrlingz
 
 import io.flutter.embedding.android.FlutterActivity
 
