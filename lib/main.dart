@@ -1,7 +1,36 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 
 import 'app/app.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyAJMazs8SsnxvS8xgJIaHOqDVj2of7h88c", 
+      appId: "1:1054371633362:android:ecb77d7a1920f3731bb50b", 
+      messagingSenderId: "1054371633362", 
+      projectId: "qrlingz"
+    )
+  );
+
+  try{
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.fetchAndActivate();
+    var data = remoteConfig.getString('data');
+    print(data);
+  }catch(error){}
+
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+
+  FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+
   runApp(const App());
 }

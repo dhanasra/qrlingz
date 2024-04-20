@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1054371633362",
+    "project_id": "qrlingz",
+    "storage_bucket": "qrlingz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054371633362:android:ecb77d7a1920f3731bb50b",
+        "android_client_info": {
+          "package_name": "com.spiderlingz.qrlingz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJMazs8SsnxvS8xgJIaHOqDVj2of7h88c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
