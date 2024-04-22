@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
+import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_viewmodel.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
@@ -27,6 +28,15 @@ class _HomeViewState extends State<HomeView> {
       builder: (_, idx) {
 
         return Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: const Text("QRLingz"),
+            centerTitle: false,
+            actions: [
+              IconButton(onPressed: (){}, icon: const Icon(Icons.menu)),
+              8.w()
+            ],
+          ),
           body: PageView.builder(
             controller: _viewModel.controller,
             itemCount: _viewModel.items.length,
