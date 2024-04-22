@@ -54,8 +54,9 @@ dependencies:
 
   #widgets
   flutter_neumorphic_plus: ^3.3.0
-  qr_code_scanner: ^1.0.1
   lottie: ^3.1.0
+  pretty_qr_code: ^3.3.0
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:

@@ -60,7 +60,7 @@ class _ScanViewState extends State<ScanView> {
                       24.h(),
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 250),
-                        child: "Place QrCode Inside The View Finder To Scan It".bs(context, Colors.white),  
+                        child: "Place QrCode Inside The View Finder To Scan It".bs(context, color: Colors.white),  
                       )
                     ],
                   ),

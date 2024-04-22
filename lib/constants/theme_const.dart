@@ -22,6 +22,7 @@ class ThemeConst {
       colorScheme: ThemeData().colorScheme.copyWith(
         primary: ColorConst.primary,
         secondary: Colors.white,
+        tertiary: ColorConst.primaryLight.withOpacity(0.4)
       ),
 
       textTheme: TextTheme(
@@ -38,7 +39,7 @@ class ThemeConst {
           fontWeight: FontWeight.w600,
         ),
         labelSmall: GoogleFonts.lato(
-          fontSize: 14,
+          fontSize: 10,
           fontWeight: FontWeight.w600,
         )
       ),
@@ -84,7 +85,6 @@ class ThemeConst {
         unselectedIconTheme: const IconThemeData(size: 22),
       ),
 
-      
     );
   }
 

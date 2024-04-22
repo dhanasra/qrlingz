@@ -13,7 +13,7 @@ class DataConst {
       'created': 1482223122760
     },
     {
-      'type': 0, 
+      'type': 1, 
       'name': "Instagram", 
       'data': { 'value': "My Test" }, 
       'isFavourite': false, 

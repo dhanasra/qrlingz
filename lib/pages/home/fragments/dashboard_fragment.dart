@@ -46,7 +46,7 @@ class DashboardFrament extends StatelessWidget {
                           else
                             Image.asset(item['image'], width: 40),
                           8.h(),
-                          '${item['text']}'.bs(context, Colors.grey)
+                          '${item['text']}'.bs(context, color: Colors.grey)
                         ],
                       ),
                     );
