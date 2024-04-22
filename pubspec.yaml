@@ -45,6 +45,9 @@ dependencies:
   #style
   google_fonts: ^6.2.1
 
+  #routes
+  page_transition: ^2.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

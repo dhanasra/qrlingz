@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qrlingz_app/extensions/context_exten.dart';
+import 'package:qrlingz_app/routes/app_routes.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -9,6 +11,13 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2), ()=>context.goto(Routes.welcome));
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
