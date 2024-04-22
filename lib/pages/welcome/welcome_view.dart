@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/extensions/context_exten.dart';
+import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
 class WelcomeView extends StatefulWidget {
@@ -24,7 +26,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             child: StyledButton(
               w: 200,
               text: "Get Started", 
-              onClick: (){}
+              onClick: ()=>context.goto(Routes.home)
             )
           )
         ],

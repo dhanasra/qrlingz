@@ -12,8 +12,9 @@ class ThemeConst {
       fontFamily: GoogleFonts.montserrat().fontFamily,
       colorScheme: ThemeData().colorScheme.copyWith(
         primary: ColorConst.primary,
-        secondary: Colors.white
+        secondary: Colors.white,
       ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 7,
@@ -29,6 +30,24 @@ class ThemeConst {
           ),
         ),
       ),
+
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: ColorConst.primary,
+        unselectedItemColor: Colors.grey[400],
+        selectedLabelStyle: GoogleFonts.montserrat(
+          fontSize: 10,
+          fontWeight: FontWeight.w600
+        ),
+        unselectedLabelStyle: GoogleFonts.montserrat(
+          fontSize: 10,
+          fontWeight: FontWeight.w600
+        ),
+        selectedIconTheme: const IconThemeData(size: 22),
+        unselectedIconTheme: const IconThemeData(size: 22),
+      ),
+
+      
     );
   }
 

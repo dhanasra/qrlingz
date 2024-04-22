@@ -48,6 +48,9 @@ dependencies:
   #routes
   page_transition: ^2.1.0
 
+  #widgets
+  flutter_neumorphic_plus: ^3.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

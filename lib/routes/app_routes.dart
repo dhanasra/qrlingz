@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:qrlingz_app/pages/home/home_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
 
 import '../pages/splash/splash_view.dart';
@@ -24,6 +25,8 @@ class RouteGenerator {
         return getTransistionPage(const SplashView());
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());
+      case Routes.home:
+        return getTransistionPage(const HomeView());
       default:
         return unDefinedRoute();
     }
