@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
+import 'package:qrlingz_app/pages/scan/scan_view.dart';
+import 'package:qrlingz_app/pages/settings/settings_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
 
 import '../pages/splash/splash_view.dart';
@@ -11,6 +15,9 @@ class Routes {
   static const welcome = '/welcome';
   
   static const home = '/home';
+
+  static const scan = '/scan';
+  static const settings = '/settings';
 
 }
 
@@ -26,7 +33,13 @@ class RouteGenerator {
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());
       case Routes.home:
-        return getTransistionPage(const HomeView());
+        return getTransistionPage(BlocProvider(
+          create: (_)=>HomeCubit(), child: const HomeView()
+        ));
+      case Routes.scan:
+        return getTransistionPage(const ScanView());
+      case Routes.settings:
+        return getTransistionPage(const SettingsView());
       default:
         return unDefinedRoute();
     }

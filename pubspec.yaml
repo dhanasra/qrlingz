@@ -45,6 +45,10 @@ dependencies:
   #style
   google_fonts: ^6.2.1
 
+  #SML
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.5
+
   #routes
   page_transition: ^2.1.0
 
