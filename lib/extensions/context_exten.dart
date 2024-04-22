@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
-  goto(String path){
-    Navigator.pushNamed(this, path);
+  goto(String path, {Object? args}){
+    Navigator.pushNamed(this, path, arguments: args);
   }
 }

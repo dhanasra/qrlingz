@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/data_const.dart';
+import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
+import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/widgets/styled_wrapper.dart';
 
 class DashboardFrament extends StatelessWidget {
@@ -37,17 +39,20 @@ class DashboardFrament extends StatelessWidget {
                   itemBuilder: (_, idx){
                     var item = values[idx];
 
-                    return StyledWrapper(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if(item['icon']!=null)
-                            Icon(item['icon'], size: 26,)
-                          else
-                            Image.asset(item['image'], width: 40),
-                          8.h(),
-                          '${item['text']}'.bs(context, color: Colors.grey)
-                        ],
+                    return InkWell(
+                      onTap: ()=>context.goto(Routes.create, args: item['text']),
+                      child: StyledWrapper(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if(item['icon']!=null)
+                              Icon(item['icon'], size: 26,)
+                            else
+                              Image.asset(item['image'], width: 40),
+                            8.h(),
+                            '${item['text']}'.bs(context, color: Colors.grey)
+                          ],
+                        ),
                       ),
                     );
                   }

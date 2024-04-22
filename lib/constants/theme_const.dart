@@ -30,6 +30,11 @@ class ThemeConst {
           fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
+        titleMedium: GoogleFonts.lato(
+          fontSize: 18,
+          height: 1,
+          fontWeight: FontWeight.w500,
+        ),
         titleLarge: GoogleFonts.lato(
           fontSize: 16,
           fontWeight: FontWeight.w600,
@@ -37,7 +42,7 @@ class ThemeConst {
         bodySmall: GoogleFonts.lato(
           fontSize: 12,
           fontWeight: FontWeight.w600,
-        ),
+        ), 
         labelSmall: GoogleFonts.lato(
           fontSize: 10,
           fontWeight: FontWeight.w600,
@@ -84,6 +89,44 @@ class ThemeConst {
         selectedIconTheme: const IconThemeData(size: 22),
         unselectedIconTheme: const IconThemeData(size: 22),
       ),
+
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+        fillColor: Colors.white,
+        filled: true,
+        hintStyle: GoogleFonts.lato(
+          fontWeight: FontWeight.w400,
+          fontSize: 14,
+          color: Colors.black.withOpacity(0.32),
+          letterSpacing: 0.15,
+        ),
+        errorStyle: GoogleFonts.lato(
+          fontWeight: FontWeight.w600,
+          fontSize: 12,
+          color: Colors.red,
+          letterSpacing: 0.4,
+        ),
+        floatingLabelStyle: // use the material state and asssign color accordingly
+            GoogleFonts.lato(
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.4,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.black12,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.black54,
+            width: 1.4,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
+      )
 
     );
   }

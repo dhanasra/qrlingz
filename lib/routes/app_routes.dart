@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
+import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
+import 'package:qrlingz_app/pages/qrcode/customize/customize_view.dart';
 import 'package:qrlingz_app/pages/scan/scan_view.dart';
 import 'package:qrlingz_app/pages/settings/settings_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
@@ -18,6 +20,9 @@ class Routes {
 
   static const scan = '/scan';
   static const settings = '/settings';
+
+  static const create = '/create';
+  static const customize = '/customize';
 
 }
 
@@ -40,6 +45,10 @@ class RouteGenerator {
         return getTransistionPage(const ScanView());
       case Routes.settings:
         return getTransistionPage(const SettingsView());
+      case Routes.create:
+        return getTransistionPage(CreateView(type: settings.arguments as String));
+      case Routes.customize:
+        return getTransistionPage(const CustomizeView());
       default:
         return unDefinedRoute();
     }
