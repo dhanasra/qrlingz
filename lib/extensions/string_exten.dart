@@ -6,4 +6,10 @@ extension TextExtensions on String {
     return Text(this, style: Theme.of(context).textTheme.titleSmall);
   }
 
+  bs(BuildContext context, Color? color){
+    return Text(this, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(
+      color: color
+    ));
+  }
+
 }

@@ -61,7 +61,7 @@ class _SettingsViewState extends State<SettingsView> {
             trailing: Checkbox(value: true, onChanged: (v){}),
           ),
           ListTile(
-            leading: const Icon(Icons.speaker_outlined, size: 20),
+            leading: const Icon(Icons.volume_up_outlined, size: 20),
             title: const Text("Sound"),
             contentPadding: const EdgeInsets.only(left: 16),
             trailing: Checkbox(value: true, onChanged: (v){}),

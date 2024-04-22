@@ -29,6 +29,10 @@ class ThemeConst {
           fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
+        bodySmall: GoogleFonts.lato(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
         labelSmall: GoogleFonts.lato(
           fontSize: 14,
           fontWeight: FontWeight.w600,
