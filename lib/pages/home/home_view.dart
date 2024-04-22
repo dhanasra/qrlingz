@@ -26,11 +26,13 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, int>(
       builder: (_, idx) {
-
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: const Text("QRLingz"),
+            title: Text(
+              idx==0 ? "QRLingz" 
+              : idx==1 ? "Favourites"
+              : "History"),
             centerTitle: false,
             actions: [
               IconButton(onPressed: (){}, icon: const Icon(Icons.menu)),

@@ -4,6 +4,23 @@ class DataConst {
 
   DataConst._();
 
+  static List<Map> sampleData = [
+    {
+      'type': 0, 
+      'name': "Text", 
+      'data': { 'value': "My Test" }, 
+      'isFavourite': false, 
+      'created': 1482223122760
+    },
+    {
+      'type': 0, 
+      'name': "Instagram", 
+      'data': { 'value': "My Test" }, 
+      'isFavourite': false, 
+      'created': 1482223122760
+    }
+  ];
+
   static const Map<String, List> qrItems = {
     "STANDARD": [
       {

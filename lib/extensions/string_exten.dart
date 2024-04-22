@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 extension TextExtensions on String {
 
+  tl(BuildContext context){
+    return Text(this, style: Theme.of(context).textTheme.titleLarge);
+  }
+
   ts(BuildContext context){
     return Text(this, style: Theme.of(context).textTheme.titleSmall);
   }

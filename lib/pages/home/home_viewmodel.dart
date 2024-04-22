@@ -28,17 +28,21 @@ class HomeViewModel extends BaseViewModel {
   late PageController controller;
 
   HomeViewModel(BuildContext context){
-    controller = PageController()..addListener(() { 
-      context.read<HomeCubit>().onPageChange(controller.page);
+    controller = PageController()..addListener(() {
+      context.read<HomeCubit>().onPageChange(controller.page!.floor());
     });
   }
 
-  handleItemClick(BuildContext context, idx){
+  handleItemClick(BuildContext context, int idx){
+
     if(idx == 0 || idx == 1 || idx == 3){
-      context.read<HomeCubit>().onPageChange(idx);
+      context.read<HomeCubit>().onPageChange(idx.toInt());
+      controller.jumpToPage(idx.toInt());
     }else if(idx == 4){
       context.goto(Routes.settings);
+
     }
+
   }
   
   @override
