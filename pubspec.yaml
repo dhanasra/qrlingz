@@ -42,9 +42,13 @@ dependencies:
   firebase_crashlytics: ^3.5.2
   firebase_remote_config: ^4.4.2
 
+  #style
+  google_fonts: ^6.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -57,6 +61,12 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "res/logo/app_logo.png"
+
 flutter:
 
   # The following line ensures that the Material Icons font is
