@@ -23,3 +23,11 @@ extension TextExtensions on String {
   }
 
 }
+
+extension ControllerExtension on TextEditingController {
+
+  String trim(){
+    return text.trim();
+  }
+
+}

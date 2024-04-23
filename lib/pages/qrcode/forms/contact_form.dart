@@ -68,7 +68,14 @@ class ContactForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = mailController.text;
+                  var data = """
+                    BEGIN:VCARD
+                    VERSION:1.0
+                    N:${nameController.trim()}
+                    TEL:${phoneController.trim()}
+                    EMAIL:${mailController.trim()}
+                    END:VCARD
+                  """;
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

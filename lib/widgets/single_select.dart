@@ -1,55 +1,44 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-class SingleSelect extends StatefulWidget {
+class SingleSelect extends StatelessWidget {
   final List<String> items;
   final String value;
   final ValueChanged onChanged;
-  const SingleSelect({super.key, required this.items, required this.value, required this.onChanged});
-
-  @override
-  State<SingleSelect> createState() => _SingleSelectState();
-}
-
-class _SingleSelectState extends State<SingleSelect> {
-  String? selectedItem;
-
-  @override
-  void initState() {
-    selectedItem = widget.value;
-    super.initState();
-  }
+  final IconData? prefixIcon;
+  const SingleSelect({super.key, required this.items, required this.value, required this.onChanged, this.prefixIcon});
 
   @override
   Widget build(BuildContext context) {
 
-    return DropdownButtonFormField2<String>(
-      value: selectedItem,
-      decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.security_outlined),
-      ),
-      onChanged: (v) {
-        setState(() {
-          selectedItem = v;
-        });
-        widget.onChanged(v);
-      },
-      menuItemStyleData: const MenuItemStyleData(
-        padding: EdgeInsets.zero
-      ),
-      selectedItemBuilder: (_) {
-        return widget.items.map<Widget>((String item) {
-          return Text(item);
-        }).toList();
-      },
-      items: widget.items.map(
-        (e) => DropdownMenuItem<String>(
-          value: e,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(e)),
-        ),
-      ).toList(),
+    ValueNotifier notifier = ValueNotifier<String?>(value);
+
+    return ValueListenableBuilder(
+      valueListenable: notifier,
+      builder: (_, value, __) {
+        return DropdownButtonFormField<String>(
+          value: notifier.value,
+          decoration: InputDecoration(
+            hintText: "enter",
+            prefixIcon: prefixIcon!=null ? Icon(prefixIcon): null,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          ),
+          style: Theme.of(context).textTheme.titleMedium,
+          onChanged: (v) {
+            notifier.value = v;
+            onChanged(v);
+          },
+          selectedItemBuilder: (context) => items.map((e) => Text(e)).toList(),
+          items: items.map(
+            (e) => DropdownMenuItem<String>(
+              value: e,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(e)),
+            ),
+          ).toList(),
+          
+        );
+      }
     );
   }
 }

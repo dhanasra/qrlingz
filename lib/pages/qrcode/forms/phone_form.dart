@@ -42,7 +42,7 @@ class PhoneForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = controller.text;
+                  var data = "tel:${controller.trim()}";
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

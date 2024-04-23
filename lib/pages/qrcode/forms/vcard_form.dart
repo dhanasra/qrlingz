@@ -129,7 +129,38 @@ class VcardForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = mailController.text;
+                  var data = "BEGIN:VCARD;VERSION:3.0;N:${nameController.trim()}";
+
+                  if(phoneController.trim().isNotEmpty){
+                    data += ";TEL:${phoneController.trim()}";
+                  }
+
+                  if(mailController.trim().isNotEmpty){
+                    data += ";EMAIL:${mailController.trim()}";
+                  }
+
+                  if(noteController.trim().isNotEmpty){
+                    data += ";NOTE:${noteController.trim()}";
+                  }
+
+                  if(addressController.trim().isNotEmpty){
+                    data += ";ADR:${addressController.trim()}";
+                  }
+
+                  if(companyNameController.trim().isNotEmpty){
+                    data += ";ORG:${companyNameController.trim()}";
+                  }
+
+                  if(jobTitleController.trim().isNotEmpty){
+                    data += ";TITLE:${jobTitleController.trim()}";
+                  }
+
+                  if(websiteController.trim().isNotEmpty){
+                    data += ";URL:${websiteController.trim()}";
+                  }
+
+                  data += ";END:VCARD";
+
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

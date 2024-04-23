@@ -47,6 +47,7 @@ class WifiForm extends StatelessWidget {
                   "WPA/WPA2", "WEP", "None"
                 ], 
                 value: "WPA/WPA2",
+                prefixIcon: Icons.security,
                 onChanged: (v){
                   security = v;
                 },
@@ -79,7 +80,7 @@ class WifiForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = security;
+                  var data = "WIFI:S:${nameController.trim()};T:$security;P:${passwordController.trim()}";
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

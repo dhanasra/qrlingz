@@ -65,7 +65,7 @@ class EmailForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = mailController.text;
+                  var data = "mailto:${mailController.trim()}?subject=${subjectController.trim()}&body=${contentController.trim()}";
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"
