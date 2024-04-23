@@ -3,6 +3,8 @@ import 'package:qrlingz_app/base/base_viewmodel.dart';
 
 class CustomizeViewModel extends BaseViewModel {
 
+  ValueNotifier<int?> active = ValueNotifier(null);
+
   var options = [
     {
       "type": 0,
@@ -36,6 +38,17 @@ class CustomizeViewModel extends BaseViewModel {
     }
   ];
 
+  getTitleText(){
+    switch(active.value){
+      case 0: return "Templates";
+      case 1: return "Color";
+      case 2: return "Logo";
+      case 3: return "Pixels";
+      case 4: return "Eye";
+      case 5: return "Text";
+      default: return "Customize QR";
+    }
+  }
   
   @override
   dispose() {

@@ -39,6 +39,10 @@ class ThemeConst {
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
+        headlineMedium: GoogleFonts.lato(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
         bodySmall: GoogleFonts.lato(
           fontSize: 12,
           fontWeight: FontWeight.w600,
@@ -91,7 +95,7 @@ class ThemeConst {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         fillColor: Colors.white,
         filled: true,
         helperMaxLines: 2,
