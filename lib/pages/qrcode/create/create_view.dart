@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:qrlingz_app/pages/qrcode/create/create_viewmodel.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/contact_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/email_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/event_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/inter_number_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/phone_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/sms_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/social_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/text_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/vcard_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/website_form.dart';
@@ -19,9 +22,18 @@ class CreateView extends StatefulWidget {
 }
 
 class _CreateViewState extends State<CreateView> {
+  late CreateViewModel _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = CreateViewModel();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text("Generate QR Code"),
@@ -49,6 +61,50 @@ class _CreateViewState extends State<CreateView> {
               const EventForm()
             else if(widget.type=="VCard")
               const VcardForm()
+            else if(widget.type=="Pinterest")
+              SocialForm(
+                type: "username", name: "Pinterest", image: _viewModel.getImagePath("Pinterest"),
+              )
+            else if(widget.type=="Line")
+              SocialForm(
+                type: "link", name: "Line", image: _viewModel.getImagePath("Line"),
+              )
+            else if(widget.type=="Wechat")
+              SocialForm(
+                type: "link", name: "Wechat", image: _viewModel.getImagePath("Wechat"),
+              )
+            else if(widget.type=="Paypal")
+              SocialForm(
+                type: "username", name: "Paypal", image: _viewModel.getImagePath("Paypal"),
+              )
+            else if(widget.type=="Snapchat")
+              SocialForm(
+                type: "username", name: "Snapchat", image: _viewModel.getImagePath("Snapchat"),
+              )
+            else if(widget.type=="Linkedin")
+              SocialForm(
+                type: "link", name: "Linkedin", image: _viewModel.getImagePath("Linkedin"),
+              )
+            else if(widget.type=="TikTok")
+              SocialForm(
+                type: "link", name: "TikTok", image: _viewModel.getImagePath("TikTok"),
+              )
+            else if(widget.type=="X")
+              SocialForm(
+                type: "username", name: "X", image: _viewModel.getImagePath("X"),
+              )
+            else if(widget.type=="Instagram")
+              SocialForm(
+                type: "username", name: "Instagram", image: _viewModel.getImagePath("Instagram"),
+              )
+            else if(widget.type=="Whatsapp")
+              InterNumberForm(
+                name: "Whatsapp", image: _viewModel.getImagePath("Whatsapp"),
+              )
+            else if(widget.type=="Viber")
+              InterNumberForm(
+                name: "Viber", image: _viewModel.getImagePath("Viber"),
+              )
           ],
         ),
       ),
