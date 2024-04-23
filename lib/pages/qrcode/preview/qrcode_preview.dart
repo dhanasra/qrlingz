@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
+import 'package:qrlingz_app/pages/qrcode/preview/qrcode_previewmodel.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:screenshot/screenshot.dart';
 
 import '../../../constants/color_const.dart';
 
@@ -20,6 +20,13 @@ class QRCodePreview extends StatefulWidget {
 }
 
 class _QRCodePreviewState extends State<QRCodePreview> {
+  late QrCodePreviewModel _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = QrCodePreviewModel(data: widget.qrData);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +56,15 @@ class _QRCodePreviewState extends State<QRCodePreview> {
               padding: const EdgeInsets.all(32),
               alignment: Alignment.center,
               color: Colors.grey,
-              child: Container(
-                height: 200,
-                color: Colors.white,
-                padding: const EdgeInsets.all(16),
-                child: PrettyQrView.data(
-                  data: ""
+              child: Screenshot(
+                controller: _viewModel.controller,
+                child: Container(
+                  height: 200,
+                  color: Colors.white,
+                  padding: const EdgeInsets.all(16),
+                  child: PrettyQrView.data(
+                    data: widget.qrData.data["value"]
+                  ),
                 ),
               ),
             )),
@@ -71,14 +81,19 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: ColorConst.primary,
-                              borderRadius: BorderRadius.circular(30)
+                          InkWell(
+                            onTap: (){
+                              _viewModel.shareQRCode();
+                            },
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: ColorConst.primary,
+                                borderRadius: BorderRadius.circular(30)
+                              ),
+                              child: const Icon(Icons.share_outlined, color: Colors.white),
                             ),
-                            child: const Icon(Icons.share_outlined, color: Colors.white),
                           ),
                           16.h(),
                           "Share QR code".ts(context)
@@ -91,14 +106,19 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: ColorConst.primary,
-                              borderRadius: BorderRadius.circular(30)
+                          InkWell(
+                            onTap: (){
+                              _viewModel.saveToGallery();
+                            },
+                            child: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: ColorConst.primary,
+                                borderRadius: BorderRadius.circular(30)
+                              ),
+                              child: const Icon(Icons.download_outlined, color: Colors.white),
                             ),
-                            child: const Icon(Icons.download_outlined, color: Colors.white),
                           ),
                           16.h(),
                           "Download".ts(context)

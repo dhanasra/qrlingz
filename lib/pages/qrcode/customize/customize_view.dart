@@ -40,7 +40,7 @@ class _CustomizeViewState extends State<CustomizeView> {
               onClick: (){
                 context.goto(Routes.preview, args: QRData(
                   type: 0, name: "Text", data: {
-                    "link": "https://data.com"
+                    "value": widget.data
                   }, isFavourite: false, created: DateTime(2022
                 )));
               }, text: "SAVE"),
