@@ -6,14 +6,19 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../widgets/single_select.dart';
+
 class CryptoForm extends StatelessWidget {
   const CryptoForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
+    final TextEditingController addressController = TextEditingController();
+    final TextEditingController amountController = TextEditingController();
+    final TextEditingController messageController = TextEditingController();
     final GlobalKey<FormState> formKey = GlobalKey();
     final ValueNotifier<AutovalidateMode> mode = ValueNotifier(AutovalidateMode.disabled);
+    final ValueNotifier<String> currency = ValueNotifier("Bitcoin");
 
     return ValueListenableBuilder(
       valueListenable: mode,
@@ -26,14 +31,53 @@ class CryptoForm extends StatelessWidget {
             children: [
               Image.asset("res/images/crypto.png"),
               16.h(),
-              "Mobile Number".ts(context),
+              "Crypto Currency".ts(context),
+              8.h(),
+              SingleSelect(
+                items: const [
+                  "Bitcoin", "Bitcoin Cash", "Ether", "Litecoin", "Dash"
+                ], 
+                value: "Bitcoin",
+                onChanged: (v){
+                  currency.value = v;
+                },
+              ),
+              12.h(),
+              ValueListenableBuilder(
+                valueListenable: currency, 
+                builder: (_, value, __){
+                  return "$value Address".ts(context);
+                }),
               8.h(),
               TextFormField(
-                controller: controller,
+                controller: addressController,
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: "Enter mobile number here"
+                  hintText: "Enter address here"
+                ),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              12.h(),
+              "Amount".ts(context),
+              8.h(),
+              TextFormField(
+                controller: amountController,
+                validator: (v)=>Validator.validatePhoneNumber(v),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.phone_android_outlined),
+                  hintText: "Enter amount here"
+                ),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              12.h(),
+              "Messgae".ts(context),
+              8.h(),
+              TextFormField(
+                controller: messageController,
+                maxLines: 6,
+                decoration: const InputDecoration(
+                  hintText: "Enter message here"
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -44,7 +88,7 @@ class CryptoForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = controller.text;
+                  var data = addressController.text;
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

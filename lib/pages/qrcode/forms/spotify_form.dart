@@ -11,7 +11,8 @@ class SpotifyForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
+    final TextEditingController artistNameController = TextEditingController();
+    final TextEditingController songNameController = TextEditingController();
     final GlobalKey<FormState> formKey = GlobalKey();
     final ValueNotifier<AutovalidateMode> mode = ValueNotifier(AutovalidateMode.disabled);
 
@@ -26,14 +27,26 @@ class SpotifyForm extends StatelessWidget {
             children: [
               Image.asset("res/images/spotify.png"),
               16.h(),
-              "Mobile Number".ts(context),
+              "Artist Name".ts(context),
               8.h(),
               TextFormField(
-                controller: controller,
+                controller: artistNameController,
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: "Enter mobile number here"
+                  prefixIcon: Icon(Icons.person_outlined),
+                  hintText: "Enter artist name here"
+                ),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              12.h(),
+              "Song Name".ts(context),
+              8.h(),
+              TextFormField(
+                controller: songNameController,
+                validator: (v)=>Validator.validatePhoneNumber(v),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.music_note_outlined),
+                  hintText: "Enter song name here"
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -44,7 +57,7 @@ class SpotifyForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = controller.text;
+                  var data = artistNameController.text;
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"
