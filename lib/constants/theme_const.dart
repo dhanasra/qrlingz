@@ -94,9 +94,10 @@ class ThemeConst {
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         fillColor: Colors.white,
         filled: true,
+        helperMaxLines: 2,
         hintStyle: GoogleFonts.lato(
           fontWeight: FontWeight.w400,
-          fontSize: 14,
+          fontSize: 15,
           color: Colors.black.withOpacity(0.32),
           letterSpacing: 0.15,
         ),

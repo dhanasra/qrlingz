@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/email_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/phone_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/text_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/website_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/wifi_form.dart';
 
 class CreateView extends StatefulWidget {
   final String type;
@@ -19,11 +23,20 @@ class _CreateViewState extends State<CreateView> {
         title: const Text("Generate QR Code"),
         centerTitle: false,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: ListView(
           children: [
-            WebsiteForm()
+            if(widget.type=="Text")
+              const TextForm()
+            else if(widget.type=="Website")
+              const WebsiteForm()
+            else if(widget.type=="Wifi")
+              const WifiForm()
+            else if(widget.type=="Phone")
+              const PhoneForm()
+            else if(widget.type=="Email")
+              const EmailForm()
           ],
         ),
       ),
