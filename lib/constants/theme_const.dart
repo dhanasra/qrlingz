@@ -61,7 +61,7 @@ class ThemeConst {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 7,
-          textStyle: GoogleFonts.lato(
+          textStyle: GoogleFonts.lato(  
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.w600),
@@ -104,7 +104,6 @@ class ThemeConst {
           fontWeight: FontWeight.w600,
           fontSize: 12,
           color: Colors.red,
-          letterSpacing: 0.4,
         ),
         floatingLabelStyle: // use the material state and asssign color accordingly
             GoogleFonts.lato(
@@ -112,6 +111,20 @@ class ThemeConst {
           letterSpacing: 0.4,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.redAccent,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.black54,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.black12,

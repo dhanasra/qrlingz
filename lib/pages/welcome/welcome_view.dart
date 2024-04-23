@@ -25,6 +25,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             margin: const EdgeInsets.all(32),
             child: StyledButton(
               w: 200,
+              rounded: true,
               text: "Get Started", 
               onClick: ()=>context.goto(Routes.home)
             )

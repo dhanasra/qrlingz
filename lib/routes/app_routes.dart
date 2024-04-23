@@ -48,7 +48,7 @@ class RouteGenerator {
       case Routes.create:
         return getTransistionPage(CreateView(type: settings.arguments as String));
       case Routes.customize:
-        return getTransistionPage(const CustomizeView());
+        return getTransistionPage(CustomizeView(data: settings.arguments as String));
       default:
         return unDefinedRoute();
     }

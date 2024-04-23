@@ -4,14 +4,15 @@ class StyledButton extends StatelessWidget {
   final VoidCallback onClick;
   final String text;
   final double? w;
-  const StyledButton({super.key, required this.onClick, required this.text, this.w});
+  final bool rounded;
+  const StyledButton({super.key, required this.onClick, required this.text, this.w, this.rounded = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         width: w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(rounded? 30: 8),
           gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -24,6 +25,9 @@ class StyledButton extends StatelessWidget {
         ),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(rounded? 30: 8),
+            ),
             backgroundColor: Colors.transparent),
           onPressed: onClick, 
           child: Text(text)
