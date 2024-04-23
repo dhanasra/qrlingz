@@ -79,7 +79,7 @@ class WifiForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = nameController.text;
+                  var data = security;
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

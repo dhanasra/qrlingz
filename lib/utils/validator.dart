@@ -8,11 +8,14 @@ class Validator {
     }
   }
 
-  static isValidURL(value, fieldName) {
+  static isValidURL(value, fieldName, {bool required = true}) {
     final RegExp urlRegex = RegExp(
       r'^(?:http:\/\/|https:\/\/)?(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+(?:\/\S*)?$',
     );
     if (value == null || value.toString().trim().isEmpty) {
+      if(!required){
+        return null;
+      }
       return '$fieldName is required';
     } 
     var isUrl = urlRegex.hasMatch(value);
@@ -26,8 +29,12 @@ class Validator {
   static validatePhoneNumber(
     String? value, {
     String? fieldName,
+    bool required = true
   }) {
     if (value == null || value.toString().trim().isEmpty) {
+      if(!required){
+        return null;
+      }
       return '${fieldName ?? 'Mobile Number'} is required';
     } else if (value.length != 10) {
       return 'Enter a valid mobile number';
@@ -41,8 +48,12 @@ class Validator {
     }
   }
 
-  static validateEmail(value) {
+  static validateEmail(value, {bool required = true}) {
     if (value == null || value.toString().trim().isEmpty) {
+      if(!required){
+        return null;
+      }
+
       return 'Email address is required';
     } else {
       final emailRegex = RegExp(
