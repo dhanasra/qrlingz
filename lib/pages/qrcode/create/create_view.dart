@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_viewmodel.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/contact_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/crypto_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/email_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/event_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/facebook_form.dart';
@@ -9,6 +10,7 @@ import 'package:qrlingz_app/pages/qrcode/forms/inter_number_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/phone_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/sms_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/social_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/spotify_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/text_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/vcard_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/website_form.dart';
@@ -67,6 +69,10 @@ class _CreateViewState extends State<CreateView> {
               const YoutubeForm()
             else if(widget.type=="Facebook")
               const FacebookForm()
+            else if(widget.type=="Spotify")
+              const SpotifyForm()
+            else if(widget.type=="Crypto")
+              const CryptoForm()
             else if(widget.type=="Pinterest")
               SocialForm(
                 type: "username", name: "Pinterest", image: _viewModel.getImagePath("Pinterest"),
