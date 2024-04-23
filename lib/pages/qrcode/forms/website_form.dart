@@ -60,6 +60,7 @@ class WebsiteForm extends StatelessWidget {
                 onClick: (){
                   if(!formKey.currentState!.validate()){
                     mode.value = AutovalidateMode.always;
+                    return;
                   }
                   var data = controller.text;
                   context.goto(Routes.customize, args: data);

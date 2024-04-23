@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_view.dart';
+import 'package:qrlingz_app/pages/qrcode/preview/qrcode_preview.dart';
 import 'package:qrlingz_app/pages/scan/scan_view.dart';
 import 'package:qrlingz_app/pages/settings/settings_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
@@ -23,6 +25,7 @@ class Routes {
 
   static const create = '/create';
   static const customize = '/customize';
+  static const preview = '/preview';
 
 }
 
@@ -49,6 +52,8 @@ class RouteGenerator {
         return getTransistionPage(CreateView(type: settings.arguments as String));
       case Routes.customize:
         return getTransistionPage(CustomizeView(data: settings.arguments as String));
+      case Routes.preview:
+        return getTransistionPage(QRCodePreview(qrData: settings.arguments as QRData));
       default:
         return unDefinedRoute();
     }

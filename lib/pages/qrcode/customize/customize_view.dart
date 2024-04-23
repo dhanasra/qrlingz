@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
+import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
+import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_viewmodel.dart';
+import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
 class CustomizeView extends StatefulWidget {
@@ -26,6 +29,7 @@ class _CustomizeViewState extends State<CustomizeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: const Text("Customize QR"),
         centerTitle: false,
@@ -33,7 +37,13 @@ class _CustomizeViewState extends State<CustomizeView> {
           SizedBox(
             width: 90, height: 36,
             child: StyledButton(
-              onClick: (){}, text: "SAVE"),
+              onClick: (){
+                context.goto(Routes.preview, args: QRData(
+                  type: 0, name: "Text", data: {
+                    "link": "https://data.com"
+                  }, isFavourite: false, created: DateTime(2022
+                )));
+              }, text: "SAVE"),
           ),
           16.w()
         ],
