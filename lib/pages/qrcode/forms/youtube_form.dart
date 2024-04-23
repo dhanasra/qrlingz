@@ -54,7 +54,7 @@ class YoutubeForm extends StatelessWidget {
                       8.h(),
                       TextFormField(
                         controller: videoIdController,
-                        validator: (v)=>Validator.validatePhoneNumber(v),
+                        validator: (v)=>Validator.validateNonNullOrEmpty(v, "Video Id"),
                         decoration: const InputDecoration(
                           hintText: "Enter youtube video id here" 
                         ),
@@ -70,7 +70,7 @@ class YoutubeForm extends StatelessWidget {
                       8.h(),
                       TextFormField(
                         controller: channelIdController,
-                        validator: (v)=>Validator.validatePhoneNumber(v),
+                        validator: (v)=>Validator.validateNonNullOrEmpty(v, "Channel Id"),
                         decoration: const InputDecoration(
                           hintText: "Enter youtube channel id here" 
                         ),
@@ -85,7 +85,7 @@ class YoutubeForm extends StatelessWidget {
                       8.h(),
                       TextFormField(
                         controller: urlController,
-                        validator: (v)=>Validator.validatePhoneNumber(v),
+                        validator: (v)=>Validator.isValidURL(v, "URL"),
                         decoration: const InputDecoration(
                           hintText: "Enter youtube url here" 
                         ),
@@ -101,7 +101,11 @@ class YoutubeForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = videoIdController.text;
+                  var data = type.value == "Video ID" 
+                  ? "https://www.youtube.com/watch?v=${videoIdController.trim()}"
+                  : type.value == "Channel ID" 
+                  ? "https://www.youtube.com/${channelIdController.trim()}"
+                  : urlController.trim();
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

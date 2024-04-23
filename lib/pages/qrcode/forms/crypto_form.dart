@@ -51,7 +51,7 @@ class CryptoForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: addressController,
-                validator: (v)=>Validator.validatePhoneNumber(v),
+                validator: (v)=>Validator.validateNonNullOrEmpty(v, "Address"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
                   hintText: "Enter address here"
@@ -63,7 +63,7 @@ class CryptoForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: amountController,
-                validator: (v)=>Validator.validatePhoneNumber(v),
+                validator: (v)=>Validator.validateNonNullOrEmpty(v, "Amount"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
                   hintText: "Enter amount here"
@@ -88,7 +88,14 @@ class CryptoForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = addressController.text;
+                  var currencyCode = {
+                    "Bitcoin": "bitcoin",
+                    "Bitcoin Cash": "bitcoincash",
+                    "Ether": "ethereum",
+                    "Litecoin": "litecoin",
+                  }[currency.value];
+                  var data = "$currencyCode:${addressController.trim()}?amount=${amountController.trim()}&message=${messageController.trim()}";
+
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

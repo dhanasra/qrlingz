@@ -53,7 +53,7 @@ class FacebookForm extends StatelessWidget {
                       8.h(),
                       TextFormField(
                         controller: facebookIdController,
-                        validator: (v)=>Validator.validatePhoneNumber(v),
+                        validator: (v)=>Validator.validateNonNullOrEmpty(v, "Facebook Id"),
                         decoration: const InputDecoration(
                           hintText: "Enter facebook id here" 
                         ),
@@ -68,7 +68,7 @@ class FacebookForm extends StatelessWidget {
                       8.h(),
                       TextFormField(
                         controller: urlController,
-                        validator: (v)=>Validator.validatePhoneNumber(v),
+                        validator: (v)=>Validator.isValidURL(v, "Facebook url"),
                         decoration: const InputDecoration(
                           hintText: "Enter facebook url here" 
                         ),
@@ -84,7 +84,8 @@ class FacebookForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = facebookIdController.text;
+                  var data = type.value=="URL"
+                  ? urlController.trim(): "https://www.facebook.com/${facebookIdController.trim()}";
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

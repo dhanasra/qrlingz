@@ -46,7 +46,15 @@ class InterNumberForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = controller.text;
+                  
+                  var data = "";
+                  var app = name.toLowerCase();
+
+                  switch(app){
+                    case "whatsapp": "whatsapp:${controller.trim()}";
+                    case "viber": data = "viber://add?number=${controller.trim()}";
+                  }
+
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

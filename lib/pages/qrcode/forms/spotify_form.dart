@@ -31,7 +31,7 @@ class SpotifyForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: artistNameController,
-                validator: (v)=>Validator.validatePhoneNumber(v),
+                validator: (v)=>Validator.validateNonNullOrEmpty(v, "Artist name"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person_outlined),
                   hintText: "Enter artist name here"
@@ -43,7 +43,7 @@ class SpotifyForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: songNameController,
-                validator: (v)=>Validator.validatePhoneNumber(v),
+                validator: (v)=>Validator.validateNonNullOrEmpty(v, "Song name"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.music_note_outlined),
                   hintText: "Enter song name here"
@@ -57,7 +57,7 @@ class SpotifyForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = artistNameController.text;
+                  var data = "spotify:search:${songNameController.trim()}:${artistNameController.trim()}";
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"

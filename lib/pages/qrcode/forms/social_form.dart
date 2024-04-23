@@ -33,7 +33,7 @@ class SocialForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: controller,
-                validator: (v)=>Validator.validatePhoneNumber(v),
+                validator: (v)=>Validator.validateNonNullOrEmpty(v, name),
                 decoration: InputDecoration(
                   prefixIcon: Icon(type=="username" ? Icons.edit_outlined: Icons.link_outlined),
                   hintText: type=="username" 
@@ -49,7 +49,19 @@ class SocialForm extends StatelessWidget {
                     mode.value = AutovalidateMode.always;
                     return;
                   }
-                  var data = controller.text;
+
+                  var data = "";
+                  var app = name.toLowerCase();
+
+                  switch(app){
+                    case "instagram": data = "https://www.instagram.com/${controller.trim()}";
+                    case "x": data = "https://twitter.com/${controller.trim()}";
+                    case "snapchat": data = "https://www.snapchat.com/add/${controller.trim()}";
+                    case "paypal": data = "https://www.paypal.me/${controller.trim()}";
+                    case "pinterest": data = "https://www.pinterest.com/${controller.trim()}";
+                    case "tiktok" || "linkedin" || "wechat" || "line": data = controller.trim();
+                  }
+
                   context.goto(Routes.customize, args: data);
                 }, 
                 text: "CREATE"
