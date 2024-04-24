@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
@@ -26,6 +27,7 @@ class LocalDB {
     Global.soundOnScan = data?['sound']?['enabled']??true;
     Global.vibrateOnScan = data?['vibrate']?['enabled']??true;
     Global.openLinkOnScan = data?['autoOpen']?['enabled']??true;
+    Global.mode = ThemeMode.values.firstWhere((element) => element.name == data?['theme']?['mode'], orElse: ()=>ThemeMode.light);
   }
 
   Future<void> saveHistory(QRData qrData) async =>await history?.put(qrData.id, qrData.toMap());

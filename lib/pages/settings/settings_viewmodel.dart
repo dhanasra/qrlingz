@@ -1,11 +1,34 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/utils/global.dart';
+import 'package:qrlingz_app/widgets/theme_sheet.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../common/theme/theme_cubit.dart';
+
 class SettingsViewModel extends BaseViewModel {
+
+  openThemeSheet(BuildContext context){
+     showModalBottomSheet(
+      context: context, 
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_){ 
+        return ThemeSheet(
+          onSave: (v){
+            Future.delayed(const Duration(milliseconds: 500), (){
+              context.read<ThemeCubit>().toggleTheme(v);
+            });
+          },
+        );
+      }
+    );
+  }
   
   updateSettings(key, value)async{
     await LocalDB().saveSettings(key, {'enabled': value});

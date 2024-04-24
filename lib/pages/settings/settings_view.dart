@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qrlingz_app/common/theme/theme_cubit.dart';
+import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/settings/settings_viewmodel.dart';
@@ -13,8 +16,6 @@ class SettingsView extends StatefulWidget {
 
 class _SettingsViewState extends State<SettingsView> {
   late SettingsViewModel _viewModel;
-
-
 
   @override
   void initState() {
@@ -44,11 +45,11 @@ class _SettingsViewState extends State<SettingsView> {
             trailing: const Text("English")
           ),
           ListTile(
-            onTap: (){},
+            onTap: ()=>_viewModel.openThemeSheet(context),
             leading: const Icon(Icons.color_lens_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text("Theme"),
-            trailing: const Text("Light")
+            trailing: (context.read<ThemeCubit>().state.name.toUpperCase()).ts(context, color: ColorConst.primary)
           ),
           ListTile(
             leading: const Icon(Icons.history_outlined, size: 20),

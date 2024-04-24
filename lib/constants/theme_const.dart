@@ -6,11 +6,11 @@ class ThemeConst {
 
   ThemeConst._();
 
-  static getApplicationTheme(){
+  static getApplicationTheme(bool isDark){
 
     return ThemeData(
+      scaffoldBackgroundColor: isDark ? Colors.black : Colors.white,
       fontFamily: GoogleFonts.lato().fontFamily,
-
       appBarTheme: AppBarTheme(
         centerTitle: true,
         titleTextStyle: GoogleFonts.lato(
@@ -41,6 +41,10 @@ class ThemeConst {
         ),
         headlineMedium: GoogleFonts.lato(
           fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
+        headlineSmall: GoogleFonts.lato(
+          fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
         bodySmall: GoogleFonts.lato(

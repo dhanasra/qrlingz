@@ -5,13 +5,19 @@ extension TextExtensions on String {
   hm(BuildContext context){
     return Text(this, style: Theme.of(context).textTheme.headlineMedium);
   }
+  
+  hs(BuildContext context){
+    return Text(this, style: Theme.of(context).textTheme.headlineSmall);
+  }
 
   tl(BuildContext context){
     return Text(this, style: Theme.of(context).textTheme.titleLarge);
   }
 
-  ts(BuildContext context){
-    return Text(this, style: Theme.of(context).textTheme.titleSmall);
+  ts(BuildContext context, {Color? color}){
+    return Text(this, style: Theme.of(context).textTheme.titleSmall!.copyWith(
+      color: color
+    ));
   }
 
   bs(BuildContext context, {Color? color}){
