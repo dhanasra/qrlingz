@@ -6,6 +6,9 @@ import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_viewmodel.dart';
+import 'package:qrlingz_app/pages/qrcode/customize/options/color_customization.dart';
+import 'package:qrlingz_app/pages/qrcode/customize/options/logo_customization.dart';
+import 'package:qrlingz_app/pages/qrcode/customize/options/pixel_customization.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/options/text_customization.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
@@ -85,13 +88,41 @@ class _CustomizeViewState extends State<CustomizeView> {
                     color: Colors.white,
                     padding: const EdgeInsets.all(16),
                     child: PrettyQrView.data(
-                      data: widget.data
+                      
+                      data: widget.data,
+                      errorCorrectLevel: 3,
+                      decoration: PrettyQrDecoration(
+                         shape: PrettyQrRoundedSymbol(
+                          color: PrettyQrBrush.gradient
+                          (
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.teal[200]!,
+                                Colors.blue[200]!,
+                                Colors.red[200]!,
+                              ],
+                            ),
+                          ),
+                        ),
+                        image: const PrettyQrDecorationImage(
+                          image: AssetImage('res/images/facebook.png'),
+                          position: PrettyQrDecorationImagePosition.background,
+                        )
+                      )
                     ),
                   ),
                 )),
               Expanded(
                 flex: 6,
-                child: activeItem == 5
+                child: activeItem == 1
+                ? const ColorCustomization()
+                : activeItem == 2
+                ? const LogoCustomization()
+                : activeItem == 3
+                ? const PixelCustomization()
+                : activeItem == 4
                 ? const TextCustomization()
                 : GridView.builder(
                   itemCount: _viewModel.options.length,

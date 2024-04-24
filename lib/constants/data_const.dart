@@ -5,6 +5,24 @@ class DataConst {
 
   DataConst._();
 
+  static List<String> logoImages = [
+    "res/images/facebook.png",
+    "res/images/instagram.png",
+    "res/images/x.png",
+    "res/images/tiktok.png",
+    "res/images/snapchat.png",
+    "res/images/wechat.png",
+    "res/images/line.png",
+    "res/images/whatsapp.png",
+    "res/images/viber.png",
+    "res/images/pinterest.png",
+    "res/images/spotify.png",
+    "res/images/crypto.png",
+    "res/images/linkedin.png",
+    "res/images/paypal.png",
+    "res/images/youtube.png",
+  ];
+
   static List<Map> sampleData = [
     {
       'type': 0, 

@@ -3,15 +3,15 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 
 import '../constants/color_const.dart';
 
-class ColorPicker extends StatelessWidget {
+class GradientPicker extends StatelessWidget {
   final ValueChanged onChanged;
-  final Color? value;
-  const ColorPicker({super.key, required this.onChanged, this.value});
+  final String? value;
+  const GradientPicker({super.key, required this.onChanged, this.value});
 
   @override
   Widget build(BuildContext context) {
 
-    ValueNotifier<Color?> picked = ValueNotifier(value);
+    ValueNotifier<String?> picked = ValueNotifier(value);
 
     return ValueListenableBuilder(
       valueListenable: picked,
@@ -20,7 +20,7 @@ class ColorPicker extends StatelessWidget {
           height: 45,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: ColorConst.colors.map(
+            children: ColorConst.gradients.keys.map(
               (e) => Padding(
                 padding: const EdgeInsets.only(right: 12),
                 child: Stack(
@@ -34,7 +34,7 @@ class ColorPicker extends StatelessWidget {
                       child: Container(
                         width: 45, height: 45,
                         decoration: BoxDecoration(
-                          color: e,
+                          gradient: ColorConst.gradients[e],
                           borderRadius: BorderRadius.circular(6)
                         ),
                       ),

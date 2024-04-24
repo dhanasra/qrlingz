@@ -28,11 +28,6 @@ class CustomizeViewModel extends BaseViewModel {
     },
     {
       "type": 4,
-      "name": "Eye",
-      "icon": Icons.remove_red_eye_outlined
-    },
-    {
-      "type": 5,
       "name": "Text",
       "icon": Icons.text_fields_outlined
     }
@@ -44,8 +39,7 @@ class CustomizeViewModel extends BaseViewModel {
       case 1: return "Color";
       case 2: return "Logo";
       case 3: return "Pixels";
-      case 4: return "Eye";
-      case 5: return "Text";
+      case 4: return "Text";
       default: return "Customize QR";
     }
   }

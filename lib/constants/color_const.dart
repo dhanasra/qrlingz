@@ -20,4 +20,87 @@ class ColorConst {
     Color(0xFFF39C12),
   ];
 
+  static const gradients = {
+    "0": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFbdc3c7),
+        Color(0xFF2c3e50)
+      ]),
+    "1": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFee9ca7),
+        Color(0xFFffdde1)
+      ]),
+    "2": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFF2193b0),
+        Color(0xFF6dd5ed)
+      ]),
+    "3": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFC6FFDD),
+        Color(0xFFFBD786),
+        Color(0xFFf7797d)
+      ]),
+    "4": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFF0F2027),
+        Color(0xFF203A43),
+        Color(0xFFf7797d)
+      ]),
+    "5": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFF12c2e9),
+        Color(0xFFc471ed),
+        Color(0xFFf7797d)
+      ]),
+    "6": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFb92b27),
+        Color(0xFF1565C0)
+      ]),
+    "7": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFFF0099),
+        Color(0xFF493240)
+      ]),
+    "8": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFF8E2DE2),
+        Color(0xFF4A00E0)
+      ]),
+    "9": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFF1f4037),
+        Color(0xFF99f2c8)
+      ]),
+    "10": LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color(0xFFf12711),
+        Color(0xFFf5af19)
+      ]),
+  };
+
 }
