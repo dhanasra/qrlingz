@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
+import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
+import 'package:qrlingz_app/network/local_db.dart';
+
+import '../../../routes/app_routes.dart';
 
 class CustomizeViewModel extends BaseViewModel {
 
@@ -23,7 +27,7 @@ class CustomizeViewModel extends BaseViewModel {
   String? bgg;
 
   CustomizeViewModel(Map data, String name){
-    qrData = QRData(type: 0, name: name, data: data, created: DateTime.now());
+    qrData = QRData(id: "${DateTime.now().millisecondsSinceEpoch}", type: 0, name: name, data: data, created: DateTime.now());
     tempData = ValueNotifier(QRData.fromMap(qrData.toMap()));
 
     textController = TextEditingController();
@@ -76,6 +80,12 @@ class CustomizeViewModel extends BaseViewModel {
   clearTemp(){
     tempData.value = qrData;
     active.value = null;
+  }
+
+  saveQRCode(BuildContext context){
+    LocalDB().saveHistory(qrData).then((v){
+      context.goto(Routes.preview, args: qrData);
+    });
   }
   
   @override

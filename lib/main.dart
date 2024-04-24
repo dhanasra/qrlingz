@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/network/local_db.dart';
 
 import 'app/app.dart';
 
@@ -22,9 +23,10 @@ void main() async{
   try{
     final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.fetchAndActivate();
-    var data = remoteConfig.getString('data');
-    print(data);
+    remoteConfig.getString('data');
   }catch(error){}
+
+  await LocalDB.init();
 
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);

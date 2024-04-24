@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/constants/data_const.dart';
-import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
-import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_viewmodel.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/options/color_customization.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/options/logo_customization.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/options/pixel_customization.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/options/text_customization.dart';
-import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/utils.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
@@ -61,11 +58,7 @@ class _CustomizeViewState extends State<CustomizeView> {
               SizedBox(
                 width: 92, height: 36,
                 child: StyledButton(
-                  onClick: (){
-                    context.goto(Routes.preview, args: QRData(
-                      type: 0, name: "Text", data: widget.data, isFavourite: false, created: DateTime(2022
-                    )));
-                  }, text: "SAVE"),
+                  onClick: ()=>_viewModel.saveQRCode(context), text: "SAVE"),
               ),
               16.w()
             ],

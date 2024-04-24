@@ -25,6 +25,7 @@ class DataConst {
 
   static List<Map> sampleData = [
     {
+      'id': "1",
       'type': 0, 
       'name': "Text", 
       'data': { 'value': "My Test" }, 
@@ -32,6 +33,7 @@ class DataConst {
       'created': 1482223122760
     },
     {
+      'id': "2",
       'type': 1, 
       'name': "Instagram", 
       'data': { 'value': "My Test" }, 

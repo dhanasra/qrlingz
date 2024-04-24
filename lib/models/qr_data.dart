@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../constants/data_const.dart';
 
 class QRData {
+  final String id;
   final int type;
   final String name;
   final Map data;
@@ -19,6 +20,7 @@ class QRData {
   final String? image;
 
   QRData({
+    required this.id,
     required this.type,
     required this.name,
     required this.data,
@@ -34,6 +36,7 @@ class QRData {
 
 
   QRData copyWith({
+    String? id,
     int? type,
     String? name,
     Map? data,
@@ -47,6 +50,7 @@ class QRData {
     String? image,
   }) {
     return QRData(
+      id: id ?? this.id,
       type: type ?? this.type,
       name: name ?? this.name,
       data: data ?? this.data,
@@ -63,6 +67,7 @@ class QRData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'type': type,
       'name': name,
       'data': data,
@@ -71,9 +76,7 @@ class QRData {
       'color': color,
       'pixels': pixels,
       'isFavourite': isFavourite,
-      'created': created.millisecondsSinceEpoch,
-      'icon': icon?.codePoint,
-      'image': image,
+      'created': created.millisecondsSinceEpoch
     };
   }
 
@@ -97,6 +100,7 @@ class QRData {
 
 
     return QRData(
+      id: map['id'] as String,
       type: map['type'] as int,
       name: map['name'] as String,
       data: Map.from((map['data'] as Map)),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
+import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
@@ -41,8 +42,16 @@ class RouteGenerator {
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());
       case Routes.home:
-        return getTransistionPage(BlocProvider(
-          create: (_)=>HomeCubit(), child: const HomeView()
+        return getTransistionPage(MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => HomeCubit(),
+            ),
+            BlocProvider(
+              create: (context) => HomeBloc()..add(GetHistory()),
+            ),
+          ],
+          child: const HomeView()
         ));
       case Routes.scan:
         return getTransistionPage(const ScanView());
