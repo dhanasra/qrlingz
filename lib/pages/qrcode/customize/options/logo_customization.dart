@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:qrlingz_app/constants/data_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
+import 'package:qrlingz_app/pages/qrcode/customize/customize_viewmodel.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
 class LogoCustomization extends StatelessWidget {
-  const LogoCustomization({super.key});
+  final CustomizeViewModel vm;
+  const LogoCustomization({super.key, required this.vm});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,9 @@ class LogoCustomization extends StatelessWidget {
             childAspectRatio: 1
           ), 
           itemBuilder: (_, idx){
-            return Image.asset(items[idx], width: 50);
+            return InkWell(
+              onTap: ()=>{},
+              child: Image.asset(items[idx], width: 50));
           })
       ],
     );

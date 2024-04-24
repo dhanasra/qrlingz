@@ -138,7 +138,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                 child: activeItem == 1
                 ? const ColorCustomization()
                 : activeItem == 2
-                ? const LogoCustomization()
+                ? LogoCustomization(vm: _viewModel)
                 : activeItem == 3
                 ? const PixelCustomization()
                 : activeItem == 4
