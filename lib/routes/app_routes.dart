@@ -8,7 +8,8 @@ import 'package:qrlingz_app/pages/home/home_view.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_view.dart';
 import 'package:qrlingz_app/pages/qrcode/preview/qrcode_preview.dart';
-import 'package:qrlingz_app/pages/scan/scan_view.dart';
+import 'package:qrlingz_app/pages/scan/data/scan_data_view.dart';
+import 'package:qrlingz_app/pages/scan/scanning/scan_view.dart';
 import 'package:qrlingz_app/pages/settings/settings_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
 
@@ -22,6 +23,8 @@ class Routes {
   static const home = '/home';
 
   static const scan = '/scan';
+  static const scanData = '/scanData';
+
   static const settings = '/settings';
 
   static const create = '/create';
@@ -55,6 +58,8 @@ class RouteGenerator {
         ));
       case Routes.scan:
         return getTransistionPage(const ScanView());
+      case Routes.scanData:
+        return getTransistionPage(ScanDataView(data: settings.arguments as QRData,));
       case Routes.settings:
         return getTransistionPage(const SettingsView());
       case Routes.create:

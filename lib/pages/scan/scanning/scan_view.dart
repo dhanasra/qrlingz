@@ -6,7 +6,7 @@ import 'package:qrlingz_app/constants/assets_const.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
-import 'package:qrlingz_app/pages/scan/scan_viewmodel.dart';
+import 'package:qrlingz_app/pages/scan/scanning/scan_viewmodel.dart';
 
 class ScanView extends StatefulWidget {
   const ScanView({super.key});
@@ -38,7 +38,7 @@ class _ScanViewState extends State<ScanView> {
               children: [
                 QRView(
                   key: _viewModel.qrKey, 
-                  onQRViewCreated: (c)=> _viewModel.onQRViewCreated(c)
+                  onQRViewCreated: (c)=> _viewModel.onQRViewCreated(c, context)
                 ),
 
                 Align(
@@ -82,7 +82,7 @@ class _ScanViewState extends State<ScanView> {
                             backgroundColor: ColorConst.primary,
                             child: IconButton(
                               onPressed: ()async{
-                                await _viewModel.pickImage();
+                                await _viewModel.pickImage(context);
                               }, 
                               icon: const Icon(Icons.image_outlined, color: Colors.white, size: 20)),
                           ),
