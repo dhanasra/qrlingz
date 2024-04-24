@@ -94,19 +94,38 @@ class _CustomizeViewState extends State<CustomizeView> {
                               data: widget.data['value'],
                               errorCorrectLevel: 3,
                               decoration: PrettyQrDecoration(
-                                 shape: PrettyQrRoundedSymbol(
-                                  color: PrettyQrBrush.gradient
-                                  (
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.teal[200]!,
-                                        Colors.blue[200]!,
-                                        Colors.red[200]!,
-                                      ],
+                                 shape: value.pixels?["type"]=="Rounded"
+                                 ? PrettyQrRoundedSymbol(
+                                    borderRadius: value.pixels?["corner"]=="Smooth" 
+                                      ? BorderRadius.circular(10)
+                                      : BorderRadius.circular(2),
+                                    color: PrettyQrBrush.gradient
+                                    (
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Colors.teal[200]!,
+                                          Colors.blue[200]!,
+                                          Colors.red[200]!,
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  )
+                                : PrettyQrSmoothSymbol(
+                                  roundFactor: value.pixels?["corner"]=="Smooth" ? 1: 0,
+                                  color: PrettyQrBrush.gradient
+                                    (
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Colors.teal[200]!,
+                                          Colors.blue[200]!,
+                                          Colors.red[200]!,
+                                        ],
+                                      ),
+                                    ),
                                 ),
                                 image: value.logo!=null
                                 ? PrettyQrDecorationImage(
@@ -142,7 +161,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                 : activeItem == 2
                 ? LogoCustomization(vm: _viewModel)
                 : activeItem == 3
-                ? const PixelCustomization()
+                ? PixelCustomization(vm: _viewModel)
                 : activeItem == 4
                 ? TextCustomization(vm: _viewModel)
                 : GridView.builder(
