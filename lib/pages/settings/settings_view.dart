@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
+import 'package:qrlingz_app/pages/settings/settings_viewmodel.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -10,6 +11,13 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
+  late SettingsViewModel _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = SettingsViewModel();
+    super.initState();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -80,7 +88,7 @@ class _SettingsViewState extends State<SettingsView> {
           8.h(),
 
           ListTile(
-            onTap: (){},
+            onTap: ()=>_viewModel.recommendApp(),
             leading: const Icon(Icons.thumb_up_alt_outlined, size: 20),
             title: const Text("Recommend This App"),
           ),
@@ -90,12 +98,12 @@ class _SettingsViewState extends State<SettingsView> {
             title: const Text("Rate This App"),
           ),
           ListTile(
-            onTap: (){},
+            onTap: ()=>_viewModel.sendReportOrFeedback("Report"),
             leading: const Icon(Icons.flag_outlined, size: 20),
             title: const Text("Report An Issue"),
           ),
           ListTile(
-            onTap: (){},
+            onTap: ()=>_viewModel.sendReportOrFeedback("Feedback"),
             leading: const Icon(Icons.message_outlined, size: 20),
             title: const Text("Give Feedback"),
           ),
