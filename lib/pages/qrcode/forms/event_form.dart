@@ -92,7 +92,7 @@ class EventForm extends StatelessWidget {
                     return;
                   }
                   var data = numberController.text;
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Event" });
                 }, 
                 text: "CREATE"
               )

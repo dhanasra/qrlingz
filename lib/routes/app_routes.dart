@@ -51,7 +51,8 @@ class RouteGenerator {
       case Routes.create:
         return getTransistionPage(CreateView(type: settings.arguments as String));
       case Routes.customize:
-        return getTransistionPage(CustomizeView(data: settings.arguments as String));
+        var args = settings.arguments as Map;
+        return getTransistionPage(CustomizeView(data: args['data'], name: args['name']));
       case Routes.preview:
         return getTransistionPage(QRCodePreview(qrData: settings.arguments as QRData));
       default:

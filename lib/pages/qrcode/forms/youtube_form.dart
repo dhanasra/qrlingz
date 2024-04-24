@@ -106,7 +106,7 @@ class YoutubeForm extends StatelessWidget {
                   : type.value == "Channel ID" 
                   ? "https://www.youtube.com/${channelIdController.trim()}"
                   : urlController.trim();
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Youtube" });
                 }, 
                 text: "CREATE"
               )

@@ -86,7 +86,7 @@ class FacebookForm extends StatelessWidget {
                   }
                   var data = type.value=="URL"
                   ? urlController.trim(): "https://www.facebook.com/${facebookIdController.trim()}";
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Facebook" });
                 }, 
                 text: "CREATE"
               )

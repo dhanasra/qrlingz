@@ -76,7 +76,7 @@ class ContactForm extends StatelessWidget {
                     EMAIL:${mailController.trim()}
                     END:VCARD
                   """;
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Contact" });
                 }, 
                 text: "CREATE"
               )

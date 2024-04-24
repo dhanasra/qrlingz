@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
+import 'package:qrlingz_app/models/qr_data.dart';
 
 class CustomizeViewModel extends BaseViewModel {
 
   ValueNotifier<int?> active = ValueNotifier(null);
+
+  late QRData qrData;
+  late ValueNotifier<QRData> tempData;
+
+  // text custom
+  late TextEditingController textController;
+  late String? color;
+  late String? font;
+
+  CustomizeViewModel(Map data, String name){
+    qrData = QRData(type: 0, name: name, data: data, created: DateTime.now());
+    tempData = ValueNotifier(QRData.fromMap(qrData.toMap()));
+
+    textController = TextEditingController();
+  }
 
   var options = [
     {
@@ -42,6 +58,16 @@ class CustomizeViewModel extends BaseViewModel {
       case 4: return "Text";
       default: return "Customize QR";
     }
+  }
+
+  saveTemp(){
+    qrData = tempData.value;
+    active.value = null;
+  }
+
+  clearTemp(){
+    tempData.value = qrData;
+    active.value = null;
   }
   
   @override

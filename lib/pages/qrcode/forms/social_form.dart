@@ -62,7 +62,7 @@ class SocialForm extends StatelessWidget {
                     case "tiktok" || "linkedin" || "wechat" || "line": data = controller.trim();
                   }
 
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": name });
                 }, 
                 text: "CREATE"
               )

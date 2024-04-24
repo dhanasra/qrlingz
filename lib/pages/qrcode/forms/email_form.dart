@@ -66,7 +66,7 @@ class EmailForm extends StatelessWidget {
                     return;
                   }
                   var data = "mailto:${mailController.trim()}?subject=${subjectController.trim()}&body=${contentController.trim()}";
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Email" });
                 }, 
                 text: "CREATE"
               )

@@ -55,7 +55,7 @@ class InterNumberForm extends StatelessWidget {
                     case "viber": data = "viber://add?number=${controller.trim()}";
                   }
 
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": name });
                 }, 
                 text: "CREATE"
               )

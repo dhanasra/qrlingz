@@ -44,7 +44,7 @@ class TextForm extends StatelessWidget {
                     return;
                   }
                   var data = controller.text;
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Text" });
                 }, 
                 text: "CREATE"
               )

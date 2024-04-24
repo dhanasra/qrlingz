@@ -4,7 +4,7 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import '../constants/color_const.dart';
 
 class ColorPicker extends StatelessWidget {
-  final ValueChanged onChanged;
+  final ValueChanged<Color?> onChanged;
   final Color? value;
   const ColorPicker({super.key, required this.onChanged, this.value});
 

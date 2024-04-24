@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:qrlingz_app/constants/data_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -11,13 +12,15 @@ import 'package:qrlingz_app/pages/qrcode/customize/options/logo_customization.da
 import 'package:qrlingz_app/pages/qrcode/customize/options/pixel_customization.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/options/text_customization.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
 import '../../../constants/color_const.dart';
 
 class CustomizeView extends StatefulWidget {
-  final String data;
-  const CustomizeView({super.key, required this.data});
+  final Map data;
+  final String name;
+  const CustomizeView({super.key, required this.data, required this.name});
 
   @override
   State<CustomizeView> createState() => _CustomizeViewState();
@@ -28,7 +31,7 @@ class _CustomizeViewState extends State<CustomizeView> {
 
   @override
   void initState() {
-    _viewModel = CustomizeViewModel();
+    _viewModel = CustomizeViewModel(widget.data, widget.name);
     super.initState();
   }
 
@@ -41,7 +44,7 @@ class _CustomizeViewState extends State<CustomizeView> {
           appBar: AppBar(
             leading: activeItem!=null
             ? IconButton(
-                onPressed: ()=>_viewModel.active.value = null, 
+                onPressed: ()=>_viewModel.clearTemp(), 
                 icon: const Icon(Icons.close) 
               ): null,
             title: Text(_viewModel.getTitleText()),
@@ -52,13 +55,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                 width: 90, height: 36,
                 child: StyledButton(
                   secondary: true,
-                  onClick: (){
-                    context.goto(Routes.preview, args: QRData(
-                      type: 0, name: "Text", data: {
-                        "value": widget.data
-                      }, isFavourite: false, created: DateTime(2022
-                    )));
-                  }, text: "OK"),
+                  onClick: ()=>_viewModel.saveTemp(), text: "OK"),
               )
               else
               SizedBox(
@@ -80,38 +77,60 @@ class _CustomizeViewState extends State<CustomizeView> {
               Expanded(
                 flex: 5,
                 child: Container(
-                  padding: const EdgeInsets.all(32),
+                  padding: const EdgeInsets.all(8),
                   alignment: Alignment.center,
                   color: Colors.grey,
-                  child: Container(
-                    height: 200,
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(16),
-                    child: PrettyQrView.data(
-                      
-                      data: widget.data,
-                      errorCorrectLevel: 3,
-                      decoration: PrettyQrDecoration(
-                         shape: PrettyQrRoundedSymbol(
-                          color: PrettyQrBrush.gradient
-                          (
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.teal[200]!,
-                                Colors.blue[200]!,
-                                Colors.red[200]!,
-                              ],
+                  child: ValueListenableBuilder(
+                    valueListenable: _viewModel.tempData,
+                    builder: (_, value, __) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 200,
+                            color: Colors.white,
+                            padding: const EdgeInsets.all(16),
+                            child: PrettyQrView.data(
+                              data: widget.data['value'],
+                              errorCorrectLevel: 3,
+                              decoration: PrettyQrDecoration(
+                                 shape: PrettyQrRoundedSymbol(
+                                  color: PrettyQrBrush.gradient
+                                  (
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.teal[200]!,
+                                        Colors.blue[200]!,
+                                        Colors.red[200]!,
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                image: const PrettyQrDecorationImage(
+                                  image: AssetImage('res/images/facebook.png'),
+                                  position: PrettyQrDecorationImagePosition.background,
+                                )
+                              )
                             ),
                           ),
-                        ),
-                        image: const PrettyQrDecorationImage(
-                          image: AssetImage('res/images/facebook.png'),
-                          position: PrettyQrDecorationImagePosition.background,
-                        )
-                      )
-                    ),
+                          if(value.text?["content"]!=null)
+                            Container(
+                              color: Colors.white,
+                              width: 200,
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: Text(value.text!["content"], 
+                                style: value.text!["font"]!=null
+                                    ? (DataConst.fontFamilies.firstWhere((element) => element["name"]==value.text!["font"])["style"] as TextStyle).copyWith(
+                                      color: value.text?["color"]!=null ? stringToColor(value.text?["color"]): null
+                                    ) : TextStyle(
+                                      color: value.text?["color"]!=null ? stringToColor(value.text?["color"]): null
+                                    )))
+                        ],
+                      );
+                    }
                   ),
                 )),
               Expanded(
@@ -123,7 +142,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                 : activeItem == 3
                 ? const PixelCustomization()
                 : activeItem == 4
-                ? const TextCustomization()
+                ? TextCustomization(vm: _viewModel)
                 : GridView.builder(
                   itemCount: _viewModel.options.length,
                   padding: const EdgeInsets.all(16),

@@ -96,7 +96,7 @@ class CryptoForm extends StatelessWidget {
                   }[currency.value];
                   var data = "$currencyCode:${addressController.trim()}?amount=${amountController.trim()}&message=${messageController.trim()}";
 
-                  context.goto(Routes.customize, args: data);
+                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Crypto" });
                 }, 
                 text: "CREATE"
               )
