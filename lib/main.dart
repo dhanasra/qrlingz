@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -10,6 +11,7 @@ import 'app/app.dart';
 void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   await Firebase.initializeApp(
     options: const FirebaseOptions(
@@ -34,5 +36,15 @@ void main() async{
 
   FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
 
-  runApp(const App());
+  runApp(EasyLocalization(
+    supportedLocales: const [
+      Locale('en', 'US'), 
+      Locale('ta', 'IN'),
+      Locale('ml', 'IN'),
+      Locale('kn', 'IN'),
+      Locale('hi', 'IN')
+    ],
+    path: 'res/translations',
+    fallbackLocale: const Locale('en', 'US'),
+    child: const App()));
 }

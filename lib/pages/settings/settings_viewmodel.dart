@@ -5,6 +5,7 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/utils/global.dart';
+import 'package:qrlingz_app/widgets/language_sheet.dart';
 import 'package:qrlingz_app/widgets/theme_sheet.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,6 +25,23 @@ class SettingsViewModel extends BaseViewModel {
             Future.delayed(const Duration(milliseconds: 500), (){
               context.read<ThemeCubit>().toggleTheme(v);
             });
+          },
+        );
+      }
+    );
+  }
+
+  openLanguageSheet(BuildContext context){
+     showModalBottomSheet(
+      context: context, 
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_){ 
+        return LanguageSheet(
+          onSave: (v){
+            // Future.delayed(const Duration(milliseconds: 500), (){
+            //   context.read<ThemeCubit>().toggleTheme(v);
+            // });
           },
         );
       }

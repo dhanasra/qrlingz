@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
@@ -15,6 +16,8 @@ class App extends StatelessWidget {
         builder: (context, mode) {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              locale: context.locale,
               onGenerateRoute: (s) => RouteGenerator(settings: s).getRoute(),
               initialRoute: Routes.splash,
               theme: ThemeConst.getApplicationTheme(false),

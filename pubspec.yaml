@@ -57,6 +57,9 @@ dependencies:
   #routes
   page_transition: ^2.1.0
 
+  #language
+  easy_localization: ^3.0.6
+
   #widgets
   device_info_plus: ^9.0.1
   flutter_neumorphic_plus: ^3.3.0
@@ -103,6 +106,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - res/translations/
     - res/json/
     - res/images/
     - res/logo/

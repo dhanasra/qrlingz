@@ -8,15 +8,15 @@ import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'dialog_wrapper.dart';
 import 'styled_button.dart';
 
-class ThemeSheet extends StatefulWidget {
+class LanguageSheet extends StatefulWidget {
   final ValueChanged onSave;
-  const ThemeSheet({super.key, required this.onSave});
+  const LanguageSheet({super.key, required this.onSave});
 
   @override
-  State<ThemeSheet> createState() => _ThemeSheetState();
+  State<LanguageSheet> createState() => _LanguageSheetState();
 }
 
-class _ThemeSheetState extends State<ThemeSheet> {
+class _LanguageSheetState extends State<LanguageSheet> {
   late ThemeMode selectedTheme;
 
   @override
@@ -29,7 +29,7 @@ class _ThemeSheetState extends State<ThemeSheet> {
   Widget build(BuildContext context) {
     return DialogWrapper(
       onSubmit: (){}, 
-      header: Image.asset("res/images/theme.png"), 
+      header: Image.asset("res/images/language.png"), 
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -40,7 +40,7 @@ class _ThemeSheetState extends State<ThemeSheet> {
             RadioListTile(
               value: ThemeMode.light,
               groupValue: selectedTheme,
-              title: "Light Theme".tl(context),
+              title: "English".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
@@ -53,7 +53,7 @@ class _ThemeSheetState extends State<ThemeSheet> {
             RadioListTile(
               value: ThemeMode.dark,
               groupValue: selectedTheme,
-              title: "Dark Theme".tl(context),
+              title: "தமிழ்".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
@@ -66,7 +66,33 @@ class _ThemeSheetState extends State<ThemeSheet> {
             RadioListTile(
               value: ThemeMode.system,
               groupValue: selectedTheme,
-              title: "System Theme".tl(context),
+              title: "हिंदी".tl(context),
+              controlAffinity: ListTileControlAffinity.trailing,
+              onChanged: (v){
+                setState(() {
+                  if(v!=null){
+                    selectedTheme = v;
+                  }
+                });
+              },
+            ),
+            RadioListTile(
+              value: ThemeMode.system,
+              groupValue: selectedTheme,
+              title: "മലയാളം".tl(context),
+              controlAffinity: ListTileControlAffinity.trailing,
+              onChanged: (v){
+                setState(() {
+                  if(v!=null){
+                    selectedTheme = v;
+                  }
+                });
+              },
+            ),
+            RadioListTile(
+              value: ThemeMode.system,
+              groupValue: selectedTheme,
+              title: "ಕನ್ನಡ".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {

@@ -38,7 +38,7 @@ class _SettingsViewState extends State<SettingsView> {
           8.h(),
 
           ListTile(
-            onTap: (){},
+            onTap: ()=>_viewModel.openLanguageSheet(context),
             leading: const Icon(Icons.language_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text("Language"),
