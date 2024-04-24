@@ -81,7 +81,9 @@ class _ScanViewState extends State<ScanView> {
                             radius: 26,
                             backgroundColor: ColorConst.primary,
                             child: IconButton(
-                              onPressed: (){}, 
+                              onPressed: ()async{
+                                await _viewModel.pickImage();
+                              }, 
                               icon: const Icon(Icons.image_outlined, color: Colors.white, size: 20)),
                           ),
                         ),
