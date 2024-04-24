@@ -16,6 +16,11 @@ class CustomizeViewModel extends BaseViewModel {
   // pixcels
   String? type;
   String? corner;
+  //color
+  String? fg;
+  String? fgg;
+  String? bg;
+  String? bgg;
 
   CustomizeViewModel(Map data, String name){
     qrData = QRData(type: 0, name: name, data: data, created: DateTime.now());

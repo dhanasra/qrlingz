@@ -63,9 +63,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                 child: StyledButton(
                   onClick: (){
                     context.goto(Routes.preview, args: QRData(
-                      type: 0, name: "Text", data: {
-                        "value": widget.data
-                      }, isFavourite: false, created: DateTime(2022
+                      type: 0, name: "Text", data: widget.data, isFavourite: false, created: DateTime(2022
                     )));
                   }, text: "SAVE"),
               ),
@@ -88,7 +86,12 @@ class _CustomizeViewState extends State<CustomizeView> {
                         children: [
                           Container(
                             height: 200,
-                            color: Colors.white,
+                            decoration: BoxDecoration(
+                              color: value.color?["bg"]!=null
+                                ? stringToColor(value.color?["bg"]) : Colors.white,
+                              gradient: value.color?["bgg"]!=null
+                                ? ColorConst.gradients[value.color?["bgg"]]! : null
+                            ),
                             padding: const EdgeInsets.all(16),
                             child: PrettyQrView.data(
                               data: widget.data['value'],
@@ -101,13 +104,18 @@ class _CustomizeViewState extends State<CustomizeView> {
                                       : BorderRadius.circular(2),
                                     color: PrettyQrBrush.gradient
                                     (
-                                      gradient: LinearGradient(
+                                      gradient: value.color?["fgg"]!=null
+                                      ? ColorConst.gradients[value.color?["fgg"]]!
+                                      : LinearGradient(
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.teal[200]!,
-                                          Colors.blue[200]!,
-                                          Colors.red[200]!,
+                                        colors: value.color?["fg"]!=null
+                                        ? [
+                                          stringToColor(value.color?["fg"])!,
+                                          stringToColor(value.color?["fg"])!
+                                        ]
+                                        : [
+                                          Colors.black, Colors.black
                                         ],
                                       ),
                                     ),
@@ -116,13 +124,18 @@ class _CustomizeViewState extends State<CustomizeView> {
                                   roundFactor: value.pixels?["corner"]=="Smooth" ? 1: 0,
                                   color: PrettyQrBrush.gradient
                                     (
-                                      gradient: LinearGradient(
+                                      gradient: value.color?["fgg"]!=null
+                                      ? ColorConst.gradients[value.color?["fgg"]]!
+                                      : LinearGradient(
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.teal[200]!,
-                                          Colors.blue[200]!,
-                                          Colors.red[200]!,
+                                        colors: value.color?["fg"]!=null
+                                        ? [
+                                          stringToColor(value.color?["fg"])!,
+                                          stringToColor(value.color?["fg"])!
+                                        ]
+                                        : [
+                                          Colors.black, Colors.black
                                         ],
                                       ),
                                     ),
@@ -141,7 +154,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                               color: Colors.white,
                               width: 200,
                               alignment: Alignment.center,
-                              padding: const EdgeInsets.only(bottom: 8),
+                              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                               child: Text(value.text!["content"], 
                                 style: value.text!["font"]!=null
                                     ? (DataConst.fontFamilies.firstWhere((element) => element["name"]==value.text!["font"])["style"] as TextStyle).copyWith(
@@ -157,7 +170,7 @@ class _CustomizeViewState extends State<CustomizeView> {
               Expanded(
                 flex: 6,
                 child: activeItem == 1
-                ? const ColorCustomization()
+                ? ColorCustomization(vm: _viewModel)
                 : activeItem == 2
                 ? LogoCustomization(vm: _viewModel)
                 : activeItem == 3

@@ -18,6 +18,8 @@ class ColorConst {
     Color(0xFFE74C3C),
     Color(0xFF27AE60),
     Color(0xFFF39C12),
+    Color(0xFFFFFFFF),
+    Color(0xFF000000),
   ];
 
   static const gradients = {

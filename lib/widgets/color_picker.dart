@@ -35,6 +35,7 @@ class ColorPicker extends StatelessWidget {
                         width: 45, height: 45,
                         decoration: BoxDecoration(
                           color: e,
+                          border: Border.all(color: Colors.black12),
                           borderRadius: BorderRadius.circular(6)
                         ),
                       ),
