@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:lottie/lottie.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -19,6 +18,8 @@ class ScanView extends StatefulWidget {
 class _ScanViewState extends State<ScanView> {
 
   late ScanViewModel _viewModel;
+  bool flash = false;
+  bool flip = false;
 
   @override
   void initState() {
@@ -74,35 +75,61 @@ class _ScanViewState extends State<ScanView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          radius: 26,
+                          radius: 28,
                           backgroundColor: ColorConst.primary,
-                          child: IconButton(
-                            onPressed: (){}, 
-                            icon: const Icon(Icons.image_outlined, color: Colors.white, size: 20)),
+                          child: CircleAvatar(
+                            radius: 26,
+                            backgroundColor: ColorConst.primary,
+                            child: IconButton(
+                              onPressed: (){}, 
+                              icon: const Icon(Icons.image_outlined, color: Colors.white, size: 20)),
+                          ),
                         ),
                         24.w(),
                         CircleAvatar(
-                          radius: 26,
+                          radius: 28,
                           backgroundColor: ColorConst.primary,
-                          child: IconButton(
-                            onPressed: (){}, 
-                            icon: const Icon(Icons.flashlight_on_outlined, color: Colors.white, size: 20)),
+                          child: CircleAvatar(
+                            radius: 26,
+                            backgroundColor: flash ? Colors.white : ColorConst.primary,
+                            child: IconButton(
+                              onPressed: (){
+                                _viewModel.controller?.toggleFlash();
+                                setState((){
+                                  flash = !flash;
+                                });
+                              }, 
+                              icon: Icon(!flash ? Icons.flashlight_on_outlined : Icons.flashlight_off_outlined, color: flash ? ColorConst.primary : Colors.white, size: 20)),
+                          ),
                         ),
                         24.w(),
                         CircleAvatar(
-                          radius: 26,
+                          radius: 28,
                           backgroundColor: ColorConst.primary,
-                          child: IconButton(
-                            onPressed: (){}, 
-                            icon: const Icon(Icons.camera_front_outlined, color: Colors.white, size: 20)),
+                          child: CircleAvatar(
+                            radius: 26,
+                            backgroundColor: flip ? Colors.white : ColorConst.primary,
+                            child: IconButton(
+                              onPressed: (){
+                                _viewModel.controller?.flipCamera();
+                                setState((){
+                                  flip = !flip;
+                                });
+                              }, 
+                              icon: Icon(!flip ? Icons.camera_front_outlined : Icons.camera_rear_outlined, color: flip ? ColorConst.primary : Colors.white, size: 20)),
+                          ),
                         ),
                         24.w(),
                         CircleAvatar(
-                          radius: 26,
+                          radius: 28,
                           backgroundColor: ColorConst.primary,
-                          child: IconButton(
-                          onPressed: (){}, 
-                          icon: const Icon(Icons.layers_outlined, color: Colors.white, size: 20,)),
+                          child: CircleAvatar(
+                            radius: 26,
+                            backgroundColor: ColorConst.primary,
+                            child: IconButton(
+                            onPressed: (){}, 
+                            icon: const Icon(Icons.layers_outlined, color: Colors.white, size: 20,)),
+                          ),
                         )
                       ],
                     ),

@@ -13,7 +13,7 @@ class ScanViewModel extends BaseViewModel {
 
     });
   }
-  
+
   @override
   dispose() {
     controller?.dispose();
