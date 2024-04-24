@@ -23,7 +23,7 @@ class FavouriteItem extends StatelessWidget {
               ? ColorConst.primary : Colors.white,
             child: item.icon!=null
               ? Icon(item.icon, size: 24, color: Colors.white)
-              : Image.asset(item.image!, width: 45),
+              : Image.asset(item.image??'', width: 45),
           ),
           12.w(),
           Expanded(

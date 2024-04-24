@@ -18,7 +18,8 @@ class HistoryFragment extends StatelessWidget {
         return ListView(
           padding: const EdgeInsets.all(20),
           children:  [
-            ...(state is HistoryFetched ? state.data : []).map((e) => HistoryItem(item: e))
+            ...(state is HistoryFetched ? state.data : []).map(
+              (e) => HistoryItem(item: e))
           ],
         );
       }
