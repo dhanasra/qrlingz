@@ -38,13 +38,13 @@ void main() async{
 
   runApp(EasyLocalization(
     supportedLocales: const [
-      Locale('en', 'US'), 
-      Locale('ta', 'IN'),
-      Locale('ml', 'IN'),
-      Locale('kn', 'IN'),
-      Locale('hi', 'IN')
+      Locale('en'), 
+      Locale('ta'),
+      Locale('ml'),
+      Locale('kn'),
+      Locale('hi')
     ],
     path: 'res/translations',
-    fallbackLocale: const Locale('en', 'US'),
+    fallbackLocale: const Locale('en'),
     child: const App()));
 }

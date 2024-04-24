@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
@@ -41,19 +42,19 @@ class _SettingsViewState extends State<SettingsView> {
             onTap: ()=>_viewModel.openLanguageSheet(context),
             leading: const Icon(Icons.language_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
-            title: const Text("Language"),
+            title: const Text("Language").tr(),
             trailing: const Text("English")
           ),
           ListTile(
             onTap: ()=>_viewModel.openThemeSheet(context),
             leading: const Icon(Icons.color_lens_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
-            title: const Text("Theme"),
+            title: const Text("Theme").tr(),
             trailing: (context.read<ThemeCubit>().state.name.toUpperCase()).ts(context, color: ColorConst.primary)
           ),
           ListTile(
             leading: const Icon(Icons.history_outlined, size: 20),
-            title: const Text("Add Scans To History"),
+            title: const Text("Add Scans To History").tr(),
             contentPadding: const EdgeInsets.only(left: 16),
             trailing: Checkbox(value: Global.addScanToHistory, onChanged: (v){
               _viewModel.updateSettings("addScanToHistory", v);
@@ -69,7 +70,7 @@ class _SettingsViewState extends State<SettingsView> {
 
           ListTile(
             leading: const Icon(Icons.vibration_outlined, size: 20),
-            title: const Text("Vibrate"),
+            title: const Text("Vibrate").tr(),
             contentPadding: const EdgeInsets.only(left: 16),
             trailing: Checkbox(
               value: Global.vibrateOnScan, 
@@ -80,7 +81,7 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           ListTile(
             leading: const Icon(Icons.volume_up_outlined, size: 20),
-            title: const Text("Sound"),
+            title: const Text("Sound").tr(),
             contentPadding: const EdgeInsets.only(left: 16),
             trailing: Checkbox(value: Global.soundOnScan, 
             onChanged: (v){
@@ -90,7 +91,7 @@ class _SettingsViewState extends State<SettingsView> {
           ),
           ListTile(
             leading: const Icon(Icons.open_in_new_outlined, size: 20),
-            title: const Text("Auto Open Websites"),
+            title: const Text("Auto Open Websites").tr(),
             contentPadding: const EdgeInsets.only(left: 16),
             trailing: Checkbox(value: Global.openLinkOnScan, 
             onChanged: (v){
@@ -108,22 +109,22 @@ class _SettingsViewState extends State<SettingsView> {
           ListTile(
             onTap: ()=>_viewModel.recommendApp(),
             leading: const Icon(Icons.thumb_up_alt_outlined, size: 20),
-            title: const Text("Recommend This App"),
+            title: const Text("Recommend This App").tr(),
           ),
           ListTile(
             onTap: (){},
             leading: const Icon(Icons.star_border, size: 20),
-            title: const Text("Rate This App"),
+            title: const Text("Rate This App").tr(),
           ),
           ListTile(
             onTap: ()=>_viewModel.sendReportOrFeedback("Report"),
             leading: const Icon(Icons.flag_outlined, size: 20),
-            title: const Text("Report An Issue"),
+            title: const Text("Report An Issue").tr(),
           ),
           ListTile(
             onTap: ()=>_viewModel.sendReportOrFeedback("Feedback"),
             leading: const Icon(Icons.message_outlined, size: 20),
-            title: const Text("Give Feedback"),
+            title: const Text("Give Feedback").tr(),
           ),
 
         ],

@@ -58,7 +58,7 @@ dependencies:
   page_transition: ^2.1.0
 
   #language
-  easy_localization: ^3.0.6
+  easy_localization: ^3.0.2
 
   #widgets
   device_info_plus: ^9.0.1

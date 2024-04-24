@@ -1,4 +1,5 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
@@ -38,10 +39,12 @@ class SettingsViewModel extends BaseViewModel {
       backgroundColor: Colors.transparent,
       builder: (_){ 
         return LanguageSheet(
-          onSave: (v){
-            // Future.delayed(const Duration(milliseconds: 500), (){
-            //   context.read<ThemeCubit>().toggleTheme(v);
-            // });
+          value: context.locale.languageCode,
+          onSaved: (v){
+            Future.delayed(const Duration(milliseconds: 500), (){
+              LocalDB().saveSettings('language', {"code": v});
+              context.setLocale(const Locale("ta"));
+            });
           },
         );
       }

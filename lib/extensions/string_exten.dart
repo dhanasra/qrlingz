@@ -1,35 +1,36 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 extension TextExtensions on String {
 
   hm(BuildContext context){
-    return Text(this, style: Theme.of(context).textTheme.headlineMedium);
+    return Text(this, style: Theme.of(context).textTheme.headlineMedium).tr();
   }
   
   hs(BuildContext context){
-    return Text(this, style: Theme.of(context).textTheme.headlineSmall);
+    return Text(this, style: Theme.of(context).textTheme.headlineSmall).tr();
   }
 
   tl(BuildContext context){
-    return Text(this, style: Theme.of(context).textTheme.titleLarge);
+    return Text(this, style: Theme.of(context).textTheme.titleLarge).tr();
   }
 
   ts(BuildContext context, {Color? color}){
     return Text(this, style: Theme.of(context).textTheme.titleSmall!.copyWith(
       color: color
-    ));
+    )).tr();
   }
 
   bs(BuildContext context, {Color? color}){
     return Text(this, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(
       color: color
-    ));
+    )).tr();
   }
 
   ls(BuildContext context, {Color? color}){
     return Text(this, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall!.copyWith(
       color: color
-    ));
+    )).tr();
   }
 
 }

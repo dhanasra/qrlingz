@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qrlingz_app/common/theme/theme_cubit.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -9,19 +7,20 @@ import 'dialog_wrapper.dart';
 import 'styled_button.dart';
 
 class LanguageSheet extends StatefulWidget {
-  final ValueChanged onSave;
-  const LanguageSheet({super.key, required this.onSave});
+  final String value;
+  final ValueChanged onSaved;
+  const LanguageSheet({super.key, required this.value, required this.onSaved});
 
   @override
   State<LanguageSheet> createState() => _LanguageSheetState();
 }
 
 class _LanguageSheetState extends State<LanguageSheet> {
-  late ThemeMode selectedTheme;
+  late String selectedLanguage;
 
   @override
   void initState() {
-    selectedTheme = context.read<ThemeCubit>().state;
+    selectedLanguage = widget.value;
     super.initState();
   }
 
@@ -38,66 +37,66 @@ class _LanguageSheetState extends State<LanguageSheet> {
             "Change Theme".hs(context),
             16.h(),
             RadioListTile(
-              value: ThemeMode.light,
-              groupValue: selectedTheme,
+              value: "en",
+              groupValue: selectedLanguage,
               title: "English".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
                   if(v!=null){
-                    selectedTheme = v;
+                    selectedLanguage = v;
                   }
                 });
               },
             ),
             RadioListTile(
-              value: ThemeMode.dark,
-              groupValue: selectedTheme,
+              value: "ta",
+              groupValue: selectedLanguage,
               title: "தமிழ்".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
                   if(v!=null){
-                    selectedTheme = v;
+                    selectedLanguage = v;
                   }
                 });
               },
             ),
             RadioListTile(
-              value: ThemeMode.system,
-              groupValue: selectedTheme,
+              value: "hi",
+              groupValue: selectedLanguage,
               title: "हिंदी".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
                   if(v!=null){
-                    selectedTheme = v;
+                    selectedLanguage = v;
                   }
                 });
               },
             ),
             RadioListTile(
-              value: ThemeMode.system,
-              groupValue: selectedTheme,
+              value: "ml",
+              groupValue: selectedLanguage,
               title: "മലയാളം".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
                   if(v!=null){
-                    selectedTheme = v;
+                    selectedLanguage = v;
                   }
                 });
               },
             ),
             RadioListTile(
-              value: ThemeMode.system,
-              groupValue: selectedTheme,
+              value: "kn",
+              groupValue: selectedLanguage,
               title: "ಕನ್ನಡ".tl(context),
               controlAffinity: ListTileControlAffinity.trailing,
               onChanged: (v){
                 setState(() {
                   if(v!=null){
-                    selectedTheme = v;
+                    selectedLanguage = v;
                   }
                 });
               },
@@ -110,7 +109,7 @@ class _LanguageSheetState extends State<LanguageSheet> {
                 rounded: true,
                 onClick: (){
                   context.back();
-                  widget.onSave(selectedTheme);
+                  widget.onSaved(selectedLanguage);
                 }, 
                 text: "SAVE"
               )
