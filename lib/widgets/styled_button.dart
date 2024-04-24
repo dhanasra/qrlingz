@@ -6,13 +6,15 @@ class StyledButton extends StatelessWidget {
   final String text;
   final double? w;
   final bool rounded;
+  final bool outlined;
   final bool secondary;
-  const StyledButton({super.key, required this.onClick, required this.text, this.w, this.rounded = false, this.secondary = false});
+  const StyledButton({super.key, required this.onClick, required this.text, this.w, this.rounded = false, this.secondary = false, this.outlined = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         width: w,
+        padding: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(rounded? 30: 8),
           gradient: LinearGradient(
@@ -34,12 +36,15 @@ class StyledButton extends StatelessWidget {
         ),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            elevation: outlined ? 0 : null,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(rounded? 30: 8),
+              borderRadius: BorderRadius.circular(rounded? 30: 6),
             ),
-            backgroundColor: Colors.transparent),
+            backgroundColor: outlined ? Colors.white: Colors.transparent),
           onPressed: onClick, 
-          child: Text(text)
+          child: Text(text, style: TextStyle(
+            color: outlined ? ColorConst.primary: Colors.white
+          ))
         )
     );
   }

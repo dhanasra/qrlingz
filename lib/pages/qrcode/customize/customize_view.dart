@@ -59,7 +59,7 @@ class _CustomizeViewState extends State<CustomizeView> {
               )
               else
               SizedBox(
-                width: 90, height: 36,
+                width: 92, height: 36,
                 child: StyledButton(
                   onClick: (){
                     context.goto(Routes.preview, args: QRData(
@@ -108,10 +108,12 @@ class _CustomizeViewState extends State<CustomizeView> {
                                     ),
                                   ),
                                 ),
-                                image: const PrettyQrDecorationImage(
-                                  image: AssetImage('res/images/facebook.png'),
-                                  position: PrettyQrDecorationImagePosition.background,
+                                image: value.logo!=null
+                                ? PrettyQrDecorationImage(
+                                  image: NetworkImage(value.logo!),
+                                  position: PrettyQrDecorationImagePosition.embedded,
                                 )
+                                : null
                               )
                             ),
                           ),

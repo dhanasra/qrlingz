@@ -13,8 +13,6 @@ class CustomizeViewModel extends BaseViewModel {
   late TextEditingController textController;
   late String? color;
   late String? font;
-  //logo
-  late String? logoPath;
 
   CustomizeViewModel(Map data, String name){
     qrData = QRData(type: 0, name: name, data: data, created: DateTime.now());

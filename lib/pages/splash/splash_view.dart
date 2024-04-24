@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
+import 'package:qrlingz_app/network/firebase_client.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:qrlingz_app/utils/global.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -14,7 +16,13 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), ()=>context.goto(Routes.welcome));
+    Future.delayed(const Duration(seconds: 2), ()async{
+      await FirebaseClient().configDB.doc("constants").get().then(
+        (snapshots){
+          Global.initialize(snapshots.data());
+          context.goto(Routes.home);
+        });
+    });
     super.initState();
   }
   

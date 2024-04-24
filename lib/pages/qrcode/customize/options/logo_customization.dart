@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:qrlingz_app/constants/data_const.dart';
+import 'package:flutter/widgets.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_viewmodel.dart';
+import 'package:qrlingz_app/utils/global.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
 class LogoCustomization extends StatelessWidget {
@@ -11,18 +12,36 @@ class LogoCustomization extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var items = DataConst.logoImages;
+    var items = Global.logos;
 
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        Align(
-          alignment: Alignment.center,
-          child: StyledButton(
-            w: 160,
-            onClick: (){}, 
-            text: "Pick Image"
-          ),
+        ValueListenableBuilder(
+          valueListenable: vm.tempData,
+          builder: (_, value, __) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                StyledButton(
+                  w: 140,
+                  onClick: (){}, 
+                  text: "Pick Image"
+                ),
+                if(value.logo!=null)
+                16.w(),
+                if(value.logo!=null)
+                StyledButton(
+                  w: 140,
+                  outlined: true,
+                  onClick: (){
+                    vm.tempData.value = vm.tempData.value.copyWith(logo: null);
+                  }, 
+                  text: "Remove"
+                )
+              ],
+            );
+          }
         ),
         16.h(),
         GridView.builder(
@@ -37,8 +56,10 @@ class LogoCustomization extends StatelessWidget {
           ), 
           itemBuilder: (_, idx){
             return InkWell(
-              onTap: ()=>{},
-              child: Image.asset(items[idx], width: 50));
+              onTap: (){
+                vm.tempData.value = vm.tempData.value.copyWith(logo: items[idx]);
+              },
+              child: Image.network(items[idx], width: 50));
           })
       ],
     );

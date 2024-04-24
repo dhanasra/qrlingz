@@ -50,7 +50,7 @@ class QRData {
       type: type ?? this.type,
       name: name ?? this.name,
       data: data ?? this.data,
-      logo: logo ?? this.logo,
+      logo: logo,
       text: text ?? this.text,
       color: color ?? this.color,
       pixels: pixels ?? this.pixels,
