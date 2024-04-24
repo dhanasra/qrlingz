@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/settings/settings_viewmodel.dart';
+import 'package:qrlingz_app/utils/global.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -12,6 +13,8 @@ class SettingsView extends StatefulWidget {
 
 class _SettingsViewState extends State<SettingsView> {
   late SettingsViewModel _viewModel;
+
+
 
   @override
   void initState() {
@@ -51,8 +54,9 @@ class _SettingsViewState extends State<SettingsView> {
             leading: const Icon(Icons.history_outlined, size: 20),
             title: const Text("Add Scans To History"),
             contentPadding: const EdgeInsets.only(left: 16),
-            trailing: Checkbox(value: true, onChanged: (v){
-
+            trailing: Checkbox(value: Global.addScanToHistory, onChanged: (v){
+              _viewModel.updateSettings("addScanToHistory", v);
+              setState(() {});
             }),
           ),
 
@@ -66,19 +70,32 @@ class _SettingsViewState extends State<SettingsView> {
             leading: const Icon(Icons.vibration_outlined, size: 20),
             title: const Text("Vibrate"),
             contentPadding: const EdgeInsets.only(left: 16),
-            trailing: Checkbox(value: true, onChanged: (v){}),
+            trailing: Checkbox(
+              value: Global.vibrateOnScan, 
+              onChanged: (v){
+                _viewModel.updateSettings("vibrate", v);
+                setState(() {});
+              }),
           ),
           ListTile(
             leading: const Icon(Icons.volume_up_outlined, size: 20),
             title: const Text("Sound"),
             contentPadding: const EdgeInsets.only(left: 16),
-            trailing: Checkbox(value: true, onChanged: (v){}),
+            trailing: Checkbox(value: Global.soundOnScan, 
+            onChanged: (v){
+              _viewModel.updateSettings("sound", v);
+              setState(() {});
+            }),
           ),
           ListTile(
             leading: const Icon(Icons.open_in_new_outlined, size: 20),
             title: const Text("Auto Open Websites"),
             contentPadding: const EdgeInsets.only(left: 16),
-            trailing: Checkbox(value: true, onChanged: (v){}),
+            trailing: Checkbox(value: Global.openLinkOnScan, 
+            onChanged: (v){
+              _viewModel.updateSettings("autoOpen", v);
+              setState(() {});
+            }),
           ),
 
           16.h(),   

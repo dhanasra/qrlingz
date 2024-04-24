@@ -1,11 +1,25 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
+import 'package:qrlingz_app/network/local_db.dart';
+import 'package:qrlingz_app/utils/global.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsViewModel extends BaseViewModel {
   
-  
+  updateSettings(key, value)async{
+    await LocalDB().saveSettings(key, {'enabled': value});
+    if(key=="vibrate"){
+      Global.vibrateOnScan = value;
+    }else if(key=="sound"){
+      Global.soundOnScan = value;
+    }else if(key=="autoOpen"){
+      Global.openLinkOnScan = value;
+    }else if(key=="addScanToHistory"){
+      Global.addScanToHistory = value;
+    } 
+  }
+
   recommendApp()async{
     await Share.share("Transform your QR codes into stunning works of art with QR Code Generator - Fast & Easy! Choose from a variety of ready-made templates and customize them to match your style effortlessly. Simplify the process and elevate your QR code game today! Download now and see the difference.\n\nhttps://play.google.com/store/apps/details?id=com.spiderlingz.qrlingz");
   }
