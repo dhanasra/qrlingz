@@ -48,7 +48,7 @@ class _ScanDataViewState extends State<ScanDataView> {
             16.h(),
             Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
@@ -60,21 +60,95 @@ class _ScanDataViewState extends State<ScanDataView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 60,
-                    child: Column(
-                      children: [
-                        const Icon(Icons.language),
-                        4.h(),
-                        "Open".ts(context)
-                      ],
+                  if(_viewModel.dataType=="Website" || _viewModel.dataType=="Text")
+                  InkWell(
+                    onTap: ()=>_viewModel.openWebsite(context),
+                    child: SizedBox(
+                      width: 80,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.language),
+                          4.h(),
+                          "Open".ts(context)
+                        ],
+                      ),
+                    ),
+                  )
+                  else if(_viewModel.dataType=="Phone")
+                  InkWell(
+                    onTap: ()=>_viewModel.openUrl(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.phone_outlined),
+                          4.h(),
+                          "Call".ts(context)
+                        ],
+                      ),
+                    ),
+                  )
+                  else if(_viewModel.dataType=="Email")
+                  InkWell(
+                    onTap: ()=>_viewModel.openUrl(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.mail_outlined),
+                          4.h(),
+                          "Email".ts(context)
+                        ],
+                      ),
+                    ),
+                  )
+                  else if(_viewModel.dataType=="SMS")
+                  InkWell(
+                    onTap: ()=>_viewModel.openUrl(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.sms_outlined),
+                          4.h(),
+                          "Sms".ts(context)
+                        ],
+                      ),
+                    ),
+                  )
+                  else if(_viewModel.dataType=="VCard")
+                  InkWell(
+                    onTap: ()=>_viewModel.openUrl(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.contacts_outlined),
+                          4.h(),
+                          "VCard".ts(context)
+                        ],
+                      ),
+                    ),
+                  )
+                  else
+                  InkWell(
+                    onTap: ()=>_viewModel.openWebsite(context),
+                    child: SizedBox(
+                      width: 80,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.language),
+                          4.h(),
+                          "Open".ts(context)
+                        ],
+                      ),
                     ),
                   ),
-                  24.w(),
+                           
                   InkWell(
                     onTap: ()=>_viewModel.copyCode(context),
                     child: SizedBox(
-                      width: 60,
+                      width: 80,
                       child: Column(
                         children: [
                           const Icon(Icons.copy_outlined),
@@ -84,11 +158,11 @@ class _ScanDataViewState extends State<ScanDataView> {
                       ),
                     ),
                   ),
-                  24.w(),
+
                   InkWell(
                     onTap: ()=>_viewModel.shareCode(),
                     child: SizedBox(
-                      width: 60,
+                      width: 80,
                       child: Column(
                         children: [
                           const Icon(Icons.share_outlined),

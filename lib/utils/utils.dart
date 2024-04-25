@@ -1,4 +1,7 @@
-  import 'package:flutter/material.dart';
+  import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:open_file_plus/open_file_plus.dart';
 
 String? colorToString(Color? color) {
     if(color==null){
@@ -83,7 +86,7 @@ String getDataType(String scanData){
     return "Spotify";
   }
 
-  return "Website";
+  return "Text";
 }
 
 Locale getLocale(String languageCode){
@@ -106,4 +109,14 @@ String getLanguage(String languageCode){
     case "hi": return "हिंदी";
     default: return "ENGLISH";
   }
+}
+
+Future<void> saveVCard({required String data}) async {
+  try {
+
+    final directory = Directory('/storage/emulated/0/Download');
+    final file = File('${directory.path}/qrlingz.vcf');
+    await file.writeAsString(data);
+    OpenFile.open(file.path);
+  } catch (_) {}
 }

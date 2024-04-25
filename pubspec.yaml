@@ -46,6 +46,9 @@ dependencies:
   #style
   google_fonts: ^6.2.1
 
+  #file
+  open_file_plus: ^3.4.1+1
+
   #SML
   bloc: ^8.1.4
   flutter_bloc: ^8.1.5

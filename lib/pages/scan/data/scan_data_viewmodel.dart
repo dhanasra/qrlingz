@@ -12,8 +12,9 @@ import '../../../utils/global.dart';
 
 class ScanDataViewModel extends BaseViewModel {
   final QRData qr;
+  late String dataType;
   ScanDataViewModel({required this.qr}){
-    var dataType = getDataType(qr.data["value"]);
+    dataType = getDataType(qr.data["value"]);
     if(dataType=="Website" && Global.openLinkOnScan){
       launchUrlString(qr.data['value']);
     }
@@ -31,6 +32,25 @@ class ScanDataViewModel extends BaseViewModel {
 
   shareCode(){
     Share.share(qr.data["value"]);
+  }
+
+  openWebsite(BuildContext context)async{
+    await canLaunchUrlString(qr.data['value']).then(
+      (value)async{
+        if(value){
+          await launchUrlString(qr.data['value']);
+        }else{
+          Toast.show(context, message: "Invalid url found. Can't Open This Url.");
+        }
+      });
+  }
+
+  openUrl()async{
+    await launchUrlString(qr.data['value']);
+  }
+
+  saveContact(BuildContext context)async{
+    await saveVCard(data: qr.data['value']);
   }
 
   @override
