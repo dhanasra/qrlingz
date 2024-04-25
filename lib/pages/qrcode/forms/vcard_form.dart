@@ -161,7 +161,20 @@ class VcardForm extends StatelessWidget {
 
                   data += ";END:VCARD";
 
-                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "VCard" });
+                  context.goto(Routes.customize, args: { 
+                    "data": {
+                      "value": data,
+                      "name": nameController.trim(),
+                      "phone": phoneController.trim(),
+                      "email": mailController.trim(),
+                      "company": companyNameController.trim(),
+                      "jobTitle": jobTitleController.trim(),
+                      "address": addressController.trim(),
+                      "website": websiteController.trim(),
+                      "note": noteController.trim()
+                    }, 
+                    "name": "VCard" 
+                  });
                 }, 
                 text: "CREATE"
               )

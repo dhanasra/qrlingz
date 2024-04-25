@@ -81,7 +81,15 @@ class WifiForm extends StatelessWidget {
                     return;
                   }
                   var data = "WIFI:S:${nameController.trim()};T:$security;P:${passwordController.trim()}";
-                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Wifi" });
+                  context.goto(Routes.customize, args: { 
+                    "data": {
+                      "value": data,
+                      "name": nameController.trim(),
+                      "mode": security,
+                      "password": passwordController.trim()
+                    }, 
+                    "name": "Wifi" 
+                  });
                 }, 
                 text: "CREATE"
               )

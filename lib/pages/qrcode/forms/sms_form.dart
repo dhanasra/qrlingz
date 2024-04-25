@@ -55,7 +55,14 @@ class SmsForm extends StatelessWidget {
                     return;
                   }
                   var data = "smsto:${numberController.trim()}:${messageController.trim()}";
-                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "SMS" });
+                  context.goto(Routes.customize, args: { 
+                    "data": {
+                      "value": data,
+                      "phone": numberController.trim(),
+                      "message": messageController.trim()
+                    }, 
+                    "name": "SMS" 
+                  });
                 }, 
                 text: "CREATE"
               )

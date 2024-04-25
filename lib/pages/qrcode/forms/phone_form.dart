@@ -43,7 +43,13 @@ class PhoneForm extends StatelessWidget {
                     return;
                   }
                   var data = "tel:${controller.trim()}";
-                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Phone" });
+                  context.goto(Routes.customize, args: { 
+                    "data": {
+                      "value": data,
+                      "phone": controller.trim()
+                    }, 
+                    "name": "Phone" 
+                  });
                 }, 
                 text: "CREATE"
               )

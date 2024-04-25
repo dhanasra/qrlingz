@@ -63,7 +63,12 @@ class WebsiteForm extends StatelessWidget {
                     return;
                   }
                   var data = controller.text;
-                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Website" });
+                  context.goto(Routes.customize, args: { 
+                    "data": {
+                      "value": data
+                    }, 
+                    "name": "Website" 
+                  });
                 }, 
                 text: "CREATE"
               )
