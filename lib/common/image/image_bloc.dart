@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -58,7 +59,7 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
         return;
       }
 
-      TaskSnapshot task = await _client.storageReference.putFile(File(croppedFile.path));
+      TaskSnapshot task = await _client.storageReference.child("${DateTime.now().millisecondsSinceEpoch}-${Random().nextInt(1000)}").putFile(File(croppedFile.path));
       var url = await task.ref.getDownloadURL();
       emit(ImageFetched(url: url));
     
