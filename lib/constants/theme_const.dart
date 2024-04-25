@@ -9,12 +9,20 @@ class ThemeConst {
   static getApplicationTheme(bool isDark){
 
     return ThemeData(
-      scaffoldBackgroundColor: isDark ? Colors.black : Colors.white,
+      scaffoldBackgroundColor: isDark ? const Color(0xFF383838) : Colors.white,
       fontFamily: GoogleFonts.lato().fontFamily,
+      
+      primaryColor: isDark ? ColorConst.primaryLight: ColorConst.primary,
+      primaryColorLight: ColorConst.primaryLight,
+
       appBarTheme: AppBarTheme(
         centerTitle: true,
+        backgroundColor: isDark ? const Color(0xFF383838) : Colors.white,
+        iconTheme: IconThemeData(
+          color: isDark ? Colors.white :const Color(0xFF383838)
+        ),
         titleTextStyle: GoogleFonts.lato(
-          color: ColorConst.primary,
+          color: isDark ? ColorConst.primaryLight :ColorConst.primary,
           fontSize: 22,
           fontWeight: FontWeight.w600),
       ),
@@ -25,45 +33,72 @@ class ThemeConst {
         tertiary: ColorConst.primaryLight.withOpacity(0.4)
       ),
 
+      cardColor: isDark ? Colors.black : Colors.white,
+
       textTheme: TextTheme(
         titleSmall: GoogleFonts.lato(
           fontSize: 14,
           fontWeight: FontWeight.w600,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
         titleMedium: GoogleFonts.lato(
           fontSize: 18,
           height: 1,
           fontWeight: FontWeight.w500,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
         titleLarge: GoogleFonts.lato(
           fontSize: 16,
           fontWeight: FontWeight.w600,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
         headlineMedium: GoogleFonts.lato(
           fontSize: 20,
           fontWeight: FontWeight.w600,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
         headlineSmall: GoogleFonts.lato(
           fontSize: 18,
           fontWeight: FontWeight.w600,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
         bodySmall: GoogleFonts.lato(
           fontSize: 12,
           fontWeight: FontWeight.w600,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         ), 
+        bodyMedium: GoogleFonts.lato(
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
+        ),
+        bodyLarge: GoogleFonts.lato(
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
+        ),
+        labelLarge: GoogleFonts.lato(
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
+        ),
         labelSmall: GoogleFonts.lato(
           fontSize: 10,
           fontWeight: FontWeight.w600,
+          color: !isDark ? const Color(0xFF383838) : Colors.white,
         )
       ),
 
       listTileTheme: ListTileThemeData(
-        iconColor: ColorConst.primary,
+        iconColor:  !isDark ? ColorConst.primary : ColorConst.primaryLight,
         titleTextStyle: GoogleFonts.lato(
           fontSize: 16,
           fontWeight: FontWeight.w500,
-          color: Colors.black
+          color: !isDark ? Colors.black : Colors.white,
         )
+      ),
+
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStatePropertyAll(!isDark ? ColorConst.primary : ColorConst.primaryLight),
+        checkColor: MaterialStatePropertyAll(!isDark ? Colors.white : ColorConst.primary),
+      ),
+
+      radioTheme: RadioThemeData(
+        fillColor: MaterialStatePropertyAll(!isDark ? ColorConst.primary : ColorConst.primaryLight),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(

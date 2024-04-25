@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
-import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/settings/settings_viewmodel.dart';
@@ -43,14 +42,16 @@ class _SettingsViewState extends State<SettingsView> {
             leading: const Icon(Icons.language_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text("Language").tr(),
-            trailing: const Text("English")
+            trailing: ("English".toUpperCase()).ts(
+              context, color: Theme.of(context).primaryColor)
           ),
           ListTile(
             onTap: ()=>_viewModel.openThemeSheet(context),
             leading: const Icon(Icons.color_lens_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text("Theme").tr(),
-            trailing: (context.read<ThemeCubit>().state.name.toUpperCase()).ts(context, color: ColorConst.primary)
+            trailing: (context.read<ThemeCubit>().state.name.toUpperCase()).ts(
+              context, color: Theme.of(context).primaryColor)
           ),
           ListTile(
             leading: const Icon(Icons.history_outlined, size: 20),
