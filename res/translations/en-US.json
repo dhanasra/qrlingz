@@ -27,5 +27,9 @@
   "welcomeText2": "Guest User",
   "privacy": "Privacy Policy",
   "terms": "Terms & Conditions",
-  "about": "About Us"
+  "about": "About Us",
+  "preview": "Preview",
+  "shareOpt": "Share QR code",
+  "downloadOpt": "Download",
+  "addToImageOpt": "Add To Image"
 }

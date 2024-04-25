@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:like_button/like_button.dart';
@@ -13,6 +14,7 @@ import 'package:screenshot/screenshot.dart';
 
 import '../../../constants/color_const.dart';
 import '../../../constants/data_const.dart';
+import '../../../constants/string_const.dart';
 import '../../../utils/utils.dart';
 
 class QRCodePreview extends StatefulWidget {
@@ -36,7 +38,7 @@ class _QRCodePreviewState extends State<QRCodePreview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Preview"),
+        title: const Text(StringConst.preview).tr(),
         centerTitle: false,
         actions: [
           LikeButton(
@@ -190,7 +192,7 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                             ),
                           ),
                           16.h(),
-                          "Share QR code".ts(context)
+                          StringConst.shareOpt.ts(context)
                         ],
                       ),
                     ),
@@ -215,7 +217,7 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                             ),
                           ),
                           16.h(),
-                          "Download".ts(context)
+                          StringConst.downloadOpt.ts(context)
                         ],
                       ),
                     ),
@@ -235,7 +237,7 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                             child: Icon(Icons.image_outlined, color: Theme.of(context).highlightColor),
                           ),
                           16.h(),
-                          "Add To Image".ts(context)
+                          StringConst.addToImageOpt.ts(context)
                         ],
                       ),
                     )

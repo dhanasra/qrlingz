@@ -45,6 +45,11 @@ class StringConst {
   static const terms = "terms";
   static const about = "about";
 
+  // preview
+  static const preview = "preview";
+  static const shareOpt = "shareOpt";
+  static const downloadOpt = "downloadOpt";
+  static const addToImageOpt = "addToImageOpt";
 
   // contents
   static const recommendContent = "Transform your QR codes into stunning works of art with QR Code Generator - Fast & Easy! Choose from a variety of ready-made templates and customize them to match your style effortlessly. Simplify the process and elevate your QR code game today! Download now and see the difference.\n\nhttps://play.google.com/store/apps/details?id=com.spiderlingz.qrlingz";
