@@ -18,7 +18,8 @@ void main() async{
       apiKey: "AIzaSyAJMazs8SsnxvS8xgJIaHOqDVj2of7h88c", 
       appId: "1:1054371633362:android:ecb77d7a1920f3731bb50b", 
       messagingSenderId: "1054371633362", 
-      projectId: "qrlingz"
+      projectId: "qrlingz",
+      storageBucket: "qrlingz.appspot.com"
     )
   );
 

@@ -13,13 +13,13 @@ import 'package:qrlingz_app/pages/scan/scanning/scan_view.dart';
 import 'package:qrlingz_app/pages/settings/settings_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
 
+import '../common/image/image_bloc.dart';
 import '../pages/splash/splash_view.dart';
 
 class Routes {
-
   static const splash = '/splash';
   static const welcome = '/welcome';
-  
+
   static const home = '/home';
 
   static const scan = '/scan';
@@ -30,7 +30,6 @@ class Routes {
   static const create = '/create';
   static const customize = '/customize';
   static const preview = '/preview';
-
 }
 
 class RouteGenerator {
@@ -45,31 +44,36 @@ class RouteGenerator {
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());
       case Routes.home:
-        return getTransistionPage(MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => HomeCubit(),
-            ),
-            BlocProvider(
-              create: (context) => HomeBloc()..add(GetHistory()),
-            ),
-          ],
-          child: const HomeView()
-        ));
+        return getTransistionPage(MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) => HomeCubit(),
+          ),
+          BlocProvider(
+            create: (context) => HomeBloc()..add(GetHistory()),
+          ),
+        ], child: const HomeView()));
       case Routes.scan:
         return getTransistionPage(const ScanView());
       case Routes.scanData:
         var args = settings.arguments as Map;
-        return getTransistionPage(ScanDataView(data: args['data'], image: args['image']));
+        return getTransistionPage(
+            ScanDataView(data: args['data'], image: args['image']));
       case Routes.settings:
         return getTransistionPage(const SettingsView());
       case Routes.create:
-        return getTransistionPage(CreateView(type: settings.arguments as String));
+        return getTransistionPage(BlocProvider(
+          create: (context) => ImageBloc(),
+          child: CreateView(type: settings.arguments as String),
+        ));
       case Routes.customize:
         var args = settings.arguments as Map;
-        return getTransistionPage(CustomizeView(data: args['data'], name: args['name']));
+        return getTransistionPage(BlocProvider(
+          create: (context) => ImageBloc(),
+          child: CustomizeView(data: args['data'], name: args['name']),
+        ));
       case Routes.preview:
-        return getTransistionPage(QRCodePreview(qrData: settings.arguments as QRData));
+        return getTransistionPage(
+            QRCodePreview(qrData: settings.arguments as QRData));
       default:
         return unDefinedRoute();
     }
@@ -92,5 +96,4 @@ class RouteGenerator {
       ),
     );
   }
-
 }
