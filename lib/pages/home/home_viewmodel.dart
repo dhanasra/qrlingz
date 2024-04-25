@@ -10,12 +10,6 @@ import 'package:qrlingz_app/pages/home/fragments/history_fragment.dart';
 import '../../routes/app_routes.dart';
 
 class HomeViewModel extends BaseViewModel {
-  
-  final List<Widget> items = [
-    const DashboardFrament(),
-    const FavouritesFragment(),
-    const HistoryFragment()
-  ];
 
   final List<Map> bottomNavItems = [
     {'Home': Icons.home},
@@ -26,6 +20,7 @@ class HomeViewModel extends BaseViewModel {
   ];
 
   late PageController controller;
+  late List<Widget> items;
 
   HomeViewModel(BuildContext context){
     controller = PageController();
@@ -33,6 +28,12 @@ class HomeViewModel extends BaseViewModel {
       context.read<HomeCubit>().onPageChange(
         controller.page!.floor()==2 ? 3 : controller.page!.floor());
     });
+
+    items = [
+      const DashboardFrament(),
+      const FavouritesFragment(),
+      HistoryFragment(controller: controller)
+    ];
   }
 
   handleItemClick(BuildContext context, int idx){

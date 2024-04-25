@@ -15,8 +15,8 @@ extension TextExtensions on String {
     return Text(this, style: Theme.of(context).textTheme.titleLarge).tr();
   }
 
-  ts(BuildContext context, {Color? color}){
-    return Text(this, style: Theme.of(context).textTheme.titleSmall!.copyWith(
+  ts(BuildContext context, {Color? color, TextAlign? align}){
+    return Text(this, textAlign: align, style: Theme.of(context).textTheme.titleSmall!.copyWith(
       color: color
     )).tr();
   }
