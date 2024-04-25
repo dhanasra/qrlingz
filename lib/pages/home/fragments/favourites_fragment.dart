@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:lottie/lottie.dart';
 import 'package:qrlingz_app/constants/assets_const.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/utils/global.dart';
@@ -33,13 +34,13 @@ class FavouritesFragment extends StatelessWidget {
                 children: [
                   Lottie.asset(AssetsConst.empty, width: 300),
                   16.h(),
-                  "No Favourites Found".hm(context),
+                  StringConst.noFavTitle.hm(context),
                   8.h(),
                   ConstrainedBox(
                     constraints: const BoxConstraints(
                       maxWidth: 250
                     ),
-                    child: "Save Your Favourite QRCodes Here For Easy Access".ts(
+                    child: StringConst.noFavSub.ts(
                       context, align: TextAlign.center, color: Colors.grey),  
                   )
                 ],

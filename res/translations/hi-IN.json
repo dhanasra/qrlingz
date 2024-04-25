@@ -1,1 +1,26 @@
-{}
+{
+  "settings": "सेटिंग्स",
+  "general": "सामान्य",
+  "language": "भाषा",
+  "theme": "थीम",
+  "addToHistoryOpt": "इतिहास में स्कैन जोड़ें",
+  "scanner": "स्कैनर",
+  "vibrateOpt": "वाइब्रेट",
+  "soundOpt": "ध्वनि",
+  "autoOpenOpt": "स्वत: वेबसाइट खोलें",
+  "feedback": "प्रतिक्रिया",
+  "recommendopt": "इस ऐप की सिफारिश करें",
+  "rateOpt": "इस ऐप को रेट करें",
+  "reportOpt": "समस्या की रिपोर्ट करें",
+  "feedbackOpt": "प्रतिक्रिया दें",
+  "history": "इतिहास",
+  "noHistoryTitle": "कोई QR कोड नहीं मिला",
+  "noHistorySub": "QRLingz के साथ अब अपने खूबसूरत QR कोड बनाएं।",
+  "favourites": "पसंदीदा",
+  "noFavTitle": "कोई पसंदीदा नहीं मिला",
+  "noFavSub": "सुरक्षित एक्सेस के लिए अपने पसंदीदा QR कोड यहाँ सहेजें",
+  "standard": "मानक",
+  "social": "सामाजिक",
+  "create": "बनाएं",
+  "scanInfo": "इसे स्कैन करने के लिए QR कोड को व्यू फाइंडर में डालें"
+}

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
@@ -32,8 +34,8 @@ class _HomeViewState extends State<HomeView> {
             automaticallyImplyLeading: false,
             title: Text(
               idx==0 ? "QRLingz" 
-              : idx==1 ? "Favourites"
-              : "History"),
+              : idx==1 ? StringConst.favourites
+              : StringConst.history).tr(),
             centerTitle: false,
             actions: [
               IconButton(onPressed: (){}, icon: const Icon(Icons.menu)),

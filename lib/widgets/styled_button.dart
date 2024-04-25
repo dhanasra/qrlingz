@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
 
@@ -44,7 +45,7 @@ class StyledButton extends StatelessWidget {
           onPressed: onClick, 
           child: Text(text, style: TextStyle(
             color: outlined ? ColorConst.primary: Colors.white
-          ))
+          )).tr()
         )
     );
   }

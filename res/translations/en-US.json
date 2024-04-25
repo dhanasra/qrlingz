@@ -1,3 +1,26 @@
 {
-  "Language": "Language"
+  "settings": "Settings",
+  "general": "GENERAL",
+  "language": "Language",
+  "theme": "Theme",
+  "addToHistoryOpt": "Add Scans To History",
+  "scanner": "SCANNER",
+  "vibrateOpt": "Vibrate",
+  "soundOpt": "Sound",
+  "autoOpenOpt": "Auto Open Website",
+  "feedback": "FEEDBACK",
+  "recommendopt": "Recommend This App",
+  "rateOpt": "Rate This App",
+  "reportOpt": "Report An Issue",
+  "feedbackOpt": "Give Feedback",
+  "history": "History",
+  "noHistoryTitle": "No QRCodes Found",
+  "noHistorySub": "Generate Your Beautiful QRCodes Now With QRLingz.",
+  "favourites": "Favourites",
+  "noFavTitle": "No Favourites Found",
+  "noFavSub": "Save Your Favourite QRCodes Here For Easy Access",
+  "standard": "STANDARD",
+  "social": "SOCIAL",
+  "create": "Create",
+  "scanInfo": "Place QrCode Inside The View Finder To Scan It"
 }

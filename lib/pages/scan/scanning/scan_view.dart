@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qrlingz_app/constants/assets_const.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/scan/scanning/scan_viewmodel.dart';
@@ -61,7 +62,7 @@ class _ScanViewState extends State<ScanView> {
                       24.h(),
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 250),
-                        child: "Place QrCode Inside The View Finder To Scan It".bs(context, color: Colors.white),  
+                        child: StringConst.scanInfo.bs(context, color: Colors.white),  
                       )
                     ],
                   ),

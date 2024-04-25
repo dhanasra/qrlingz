@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
@@ -28,13 +29,13 @@ class HistoryFragment extends StatelessWidget {
             children: [
               Lottie.asset(AssetsConst.notfound, width: 300),
               24.h(),
-              "No QRCodes Found".hm(context),
+              StringConst.noHistoryTitle.hm(context),
               8.h(),
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   maxWidth: 250
                 ),
-                child: "Generate Your Beautiful QRCodes Now With QRLingz.".ts(
+                child: StringConst.noHistorySub.ts(
                   context, align: TextAlign.center, color: Colors.grey),  
               ),
               32.h(),
@@ -42,7 +43,7 @@ class HistoryFragment extends StatelessWidget {
                 w: 160,
                 rounded: true,
                 onClick: ()=>controller.jumpTo(0),
-                text: "Create",
+                text: StringConst.create,
               )
             ],
           );
