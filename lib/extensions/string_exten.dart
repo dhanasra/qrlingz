@@ -11,8 +11,8 @@ extension TextExtensions on String {
     return Text(this, style: Theme.of(context).textTheme.headlineSmall).tr();
   }
 
-  tl(BuildContext context){
-    return Text(this, style: Theme.of(context).textTheme.titleLarge).tr();
+  tl(BuildContext context, {int? maxLines}){
+    return Text(this, maxLines: maxLines, style: Theme.of(context).textTheme.titleLarge).tr();
   }
 
   ts(BuildContext context, {Color? color, TextAlign? align}){

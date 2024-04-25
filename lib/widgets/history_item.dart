@@ -89,11 +89,12 @@ class HistoryItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  '${item.data['value']}'.tl(context),
+                  item.name.tl(context, maxLines: 2),
                   4.h(),
-                  Text(item.name),
+                  Text('${item.data['value']}', maxLines: 2, overflow: TextOverflow.ellipsis,),
                 ],
               )),
+            6.w(),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
               decoration: BoxDecoration(
@@ -101,7 +102,7 @@ class HistoryItem extends StatelessWidget {
                 color: Theme.of(context).colorScheme.tertiary
               ),
               child: (item.type==0 ? "Generated" : "Scanned").ls(context)),
-            12.w(),
+            8.w(),
             const Icon(Icons.arrow_forward_ios_outlined, size: 16)
           ],
         )
