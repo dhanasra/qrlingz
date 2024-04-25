@@ -133,22 +133,22 @@ class HistoryItem extends StatelessWidget {
                   ),
                 ),
                 PopupMenuItem<String>(
-                  value: 'delete',
-                  child: Row(
-                    children: [
-                      const Icon(Icons.delete_outlined, size: 20,),
-                      24.w(),
-                      'Delete Forever'.ts(context)
-                    ],
-                  ),
-                ),
-                PopupMenuItem<String>(
                   value: 'share',
                   child: Row(
                     children: [
                       const Icon(Icons.share_outlined, size: 20,),
                       24.w(),
                       'Share Now'.ts(context)
+                    ],
+                  ),
+                ),
+                PopupMenuItem<String>(
+                  value: 'delete',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.delete_outlined, size: 20, color: Colors.red),
+                      24.w(),
+                      'Delete Forever'.ts(context, color: Colors.red)
                     ],
                   ),
                 ),
