@@ -183,10 +183,10 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                               width: 60,
                               height: 60,
                               decoration: BoxDecoration(
-                                color: ColorConst.primary,
+                                color: Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(30)
                               ),
-                              child: const Icon(Icons.share_outlined, color: Colors.white),
+                              child: Icon(Icons.share_outlined, color: Theme.of(context).highlightColor),
                             ),
                           ),
                           16.h(),
@@ -208,10 +208,10 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                               width: 60,
                               height: 60,
                               decoration: BoxDecoration(
-                                color: ColorConst.primary,
+                                color: Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(30)
                               ),
-                              child: const Icon(Icons.download_outlined, color: Colors.white),
+                              child: Icon(Icons.download_outlined, color: Theme.of(context).highlightColor),
                             ),
                           ),
                           16.h(),
@@ -229,10 +229,10 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                             width: 60,
                             height: 60,
                             decoration: BoxDecoration(
-                              color: ColorConst.primary,
+                              color: Theme.of(context).primaryColor,
                               borderRadius: BorderRadius.circular(30)
                             ),
-                            child: const Icon(Icons.image_outlined, color: Colors.white),
+                            child: Icon(Icons.image_outlined, color: Theme.of(context).highlightColor),
                           ),
                           16.h(),
                           "Add To Image".ts(context)

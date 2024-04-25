@@ -37,7 +37,8 @@ class ThemeConst {
       iconTheme: IconThemeData(
         color: !isDark ? ColorConst.primary : ColorConst.primaryLight,
       ),
-
+      
+      highlightColor: isDark ? ColorConst.primary : Colors.white,
       cardColor: isDark ? Colors.black : Colors.white,
       shadowColor: isDark ? const Color(0xFF444444) : const Color(0x88DFDFDF),
 
