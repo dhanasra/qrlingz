@@ -22,5 +22,10 @@
   "standard": "STANDARD",
   "social": "SOCIAL",
   "create": "Create",
-  "scanInfo": "Place QrCode Inside The View Finder To Scan It"
+  "scanInfo": "Place QrCode Inside The View Finder To Scan It",
+  "welcomeText1": "Hello Welcome!",
+  "welcomeText2": "Guest User",
+  "privacy": "Privacy Policy",
+  "terms": "Terms & Conditions",
+  "about": "About Us"
 }

@@ -38,6 +38,13 @@ class StringConst {
   // button
   static const create = "create";
 
+  // drawer
+  static const welcomeText1 = "welcomeText1";
+  static const welcomeText2 = "welcomeText2";
+  static const privacy = "privacy";
+  static const terms = "terms";
+  static const about = "about";
+
 
   // contents
   static const recommendContent = "Transform your QR codes into stunning works of art with QR Code Generator - Fast & Easy! Choose from a variety of ready-made templates and customize them to match your style effortlessly. Simplify the process and elevate your QR code game today! Download now and see the difference.\n\nhttps://play.google.com/store/apps/details?id=com.spiderlingz.qrlingz";

@@ -40,9 +40,9 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
           ),
           Image.asset("res/logo/app_logo.png"),
           16.h(),
-          "Hello Welcome!".ts(context),
+          StringConst.welcomeText1.ts(context),
           4.h(),
-          "Guest User".bs(context),
+          StringConst.welcomeText2.bs(context),
           32.h(),
           ListView(
             shrinkWrap: true,
@@ -73,21 +73,21 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
                   launchUrlString(UrlConst.privacyPolicy)
                 },
                 leading: const Icon(Icons.security_outlined, size: 20),
-                title: const Text("Privacy Policy").tr(),
+                title: const Text(StringConst.privacy).tr(),
               ),
               ListTile(
                 onTap: ()=>{
                   launchUrlString(UrlConst.termsAndConditions)
                 },
                 leading: const Icon(Icons.question_mark_outlined, size: 20),
-                title: const Text("Terms & Conditions").tr(),
+                title: const Text(StringConst.terms).tr(),
               ),
               ListTile(
                 onTap: ()=>{
                   launchUrlString(UrlConst.aboutUs)
                 },
                 leading: const Icon(Icons.business_outlined, size: 20),
-                title: const Text("About Us").tr(),
+                title: const Text(StringConst.about).tr(),
               )
             ],
           ),
