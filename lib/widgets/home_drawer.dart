@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:qrlingz_app/constants/url_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -69,21 +70,21 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
               ),
               ListTile(
                 onTap: ()=>{
-                  launchUrlString("https://qrlingz.web.app/legal/privacy")
+                  launchUrlString(UrlConst.privacyPolicy)
                 },
                 leading: const Icon(Icons.security_outlined, size: 20),
                 title: const Text("Privacy Policy").tr(),
               ),
               ListTile(
                 onTap: ()=>{
-                  launchUrlString("https://qrlingz.web.app/legal/terms")
+                  launchUrlString(UrlConst.termsAndConditions)
                 },
                 leading: const Icon(Icons.question_mark_outlined, size: 20),
                 title: const Text("Terms & Conditions").tr(),
               ),
               ListTile(
                 onTap: ()=>{
-                  launchUrlString("https://qrlingz.web.app/info/about")
+                  launchUrlString(UrlConst.aboutUs)
                 },
                 leading: const Icon(Icons.business_outlined, size: 20),
                 title: const Text("About Us").tr(),
