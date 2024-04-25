@@ -5,6 +5,7 @@ import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../constants/string_const.dart';
 
@@ -68,21 +69,21 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
               ),
               ListTile(
                 onTap: ()=>{
-
+                  launchUrlString("https://qrlingz.web.app/legal/privacy")
                 },
                 leading: const Icon(Icons.security_outlined, size: 20),
                 title: const Text("Privacy Policy").tr(),
               ),
               ListTile(
                 onTap: ()=>{
-
+                  launchUrlString("https://qrlingz.web.app/legal/terms")
                 },
                 leading: const Icon(Icons.question_mark_outlined, size: 20),
                 title: const Text("Terms & Conditions").tr(),
               ),
               ListTile(
                 onTap: ()=>{
-                  
+                  launchUrlString("https://qrlingz.web.app/info/about")
                 },
                 leading: const Icon(Icons.business_outlined, size: 20),
                 title: const Text("About Us").tr(),
