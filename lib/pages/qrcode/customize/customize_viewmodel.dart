@@ -34,11 +34,11 @@ class CustomizeViewModel extends BaseViewModel {
   }
 
   var options = [
-    {
-      "type": 0,
-      "name": "Templates",
-      "icon": Icons.dashboard_outlined
-    },
+    // {
+    //   "type": 0,
+    //   "name": "Templates",
+    //   "icon": Icons.dashboard_outlined
+    // },
     {
       "type": 1,
       "name": "Color",
@@ -63,11 +63,11 @@ class CustomizeViewModel extends BaseViewModel {
 
   getTitleText(){
     switch(active.value){
-      case 0: return "Templates";
-      case 1: return "Color";
-      case 2: return "Logo";
-      case 3: return "Pixels";
-      case 4: return "Text";
+      // case 0: return "Templates";
+      case 0: return "Color";
+      case 1: return "Logo";
+      case 2: return "Pixels";
+      case 3: return "Text";
       default: return "Customize QR";
     }
   }

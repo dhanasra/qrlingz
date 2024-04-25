@@ -162,13 +162,13 @@ class _CustomizeViewState extends State<CustomizeView> {
                 )),
               Expanded(
                 flex: 6,
-                child: activeItem == 1
+                child: activeItem == 0
                 ? ColorCustomization(vm: _viewModel)
-                : activeItem == 2
+                : activeItem == 1
                 ? LogoCustomization(vm: _viewModel)
-                : activeItem == 3
+                : activeItem == 2
                 ? PixelCustomization(vm: _viewModel)
-                : activeItem == 4
+                : activeItem == 3
                 ? TextCustomization(vm: _viewModel)
                 : GridView.builder(
                   itemCount: _viewModel.options.length,
