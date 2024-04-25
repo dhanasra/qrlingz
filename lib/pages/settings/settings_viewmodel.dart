@@ -6,6 +6,7 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/utils/global.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 import 'package:qrlingz_app/widgets/language_sheet.dart';
 import 'package:qrlingz_app/widgets/theme_sheet.dart';
 import 'package:share_plus/share_plus.dart';
@@ -43,7 +44,7 @@ class SettingsViewModel extends BaseViewModel {
           onSaved: (v){
             Future.delayed(const Duration(milliseconds: 500), (){
               LocalDB().saveSettings('language', {"code": v});
-              context.setLocale(const Locale("ta"));
+              context.setLocale(getLocale(v));
             });
           },
         );

@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/utils/global.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 class LocalDB {
 
@@ -39,6 +40,12 @@ class LocalDB {
   Future<Map> getHistory()async{
     var data = await history?.getAllValues();
     return data ?? {};
+  }
+
+  Future<Locale> getLangcode()async{
+    var data = await settings?.getAllValues();
+    var languageCode = data?['language']?['code']??"en";
+    return getLocale(languageCode);
   }
 
 }

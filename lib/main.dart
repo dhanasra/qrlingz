@@ -29,6 +29,7 @@ void main() async{
   }catch(error){}
 
   await LocalDB.init();
+  var currentLocale =  await LocalDB().getLangcode();
 
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
@@ -38,13 +39,13 @@ void main() async{
 
   runApp(EasyLocalization(
     supportedLocales: const [
-      Locale('en'), 
-      Locale('ta'),
-      Locale('ml'),
-      Locale('kn'),
-      Locale('hi')
+      Locale('en', 'US'), 
+      Locale('ta', 'IN'),
+      Locale('ml', 'IN'),
+      Locale('kn', 'IN'),
+      Locale('hi', 'IN')
     ],
     path: 'res/translations',
-    fallbackLocale: const Locale('en'),
+    fallbackLocale: currentLocale,
     child: const App()));
 }

@@ -85,3 +85,25 @@ String getDataType(String scanData){
 
   return "Website";
 }
+
+Locale getLocale(String languageCode){
+  switch(languageCode){
+    case "en": return const Locale("en", "US");
+    case "ta": return const Locale("ta", "IN");
+    case "ml": return const Locale("ml", "IN");
+    case "kn": return const Locale("kn", "IN");
+    case "hi": return const Locale("hi", "IN");
+    default: return const Locale("en", "US");
+  }
+}
+
+String getLanguage(String languageCode){
+  switch(languageCode){
+    case "en": return "ENGLISH";
+    case "ta": return "தமிழ்";
+    case "ml": return "മലയാളം";
+    case "kn": return "ಕನ್ನಡ";
+    case "hi": return "हिंदी";
+    default: return "ENGLISH";
+  }
+}

@@ -6,6 +6,7 @@ import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/settings/settings_viewmodel.dart';
 import 'package:qrlingz_app/utils/global.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -42,7 +43,7 @@ class _SettingsViewState extends State<SettingsView> {
             leading: const Icon(Icons.language_outlined, size: 20),
             contentPadding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text("Language").tr(),
-            trailing: ("English".toUpperCase()).ts(
+            trailing: (getLanguage(context.locale.languageCode).toUpperCase()).ts(
               context, color: Theme.of(context).primaryColor)
           ),
           ListTile(

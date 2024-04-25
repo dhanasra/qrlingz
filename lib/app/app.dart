@@ -10,6 +10,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => ThemeCubit(),
       child: BlocBuilder<ThemeCubit, ThemeMode>(
@@ -18,6 +19,13 @@ class App extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               localizationsDelegates: context.localizationDelegates,
               locale: context.locale,
+              supportedLocales: const [
+                Locale('en', 'US'), 
+                Locale('ta', 'IN'),
+                Locale('ml', 'IN'),
+                Locale('kn', 'IN'),
+                Locale('hi', 'IN')
+              ],
               onGenerateRoute: (s) => RouteGenerator(settings: s).getRoute(),
               initialRoute: Routes.splash,
               theme: ThemeConst.getApplicationTheme(false),
