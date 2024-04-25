@@ -125,8 +125,9 @@ class ThemeConst {
 
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: ColorConst.primary,
-        unselectedItemColor: Colors.grey[400],
+        selectedItemColor: !isDark ? ColorConst.primary : ColorConst.primaryLight,
+        unselectedItemColor: !isDark ? Colors.grey[400] : Colors.white38,
+        backgroundColor: !isDark ? Colors.white : Colors.black,
         selectedLabelStyle: GoogleFonts.lato(
           fontSize: 10,
           fontWeight: FontWeight.w600

@@ -27,8 +27,6 @@ class _HomeViewState extends State<HomeView> {
     return BlocBuilder<HomeCubit, int>(
       builder: (_, idx) {
 
-        print(idx);
-
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
