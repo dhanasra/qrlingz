@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/utils/global.dart';
 import 'package:qrlingz_app/utils/utils.dart';
@@ -78,7 +79,7 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   recommendApp()async{
-    await Share.share("Transform your QR codes into stunning works of art with QR Code Generator - Fast & Easy! Choose from a variety of ready-made templates and customize them to match your style effortlessly. Simplify the process and elevate your QR code game today! Download now and see the difference.\n\nhttps://play.google.com/store/apps/details?id=com.spiderlingz.qrlingz");
+    await Share.share(StringConst.recommendContent);
   }
 
   sendReportOrFeedback(String type)async{

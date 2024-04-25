@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../constants/string_const.dart';
 
@@ -46,27 +48,42 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
             padding: const EdgeInsets.symmetric(horizontal: 16),
             children: [
               ListTile(
-                onTap: ()=>{},
+                onTap: ()async{
+                  await Share.share(StringConst.recommendContent);
+                },
                 leading: const Icon(Icons.thumb_up_alt_outlined, size: 20),
                 title: const Text(StringConst.recommendopt).tr(),
               ),
               ListTile(
-                onTap: ()=>{},
+                onTap: ()async{
+                  final InAppReview inAppReview = InAppReview.instance;
+                  if (await inAppReview.isAvailable()) {
+                    inAppReview.requestReview();
+                  }else{
+                    inAppReview.openStoreListing();
+                  }
+                },
                 leading: const Icon(Icons.star_border, size: 20),
                 title: const Text(StringConst.rateOpt).tr(),
               ),
               ListTile(
-                onTap: ()=>{},
+                onTap: ()=>{
+
+                },
                 leading: const Icon(Icons.security_outlined, size: 20),
                 title: const Text("Privacy Policy").tr(),
               ),
               ListTile(
-                onTap: ()=>{},
+                onTap: ()=>{
+
+                },
                 leading: const Icon(Icons.question_mark_outlined, size: 20),
                 title: const Text("Terms & Conditions").tr(),
               ),
               ListTile(
-                onTap: ()=>{},
+                onTap: ()=>{
+                  
+                },
                 leading: const Icon(Icons.business_outlined, size: 20),
                 title: const Text("About Us").tr(),
               )
