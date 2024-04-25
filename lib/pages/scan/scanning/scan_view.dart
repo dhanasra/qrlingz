@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:lottie/lottie.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qrlingz_app/constants/assets_const.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
+import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/scan/scanning/scan_viewmodel.dart';
@@ -40,6 +43,14 @@ class _ScanViewState extends State<ScanView> {
                 QRView(
                   key: _viewModel.qrKey, 
                   onQRViewCreated: (c)=> _viewModel.onQRViewCreated(c, context)
+                ),
+                
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 32),
+                    child: IconButton(onPressed: ()=>context.back(), icon: const Icon(Icons.arrow_back, color: Colors.white,)),
+                  ),
                 ),
 
                 Align(
@@ -88,7 +99,7 @@ class _ScanViewState extends State<ScanView> {
                               icon: const Icon(Icons.image_outlined, color: Colors.white, size: 20)),
                           ),
                         ),
-                        24.w(),
+                        32.w(),
                         CircleAvatar(
                           radius: 28,
                           backgroundColor: ColorConst.primary,
@@ -105,7 +116,7 @@ class _ScanViewState extends State<ScanView> {
                               icon: Icon(!flash ? Icons.flashlight_on_outlined : Icons.flashlight_off_outlined, color: flash ? ColorConst.primary : Colors.white, size: 20)),
                           ),
                         ),
-                        24.w(),
+                        32.w(),
                         CircleAvatar(
                           radius: 28,
                           backgroundColor: ColorConst.primary,
@@ -122,18 +133,18 @@ class _ScanViewState extends State<ScanView> {
                               icon: Icon(!flip ? Icons.camera_front_outlined : Icons.camera_rear_outlined, color: flip ? ColorConst.primary : Colors.white, size: 20)),
                           ),
                         ),
-                        24.w(),
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundColor: ColorConst.primary,
-                          child: CircleAvatar(
-                            radius: 26,
-                            backgroundColor: ColorConst.primary,
-                            child: IconButton(
-                            onPressed: (){}, 
-                            icon: const Icon(Icons.layers_outlined, color: Colors.white, size: 20,)),
-                          ),
-                        )
+                        // 24.w(),
+                        // CircleAvatar(
+                        //   radius: 28,
+                        //   backgroundColor: ColorConst.primary,
+                        //   child: CircleAvatar(
+                        //     radius: 26,
+                        //     backgroundColor: ColorConst.primary,
+                        //     child: IconButton(
+                        //     onPressed: (){}, 
+                        //     icon: const Icon(Icons.layers_outlined, color: Colors.white, size: 20,)),
+                        //   ),
+                        // )
                       ],
                     ),
                   ),
