@@ -13,10 +13,10 @@ class StyledWrapper extends StatelessWidget {
       padding: p,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.white,
-        boxShadow: const [
-          BoxShadow(offset: Offset(-3, -3), color: Color(0x88DFDFDF), blurRadius: 10),
-          BoxShadow(offset: Offset(3, 3), color: Color(0x88DFDFDF), blurRadius: 10)
+        color: Theme.of(context).cardColor,
+        boxShadow: [
+          BoxShadow(offset: const Offset(-3, -3), color: Theme.of(context).shadowColor, blurRadius: 10),
+          BoxShadow(offset: const Offset(3, 3), color: Theme.of(context).shadowColor, blurRadius: 10)
         ]
       ),
       child: child

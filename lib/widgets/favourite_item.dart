@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
@@ -20,9 +19,9 @@ class FavouriteItem extends StatelessWidget {
           CircleAvatar(
             radius: 26,
             backgroundColor: item.icon!=null
-              ? ColorConst.primary : Colors.white,
+              ? Theme.of(context).primaryColor : Colors.white,
             child: item.icon!=null
-              ? Icon(item.icon, size: 24, color: Colors.white)
+              ? Icon(item.icon, size: 24, color: Theme.of(context).primaryColorDark)
               : Image.asset(item.image??'', width: 45),
           ),
           12.w(),

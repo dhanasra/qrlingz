@@ -12,6 +12,7 @@ class ThemeConst {
       scaffoldBackgroundColor: isDark ? const Color(0xFF383838) : Colors.white,
       fontFamily: GoogleFonts.lato().fontFamily,
       
+      primaryColorDark: isDark ? ColorConst.primary: Colors.white,
       primaryColor: isDark ? ColorConst.primaryLight: ColorConst.primary,
       primaryColorLight: ColorConst.primaryLight,
 
@@ -33,7 +34,12 @@ class ThemeConst {
         tertiary: ColorConst.primaryLight.withOpacity(0.4)
       ),
 
+      iconTheme: IconThemeData(
+        color: !isDark ? ColorConst.primary : ColorConst.primaryLight,
+      ),
+
       cardColor: isDark ? Colors.black : Colors.white,
+      shadowColor: isDark ? const Color(0xFF444444) : const Color(0x88DFDFDF),
 
       textTheme: TextTheme(
         titleSmall: GoogleFonts.lato(
