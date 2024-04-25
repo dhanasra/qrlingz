@@ -71,25 +71,31 @@ class _ScanDataViewState extends State<ScanDataView> {
                     ),
                   ),
                   24.w(),
-                  SizedBox(
-                    width: 60,
-                    child: Column(
-                      children: [
-                        const Icon(Icons.copy_outlined),
-                        4.h(),
-                        "Copy".ts(context)
-                      ],
+                  InkWell(
+                    onTap: ()=>_viewModel.copyCode(context),
+                    child: SizedBox(
+                      width: 60,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.copy_outlined),
+                          4.h(),
+                          "Copy".ts(context)
+                        ],
+                      ),
                     ),
                   ),
                   24.w(),
-                  SizedBox(
-                    width: 60,
-                    child: Column(
-                      children: [
-                        const Icon(Icons.share_outlined),
-                        4.h(),
-                        "Share".ts(context)
-                      ],
+                  InkWell(
+                    onTap: ()=>_viewModel.shareCode(),
+                    child: SizedBox(
+                      width: 60,
+                      child: Column(
+                        children: [
+                          const Icon(Icons.share_outlined),
+                          4.h(),
+                          "Share".ts(context)
+                        ],
+                      ),
                     ),
                   )
                 ],
