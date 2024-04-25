@@ -58,7 +58,14 @@ class SpotifyForm extends StatelessWidget {
                     return;
                   }
                   var data = "spotify:search:${songNameController.trim()}:${artistNameController.trim()}";
-                  context.goto(Routes.customize, args: { "data": {"value": data}, "name": "Spotify" });
+                  context.goto(Routes.customize, args: { 
+                    "data": {
+                      "value": data,
+                      "song": songNameController.trim(),
+                      "artist": artistNameController.trim()
+                    }, 
+                    "name": "Spotify" 
+                  });
                 }, 
                 text: "CREATE"
               )
