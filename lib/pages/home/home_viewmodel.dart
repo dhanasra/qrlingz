@@ -28,8 +28,10 @@ class HomeViewModel extends BaseViewModel {
   late PageController controller;
 
   HomeViewModel(BuildContext context){
+    controller = PageController();
     controller = PageController()..addListener(() {
-      context.read<HomeCubit>().onPageChange(controller.page!.floor());
+      context.read<HomeCubit>().onPageChange(
+        controller.page!.floor()==2 ? 3 : controller.page!.floor());
     });
   }
 
