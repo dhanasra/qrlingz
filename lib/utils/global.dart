@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/models/qr_data.dart';
 
 class Global {
 
@@ -10,6 +11,8 @@ class Global {
   static bool addScanToHistory = true;
 
   static ThemeMode mode = ThemeMode.light;
+
+  static ValueNotifier<List<QRData>> favourites = ValueNotifier([]);
 
   static initialize(data){
     logos = data["logos"];

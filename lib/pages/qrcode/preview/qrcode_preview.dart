@@ -6,9 +6,9 @@ import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
-import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/pages/qrcode/preview/qrcode_previewmodel.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:qrlingz_app/utils/global.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../constants/color_const.dart';
@@ -40,9 +40,10 @@ class _QRCodePreviewState extends State<QRCodePreview> {
         centerTitle: false,
         actions: [
           LikeButton(
+            isLiked: _viewModel.qrdata.isFavourite 
+              || Global.favourites.value.any((element) => element.id==_viewModel.qrdata.id),
             onTap: (isLiked)async{
-              _viewModel.qrdata = _viewModel.qrdata.copyWith(isFavourite: !isLiked);
-              LocalDB().saveHistory(_viewModel.qrdata);
+              _viewModel.updateFavourite(!isLiked);
               return !isLiked;
             },
             likeBuilder: (bool isLiked) {

@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:qrlingz_app/constants/assets_const.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
+import 'package:qrlingz_app/utils/global.dart';
 import 'package:qrlingz_app/widgets/favourite_item.dart';
 
 import '../bloc/home_bloc.dart';
@@ -21,33 +22,37 @@ class FavouritesFragment extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        if(state is HistoryFetched && state.data.isEmpty){
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Lottie.asset(AssetsConst.empty, width: 300),
-              16.h(),
-              "No Favourites Found".hm(context),
-              8.h(),
-              ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 250
-                ),
-                child: "Save Your Favourite QRCodes Here For Easy Access".ts(
-                  context, align: TextAlign.center, color: Colors.grey),  
-              )
-            ],
-          );
-        }
 
-        return ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            ...(state is HistoryFetched 
-              ? state.data.where((element) => element.isFavourite).toList() 
-              : []
-            ).map((e) => FavouriteItem(item: e))
-          ],
+        return ValueListenableBuilder(
+          valueListenable: Global.favourites,
+          builder: (_, value, __) {
+
+            if(value.isEmpty){
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset(AssetsConst.empty, width: 300),
+                  16.h(),
+                  "No Favourites Found".hm(context),
+                  8.h(),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 250
+                    ),
+                    child: "Save Your Favourite QRCodes Here For Easy Access".ts(
+                      context, align: TextAlign.center, color: Colors.grey),  
+                  )
+                ],
+              );
+            }
+
+            return ListView(
+              padding: const EdgeInsets.all(20),
+              children: [
+                ...value.map((e) => FavouriteItem(item: e))
+              ],
+            );
+          }
         );
       },
     );
