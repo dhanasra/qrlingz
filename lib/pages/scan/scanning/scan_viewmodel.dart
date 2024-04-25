@@ -7,8 +7,11 @@ import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:qrlingz_app/utils/global.dart';
 import 'package:qrlingz_app/utils/utils.dart';
 import 'package:scan/scan.dart';
+import 'package:vibration/vibration.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class ScanViewModel extends BaseViewModel {
   
@@ -19,9 +22,7 @@ class ScanViewModel extends BaseViewModel {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
       if(scanData.code!=null){
-        var qrCode = QRData(
-          id: "${DateTime.now().millisecondsSinceEpoch}", type: 1, name: getDataType(scanData.code!), data: {"value": scanData.code}, created: DateTime.now());
-        context.goto(Routes.scanData, args: qrCode);
+        handleScanData(1, scanData.code!, context);
       }
     });
   }
@@ -34,13 +35,28 @@ class ScanViewModel extends BaseViewModel {
       await Scan.parse(file.path).then(
         (data){
           if(data!=null){
-            var qrCode = QRData(
-              id: "${DateTime.now().millisecondsSinceEpoch}", type: 1, name: getDataType(data), data: {"value": data}, created: DateTime.now());
-            context.goto(Routes.scanData, args: qrCode);
+            handleScanData(1, data, context);
           }
       });
       
     }
+  }
+
+  handleScanData(int type, String data, BuildContext context){
+    if(Global.vibrateOnScan){
+      Vibration.vibrate(duration: 500, amplitude: 255);
+    }
+    if(Global.soundOnScan){
+      _playSound();
+    }
+    var qrCode = QRData(
+      id: "${DateTime.now().millisecondsSinceEpoch}", type: type, name: getDataType(data), data: {"value": data}, created: DateTime.now());
+    context.goto(Routes.scanData, args: qrCode);
+  }
+
+  Future<void> _playSound() async {
+    AudioPlayer player = AudioPlayer();
+    await player.play(AssetSource("res/audio/pop_sound.mp3"), volume: 100);
   }
 
   @override
