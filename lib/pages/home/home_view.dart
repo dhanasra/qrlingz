@@ -7,6 +7,8 @@ import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_viewmodel.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:qrlingz_app/widgets/drawer_dialog.dart';
+import 'package:qrlingz_app/widgets/home_drawer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -30,6 +32,9 @@ class _HomeViewState extends State<HomeView> {
       builder: (_, idx) {
 
         return Scaffold(
+          key: _viewModel.key,
+          endDrawer: const DrawerDialog(
+            child: HomeDrawer()),
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: Text(
@@ -38,7 +43,9 @@ class _HomeViewState extends State<HomeView> {
               : StringConst.history).tr(),
             centerTitle: false,
             actions: [
-              IconButton(onPressed: (){}, icon: const Icon(Icons.menu)),
+              IconButton(onPressed: (){
+                _viewModel.key.currentState?.openEndDrawer();
+              }, icon: const Icon(Icons.menu)),
               8.w()
             ],
           ),

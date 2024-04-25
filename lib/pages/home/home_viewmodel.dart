@@ -22,6 +22,8 @@ class HomeViewModel extends BaseViewModel {
   late PageController controller;
   late List<Widget> items;
 
+  final GlobalKey<ScaffoldState> key = GlobalKey();
+
   HomeViewModel(BuildContext context){
     controller = PageController();
     controller = PageController()..addListener(() {
