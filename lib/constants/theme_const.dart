@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
 
@@ -212,6 +213,10 @@ class ThemeConst {
           ),
           borderRadius: BorderRadius.circular(4),
         ),
+      ),
+
+      popupMenuTheme: PopupMenuThemeData(
+        color: isDark ? ColorConst.primary : Colors.white,
       )
 
     );

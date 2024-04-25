@@ -10,6 +10,7 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<GetHistory>(_onGetHistory);
+    on<RemoveHistory>(_onRemoveHistory);
   }
 
   _onGetHistory(GetHistory event, Emitter emit)async{
@@ -21,5 +22,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HistoryFetched(data: data));
   }
 
+  _onRemoveHistory(RemoveHistory event, Emitter emit)async{
+    emit(HistoryLoading());
+    await LocalDB().removeHistory(event.id);
+    var stored = await LocalDB().getHistory();
+    var data = stored.values.map((e) => QRData.fromMap(e)).toList();
+    var favourites = data.where((element) => element.isFavourite).toList();
+    Global.favourites.value = favourites;
+    emit(HistoryFetched(data: data));
+  }
 
 }

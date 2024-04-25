@@ -12,7 +12,8 @@ import '../../../widgets/styled_button.dart';
 
 class HistoryFragment extends StatelessWidget {
   final PageController controller;
-  const HistoryFragment({super.key, required this.controller});
+  final ValueChanged onOptionClick;
+  const HistoryFragment({super.key, required this.controller, required this.onOptionClick});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class HistoryFragment extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           children:  [
             ...(state is HistoryFetched ? state.data : []).map(
-              (e) => HistoryItem(item: e))
+              (e) => HistoryItem(item: e, onOptionClick: onOptionClick))
           ],
         );
       }

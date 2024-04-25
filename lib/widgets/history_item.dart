@@ -13,7 +13,8 @@ import '../utils/utils.dart';
 
 class HistoryItem extends StatelessWidget {
   final QRData item;
-  const HistoryItem({super.key, required this.item});
+  final ValueChanged onOptionClick;
+  const HistoryItem({super.key, required this.item,  required this.onOptionClick});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class HistoryItem extends StatelessWidget {
       onTap: ()=>context.goto(Routes.preview, args: item),
       child: StyledWrapper(
         m: const EdgeInsets.only(bottom: 16),
-        p: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        p: const EdgeInsets.fromLTRB(16, 12, 0, 12),
         child: Row(
           children: [
             SizedBox(
@@ -102,8 +103,57 @@ class HistoryItem extends StatelessWidget {
                 color: Theme.of(context).colorScheme.tertiary
               ),
               child: (item.type==0 ? "Generated" : "Scanned").ls(context)),
-            8.w(),
-            const Icon(Icons.arrow_forward_ios_outlined, size: 16)
+            PopupMenuButton(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              constraints: const BoxConstraints(
+                minWidth: 200
+              ),
+              onSelected: (v)=>onOptionClick({"data": item, "type": v}),
+              itemBuilder: (_){
+              return[
+                PopupMenuItem<String>(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  value: 'view',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.remove_red_eye_outlined, size: 20,),
+                      24.w(),
+                      'Show Preview'.ts(context)
+                    ],
+                  ),
+                ),
+                PopupMenuItem<String>(
+                  value: 'edit',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.edit_outlined, size: 20,),
+                      24.w(),
+                      'Decorate QR'.ts(context)
+                    ],
+                  ),
+                ),
+                PopupMenuItem<String>(
+                  value: 'delete',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.delete_outlined, size: 20,),
+                      24.w(),
+                      'Delete Forever'.ts(context)
+                    ],
+                  ),
+                ),
+                PopupMenuItem<String>(
+                  value: 'share',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.share_outlined, size: 20,),
+                      24.w(),
+                      'Share Now'.ts(context)
+                    ],
+                  ),
+                ),
+              ];
+            })
           ],
         )
       ),
