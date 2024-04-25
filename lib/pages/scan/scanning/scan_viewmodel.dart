@@ -35,14 +35,14 @@ class ScanViewModel extends BaseViewModel {
       await Scan.parse(file.path).then(
         (data){
           if(data!=null){
-            handleScanData(data, context);
+            handleScanData(data, context, image: file);
           }
       });
       
     }
   }
 
-  handleScanData(String data, BuildContext context){
+  handleScanData(String data, BuildContext context, {File? image}){
     if(Global.vibrateOnScan){
       Vibration.vibrate(duration: 500, amplitude: 255);
     }
@@ -51,7 +51,7 @@ class ScanViewModel extends BaseViewModel {
     }
     var qrCode = QRData(
       id: "${DateTime.now().millisecondsSinceEpoch}", type: 1, name: getDataType(data), data: {"value": data}, created: DateTime.now());
-    context.goto(Routes.scanData, args: qrCode);
+    context.goto(Routes.scanData, args: { 'data': qrCode, 'image': image});
   }
 
   Future<void> _playSound() async {

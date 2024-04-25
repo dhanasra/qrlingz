@@ -59,7 +59,8 @@ class RouteGenerator {
       case Routes.scan:
         return getTransistionPage(const ScanView());
       case Routes.scanData:
-        return getTransistionPage(ScanDataView(data: settings.arguments as QRData,));
+        var args = settings.arguments as Map;
+        return getTransistionPage(ScanDataView(data: args['data'], image: args['image']));
       case Routes.settings:
         return getTransistionPage(const SettingsView());
       case Routes.create:
