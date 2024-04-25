@@ -115,7 +115,7 @@ class _SettingsViewState extends State<SettingsView> {
             title: const Text(StringConst.recommendopt).tr(),
           ),
           ListTile(
-            onTap: (){},
+            onTap: ()=>_viewModel.rateApp(context),
             leading: const Icon(Icons.star_border, size: 20),
             title: const Text(StringConst.rateOpt).tr(),
           ),

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/utils/global.dart';
@@ -15,6 +16,17 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../common/theme/theme_cubit.dart';
 
 class SettingsViewModel extends BaseViewModel {
+
+  final InAppReview inAppReview = InAppReview.instance;
+
+
+  rateApp(BuildContext context)async{
+    if (await inAppReview.isAvailable()) {
+      inAppReview.requestReview();
+    }else{
+      inAppReview.openStoreListing();
+    }
+  }
 
   openThemeSheet(BuildContext context){
      showModalBottomSheet(
