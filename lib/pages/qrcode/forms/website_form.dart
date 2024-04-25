@@ -46,9 +46,9 @@ class WebsiteForm extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Theme.of(context).colorScheme.tertiary,
-                        boxShadow: const [
-                          BoxShadow(offset: Offset(-3, -3), color: Color(0x88DFDFDF), blurRadius: 10),
-                          BoxShadow(offset: Offset(3, 3), color: Color(0x88DFDFDF), blurRadius: 10)
+                        boxShadow: [
+                          BoxShadow(offset: const Offset(-3, -3), color: Theme.of(context).shadowColor, blurRadius: 10),
+                          BoxShadow(offset: const Offset(3, 3), color: Theme.of(context).shadowColor, blurRadius: 10)
                         ]
                       ),
                       child: Text(e),

@@ -42,6 +42,13 @@ class ThemeConst {
       cardColor: isDark ? Colors.black : Colors.white,
       shadowColor: isDark ? const Color(0xFF444444) : const Color(0x88DFDFDF),
 
+      tabBarTheme: TabBarTheme(
+        labelColor: isDark ? ColorConst.primaryLight : ColorConst.primary,
+        unselectedLabelColor: !isDark ? Colors.grey[400] : Colors.white38,
+        indicatorColor: isDark ? ColorConst.primaryLight : ColorConst.primary,
+        dividerColor: !isDark ? Colors.grey[400] : Colors.white38,
+      ),
+
       textTheme: TextTheme(
         titleSmall: GoogleFonts.lato(
           fontSize: 14,
@@ -141,15 +148,29 @@ class ThemeConst {
         unselectedIconTheme: const IconThemeData(size: 22),
       ),
 
+      dropdownMenuTheme: DropdownMenuThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          fillColor: isDark ? Colors.black: Colors.white,
+          filled: true,
+        )
+      ),
+
+      canvasColor: isDark ? Colors.black: Colors.white,
+
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-        fillColor: Colors.white,
+        fillColor: isDark ? Colors.black: Colors.white,
         filled: true,
         helperMaxLines: 2,
+        prefixIconColor: isDark ? ColorConst.primaryLight: ColorConst.primary,
+        suffixIconColor: !isDark ? Colors.black87: Colors.white70,
+        helperStyle: GoogleFonts.lato(
+          color:isDark ?  Colors.white.withOpacity(0.8):  Colors.black.withOpacity(0.32),
+        ),
         hintStyle: GoogleFonts.lato(
           fontWeight: FontWeight.w400,
           fontSize: 15,
-          color: Colors.black.withOpacity(0.32),
+          color:isDark ?  Colors.white.withOpacity(0.8):  Colors.black.withOpacity(0.32),
           letterSpacing: 0.15,
         ),
         errorStyle: GoogleFonts.lato(
@@ -171,22 +192,22 @@ class ThemeConst {
           borderRadius: BorderRadius.circular(4),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.black54,
+          borderSide: BorderSide(
+            color: isDark ? Colors.white38: Colors.black54,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(4),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.black12,
+          borderSide: BorderSide(
+            color: isDark ? Colors.white30: Colors.black12,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(4),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.black54,
+          borderSide: BorderSide(
+            color: isDark ? Colors.white38: Colors.black54,
             width: 1.4,
           ),
           borderRadius: BorderRadius.circular(4),
