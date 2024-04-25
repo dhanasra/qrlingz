@@ -1,29 +1,50 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:qrlingz_app/utils/validator.dart';
 
-class DatePickerField extends StatelessWidget {
-  final TextEditingController controller;
-  const DatePickerField({super.key, required this.controller});
+class DatePickerField extends StatefulWidget {
+  final ValueChanged<DateTime> onChanged;
+  final String fieldName;
+  const DatePickerField({super.key, required this.onChanged, required this.fieldName});
 
   @override
-  Widget build(BuildContext context) {
+  State<DatePickerField> createState() => _DatePickerFieldState();
+}
 
+class _DatePickerFieldState extends State<DatePickerField> {
+  final TextEditingController controller = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        showDatePicker(
-          context: context, 
-          firstDate: DateTime(1900), 
-          lastDate: DateTime(2050)
-        );
+      onTap: () {
+        _selectDate(context);
       },
-      child: IgnorePointer(
+      child: AbsorbPointer(
         child: TextFormField(
           controller: controller,
-          decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.room_outlined),
+          validator: (v)=>Validator.validateNonNullOrEmpty(v, widget.fieldName),
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.calendar_today_outlined),
+            hintText: 'Enter ${widget.fieldName} here'
           ),
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
     );
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2050),
+    );
+    if (picked != null) {
+      String date = DateFormat('MMM dd, yyyy').format(picked);
+      controller.text = date.toString(); 
+      widget.onChanged(picked);
+    }
   }
 }
