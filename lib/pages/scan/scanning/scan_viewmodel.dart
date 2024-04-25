@@ -22,7 +22,7 @@ class ScanViewModel extends BaseViewModel {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
       if(scanData.code!=null){
-        handleScanData(1, scanData.code!, context);
+        handleScanData(scanData.code!, context);
       }
     });
   }
@@ -35,14 +35,14 @@ class ScanViewModel extends BaseViewModel {
       await Scan.parse(file.path).then(
         (data){
           if(data!=null){
-            handleScanData(1, data, context);
+            handleScanData(data, context);
           }
       });
       
     }
   }
 
-  handleScanData(int type, String data, BuildContext context){
+  handleScanData(String data, BuildContext context){
     if(Global.vibrateOnScan){
       Vibration.vibrate(duration: 500, amplitude: 255);
     }
@@ -50,7 +50,7 @@ class ScanViewModel extends BaseViewModel {
       _playSound();
     }
     var qrCode = QRData(
-      id: "${DateTime.now().millisecondsSinceEpoch}", type: type, name: getDataType(data), data: {"value": data}, created: DateTime.now());
+      id: "${DateTime.now().millisecondsSinceEpoch}", type: 1, name: getDataType(data), data: {"value": data}, created: DateTime.now());
     context.goto(Routes.scanData, args: qrCode);
   }
 
