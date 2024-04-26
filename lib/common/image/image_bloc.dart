@@ -15,12 +15,13 @@ part 'image_state.dart';
 class ImageBloc extends Bloc<ImageEvent, ImageState> {
   ImageBloc() : super(ImageInitial()) {
     on<PickAndUploadImage>(_onPickAndUploadImage);
+    on<PickImage>(_onPickImage);
   }
 
   final FirebaseClient _client = FirebaseClient();
 
   _onPickAndUploadImage(PickAndUploadImage event, Emitter emit)async{
-    emit(ImagePicking());
+    emit(ImageUploading());
     try{
 
       XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -64,7 +65,52 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
       emit(ImageFetched(url: url));
     
     }catch(e){
-      print(e);
+      emit(ImageError());
+    }
+  }
+
+  _onPickImage(PickImage event, Emitter emit)async{
+    emit(ImagePicking());
+    try{
+
+      XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if(file==null){
+        emit(Error());
+        return;
+      }
+
+      CroppedFile? croppedFile = await ImageCropper().cropImage(
+        sourcePath: file.path,
+        cropStyle: CropStyle.rectangle,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.ratio7x5,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9,
+          CropAspectRatioPreset.original,
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Crop Image',
+              toolbarColor: Colors.white,
+              toolbarWidgetColor: Colors.black,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Crop Image',
+          ),
+        ],
+      );
+
+      if(croppedFile==null){
+        emit(Error());
+        return;
+      }
+
+      emit(ImagePicked(image: File(croppedFile.path)));
+    }catch(e){
       emit(ImageError());
     }
   }

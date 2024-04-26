@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
@@ -213,7 +211,7 @@ class _CustomizeViewState extends State<CustomizeView> {
                                     ),
 
                                     Visibility(
-                                      visible: state is ImagePicking,
+                                      visible: state is ImageUploading,
                                       child: Column(
                                         children: [
                                           Expanded(
