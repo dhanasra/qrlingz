@@ -31,7 +31,14 @@ class _ScanDataViewState extends State<ScanDataView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_viewModel.qr.name)
+        title: Text(_viewModel.qr.name),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home_outlined),
+            onPressed: ()=>context.goto(Routes.home, clear: true)
+          ),
+          16.w()
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
