@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -30,9 +31,9 @@ class WebsiteForm extends StatelessWidget {
               TextFormField(
                 controller: controller,
                 validator: (v)=>Validator.isValidURL(v,"Website"),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.link),
-                  hintText: StringConst.webHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.link),
+                  hintText: StringConst.webHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

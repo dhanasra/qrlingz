@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -40,9 +41,9 @@ class EventForm extends StatelessWidget {
               TextFormField(
                 controller: nameController,
                 validator: (v)=>Validator.validateNonNullOrEmpty(v, "Event Name"),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.event_outlined),
-                  hintText: StringConst.eventNameHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.event_outlined),
+                  hintText: StringConst.eventNameHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -51,9 +52,9 @@ class EventForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: locController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.room_outlined),
-                  hintText: StringConst.locationHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.room_outlined),
+                  hintText: StringConst.locationHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ), 
@@ -66,7 +67,7 @@ class EventForm extends StatelessWidget {
                     flex: 6,
                     child: DatePickerField(
                       fieldName: "Start Date",
-                      hint: StringConst.startDateHint,
+                      hint: StringConst.startDateHint.tr(),
                       onChanged: (e)=>startDate = e
                     ),
                   ),
@@ -75,7 +76,7 @@ class EventForm extends StatelessWidget {
                     flex: 4,
                     child: TimePickerField(
                       fieldName: "Time",
-                      hint: StringConst.startTimeHint,
+                      hint: StringConst.startTimeHint.tr(),
                       onChanged: (e)=>startTime=e,  
                     ),
                   ),
@@ -90,7 +91,7 @@ class EventForm extends StatelessWidget {
                     flex: 6,
                     child: DatePickerField(
                       fieldName: "End Date",
-                      hint: StringConst.endDateHint,
+                      hint: StringConst.endDateHint.tr(),
                       onChanged: (e)=>endDate=e,  
                     ),
                   ),
@@ -99,7 +100,7 @@ class EventForm extends StatelessWidget {
                     flex: 4,
                     child: TimePickerField(
                       fieldName: "Time",
-                      hint: StringConst.endTimeHint,
+                      hint: StringConst.endTimeHint.tr(),
                       onChanged: (e)=>endTime=e,  
                     ),
                   ),
@@ -111,8 +112,8 @@ class EventForm extends StatelessWidget {
               TextFormField(
                 controller: descController,
                 maxLines: 6,
-                decoration: const InputDecoration(
-                  hintText: StringConst.descHint
+                decoration: InputDecoration(
+                  hintText: StringConst.descHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -31,9 +32,9 @@ class SmsForm extends StatelessWidget {
               TextFormField(
                 controller: numberController,
                 validator: (v)=>Validator.validatePhoneNumber(v),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: StringConst.phoneHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.phone_android_outlined),
+                  hintText: StringConst.phoneHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -43,8 +44,8 @@ class SmsForm extends StatelessWidget {
               TextFormField(
                 controller: messageController,
                 maxLines: 6,
-                decoration: const InputDecoration(
-                  hintText: StringConst.messageHint
+                decoration: InputDecoration(
+                  hintText: StringConst.messageHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

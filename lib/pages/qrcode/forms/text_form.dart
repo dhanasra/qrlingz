@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -31,9 +32,9 @@ class TextForm extends StatelessWidget {
                 controller: controller,
                 maxLines: 5,
                 validator: (v)=>Validator.validateNonNullOrEmpty(v,"Text"),
-                decoration: const InputDecoration(
-                  hintText: StringConst.textHint,
-                  helperText: StringConst.textHelper
+                decoration: InputDecoration(
+                  hintText: StringConst.textHint.tr(),
+                  helperText: StringConst.textHelper.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

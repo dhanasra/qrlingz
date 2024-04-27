@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -33,9 +34,9 @@ class EmailForm extends StatelessWidget {
               TextFormField(
                 controller: mailController,
                 validator: (v)=>Validator.validateEmail(v),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email_outlined),
-                  hintText: StringConst.emailHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  hintText: StringConst.emailHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -44,8 +45,8 @@ class EmailForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: subjectController,
-                decoration: const InputDecoration(
-                  hintText: StringConst.subjectHint
+                decoration: InputDecoration(
+                  hintText: StringConst.subjectHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -55,8 +56,8 @@ class EmailForm extends StatelessWidget {
               TextFormField(
                 controller: contentController,
                 maxLines: 6,
-                decoration: const InputDecoration(
-                  hintText: StringConst.bodyHint
+                decoration: InputDecoration(
+                  hintText: StringConst.bodyHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

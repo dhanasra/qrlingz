@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
@@ -38,9 +39,9 @@ class VcardForm extends StatelessWidget {
               TextFormField(
                 controller: nameController,
                 validator: (v)=>Validator.validateNonNullOrEmpty(v, "Name"),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.person_outlined),
-                  hintText: StringConst.nameHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person_outlined),
+                  hintText: StringConst.nameHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -50,9 +51,9 @@ class VcardForm extends StatelessWidget {
               TextFormField(
                 controller: phoneController,
                 validator: (v)=>Validator.validatePhoneNumber(v),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: StringConst.phoneHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.phone_android_outlined),
+                  hintText: StringConst.phoneHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -62,9 +63,9 @@ class VcardForm extends StatelessWidget {
               TextFormField(
                 controller: mailController,
                 validator: (v)=>Validator.validateEmail(v, required:  false),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email_outlined),
-                  hintText: StringConst.emailHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  hintText: StringConst.emailHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -73,9 +74,9 @@ class VcardForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: companyNameController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.business_outlined),
-                  hintText: StringConst.companyHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.business_outlined),
+                  hintText: StringConst.companyHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -84,9 +85,9 @@ class VcardForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: jobTitleController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.work_outline),
-                  hintText: StringConst.jobTitleHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.work_outline),
+                  hintText: StringConst.jobTitleHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -94,9 +95,9 @@ class VcardForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: addressController,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.room_outlined),
-                  hintText: StringConst.addrHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.room_outlined),
+                  hintText: StringConst.addrHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -106,9 +107,9 @@ class VcardForm extends StatelessWidget {
               TextFormField(
                 controller: websiteController,
                 validator: (v)=>Validator.isValidURL(v, "Website", required: false),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.link_outlined),
-                  hintText: StringConst.websiteHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.link_outlined),
+                  hintText: StringConst.websiteHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -118,8 +119,8 @@ class VcardForm extends StatelessWidget {
               TextFormField(
                 controller: noteController,
                 maxLines: 6,
-                decoration: const InputDecoration(
-                  hintText: StringConst.noteHint
+                decoration: InputDecoration(
+                  hintText: StringConst.noteHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

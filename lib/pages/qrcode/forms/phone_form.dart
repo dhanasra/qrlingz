@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -31,9 +32,9 @@ class PhoneForm extends StatelessWidget {
               TextFormField(
                 controller: controller,
                 validator: (v)=>Validator.validatePhoneNumber(v),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: StringConst.phoneHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.phone_android_outlined),
+                  hintText: StringConst.phoneHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -32,9 +33,9 @@ class ContactForm extends StatelessWidget {
               TextFormField(
                 controller: nameController,
                 validator: (v)=>Validator.validateNonNullOrEmpty(v, "Name"),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.person_outlined),
-                  hintText: StringConst.nameHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person_outlined),
+                  hintText: StringConst.nameHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -44,9 +45,9 @@ class ContactForm extends StatelessWidget {
               TextFormField(
                 controller: phoneController,
                 validator: (v)=>Validator.validatePhoneNumber(v),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: StringConst.phoneHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.phone_android_outlined),
+                  hintText: StringConst.phoneHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -56,9 +57,9 @@ class ContactForm extends StatelessWidget {
               TextFormField(
                 controller: mailController,
                 validator: (v)=>Validator.validateEmail(v, required:  false),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email_outlined),
-                  hintText: StringConst.emailHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  hintText: StringConst.emailHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),

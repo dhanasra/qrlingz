@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -35,9 +36,9 @@ class WifiForm extends StatelessWidget {
               TextFormField(
                 controller: nameController,
                 validator: (v)=>Validator.validateNonNullOrEmpty(v,"Network name"),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.wifi_outlined),
-                  hintText: StringConst.networkHint
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.wifi_outlined),
+                  hintText: StringConst.networkHint.tr()
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -66,7 +67,7 @@ class WifiForm extends StatelessWidget {
                     obscureText: !value,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock_outlined),
-                      hintText: StringConst.passwordHint,
+                      hintText: StringConst.passwordHint.tr(),
                       suffixIcon: IconButton(
                         onPressed: ()=>passwordVisible.value = !passwordVisible.value, 
                         icon: Icon(passwordVisible.value ? Icons.remove_red_eye: Icons.remove_red_eye_outlined))
