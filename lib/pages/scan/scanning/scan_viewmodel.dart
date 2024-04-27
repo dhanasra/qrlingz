@@ -18,10 +18,13 @@ class ScanViewModel extends BaseViewModel {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
 
+  String scannedData = "";
+
   void onQRViewCreated(QRViewController controller, BuildContext context) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      if(scanData.code!=null){
+      if(scanData.code!=null && scannedData!=scanData.code){
+        scannedData = scanData.code!;
         handleScanData(scanData.code!, context);
       }
     });

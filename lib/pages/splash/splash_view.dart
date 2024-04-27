@@ -20,7 +20,7 @@ class _SplashViewState extends State<SplashView> {
       await FirebaseClient().configDB.doc("constants").get().then(
         (snapshots){
           Global.initialize(snapshots.data());
-          context.goto(Routes.home);
+          context.goto(Routes.home, clear: true);
         });
     });
     super.initState();
