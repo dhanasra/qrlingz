@@ -1,0 +1,7 @@
+Build app bundle
+
+ -- flutter build appbundle --release --flavor prod
+
+Keystore file build
+
+ -- keytool -genkey -v -keystore keystore.jks -keyalg RSA -keysize 2048 -validity 20000 -alias qrlingz -storetype JKS
