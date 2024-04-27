@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -26,9 +27,11 @@ class HistoryItem extends StatelessWidget {
         p: const EdgeInsets.fromLTRB(16, 12, 0, 12),
         child: Row(
           children: [
-            SizedBox(
+            Container(
               height: 60,
               width: 60,
+              color: Colors.white,
+              padding: const EdgeInsets.all(4),
               child: PrettyQrView.data(
                 data: item.data['value'],
                 errorCorrectLevel: 3,

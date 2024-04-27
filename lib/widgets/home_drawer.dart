@@ -28,7 +28,7 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
   
     return  Container(
-      color: Colors.white,
+      color: Theme.of(context).scaffoldBackgroundColor,
       width: MediaQuery.of(context).size.width*0.8,
       child: Column(
         children: [

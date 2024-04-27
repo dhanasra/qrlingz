@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
 import 'package:qrlingz_app/constants/theme_const.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -31,6 +32,14 @@ class App extends StatelessWidget {
               theme: ThemeConst.getApplicationTheme(false),
               darkTheme: ThemeConst.getApplicationTheme(true),
               themeMode: mode,
+              builder: (context, child) {
+                var lang = getLocale(context.locale.languageCode).languageCode;
+                double scaleFactor = (lang == 'ta' || lang == 'ml') ? 0.9 : 1;
+                return MediaQuery(
+                  data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(scaleFactor)),
+                  child: child!,
+                );
+              },
             );
         },
       ),

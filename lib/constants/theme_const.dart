@@ -17,6 +17,8 @@ class ThemeConst {
       primaryColor: isDark ? ColorConst.primaryLight: ColorConst.primary,
       primaryColorLight: ColorConst.primaryLight,
 
+      
+
       appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: isDark ? const Color(0xFF383838) : Colors.white,
