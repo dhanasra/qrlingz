@@ -6,6 +6,8 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
+
 class PhoneForm extends StatelessWidget {
   const PhoneForm({super.key});
 
@@ -31,7 +33,7 @@ class PhoneForm extends StatelessWidget {
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: "Enter mobile number here"
+                  hintText: StringConst.phoneHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -51,7 +53,7 @@ class PhoneForm extends StatelessWidget {
                     "name": "Phone" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

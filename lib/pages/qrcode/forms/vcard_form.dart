@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -39,7 +40,7 @@ class VcardForm extends StatelessWidget {
                 validator: (v)=>Validator.validateNonNullOrEmpty(v, "Name"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person_outlined),
-                  hintText: "Enter name here"
+                  hintText: StringConst.nameHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -51,7 +52,7 @@ class VcardForm extends StatelessWidget {
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: "Enter mobile number here"
+                  hintText: StringConst.phoneHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -63,7 +64,7 @@ class VcardForm extends StatelessWidget {
                 validator: (v)=>Validator.validateEmail(v, required:  false),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
-                  hintText: "Enter email address here"
+                  hintText: StringConst.emailHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -74,7 +75,7 @@ class VcardForm extends StatelessWidget {
                 controller: companyNameController,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.business_outlined),
-                  hintText: "Enter company name here"
+                  hintText: StringConst.companyHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -85,7 +86,7 @@ class VcardForm extends StatelessWidget {
                 controller: jobTitleController,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.work_outline),
-                  hintText: "Enter job title here"
+                  hintText: StringConst.jobTitleHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -95,7 +96,7 @@ class VcardForm extends StatelessWidget {
                 controller: addressController,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.room_outlined),
-                  hintText: "Enter address here"
+                  hintText: StringConst.addrHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -107,7 +108,7 @@ class VcardForm extends StatelessWidget {
                 validator: (v)=>Validator.isValidURL(v, "Website", required: false),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.link_outlined),
-                  hintText: "Enter website here"
+                  hintText: StringConst.websiteHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -118,7 +119,7 @@ class VcardForm extends StatelessWidget {
                 controller: noteController,
                 maxLines: 6,
                 decoration: const InputDecoration(
-                  hintText: "Enter note here"
+                  hintText: StringConst.noteHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -176,7 +177,7 @@ class VcardForm extends StatelessWidget {
                     "name": "VCard" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -32,7 +33,7 @@ class SmsForm extends StatelessWidget {
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: "Enter mobile number here"
+                  hintText: StringConst.phoneHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -43,7 +44,7 @@ class SmsForm extends StatelessWidget {
                 controller: messageController,
                 maxLines: 6,
                 decoration: const InputDecoration(
-                  hintText: "Enter message here"
+                  hintText: StringConst.messageHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -64,7 +65,7 @@ class SmsForm extends StatelessWidget {
                     "name": "SMS" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

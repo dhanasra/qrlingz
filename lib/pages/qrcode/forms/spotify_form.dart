@@ -6,6 +6,8 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
+
 class SpotifyForm extends StatelessWidget {
   const SpotifyForm({super.key});
 
@@ -67,7 +69,7 @@ class SpotifyForm extends StatelessWidget {
                     "name": "Spotify" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

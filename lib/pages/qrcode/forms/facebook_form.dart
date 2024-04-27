@@ -6,6 +6,7 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
 import '../../../widgets/single_select.dart';
 
 class FacebookForm extends StatelessWidget {
@@ -96,7 +97,7 @@ class FacebookForm extends StatelessWidget {
                     "name": "Facebook" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

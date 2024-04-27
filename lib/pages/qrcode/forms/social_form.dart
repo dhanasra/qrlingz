@@ -6,6 +6,8 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
+
 class SocialForm extends StatelessWidget {
   final String type;
   final String name;
@@ -70,7 +72,7 @@ class SocialForm extends StatelessWidget {
                     "name": name 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

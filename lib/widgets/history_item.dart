@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -10,6 +9,7 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/widgets/styled_wrapper.dart';
 
 import '../constants/color_const.dart';
+import '../constants/string_const.dart';
 import '../utils/utils.dart';
 
 class HistoryItem extends StatelessWidget {
@@ -121,37 +121,40 @@ class HistoryItem extends StatelessWidget {
                     children: [
                       const Icon(Icons.remove_red_eye_outlined, size: 20,),
                       24.w(),
-                      'Show Preview'.ts(context)
+                      StringConst.historyPop1.tl(context)
                     ],
                   ),
                 ),
                 PopupMenuItem<String>(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   value: 'edit',
                   child: Row(
                     children: [
                       const Icon(Icons.edit_outlined, size: 20,),
                       24.w(),
-                      'Decorate QR'.ts(context)
+                      StringConst.historyPop2.tl(context)
                     ],
                   ),
                 ),
                 PopupMenuItem<String>(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   value: 'share',
                   child: Row(
                     children: [
                       const Icon(Icons.share_outlined, size: 20,),
                       24.w(),
-                      'Share Now'.ts(context)
+                      StringConst.historyPop3.tl(context)
                     ],
                   ),
                 ),
                 PopupMenuItem<String>(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   value: 'delete',
                   child: Row(
                     children: [
                       const Icon(Icons.delete_outlined, size: 20, color: Colors.red),
                       24.w(),
-                      'Delete Forever'.ts(context, color: Colors.red)
+                      StringConst.historyPop4.tl(context, color: Colors.red)
                     ],
                   ),
                 ),

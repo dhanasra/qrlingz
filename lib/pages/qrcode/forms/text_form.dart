@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -31,8 +32,8 @@ class TextForm extends StatelessWidget {
                 maxLines: 5,
                 validator: (v)=>Validator.validateNonNullOrEmpty(v,"Text"),
                 decoration: const InputDecoration(
-                  hintText: "Enter text here",
-                  helperText: "* QR code may be difficult to recognize when content exceeds 100 chars"
+                  hintText: StringConst.textHint,
+                  helperText: StringConst.textHelper
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -51,7 +52,7 @@ class TextForm extends StatelessWidget {
                     "name": "Text" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

@@ -6,6 +6,7 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
 import '../../../widgets/single_select.dart';
 
 class CryptoForm extends StatelessWidget {
@@ -107,7 +108,7 @@ class CryptoForm extends StatelessWidget {
                     "name": "Crypto" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

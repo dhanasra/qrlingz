@@ -30,7 +30,7 @@ class HistoryFragment extends StatelessWidget {
             children: [
               Lottie.asset(AssetsConst.notfound, width: 300),
               24.h(),
-              StringConst.noHistoryTitle.hm(context),
+              StringConst.noHistoryTitle.hm(context, align: TextAlign.center),
               8.h(),
               ConstrainedBox(
                 constraints: const BoxConstraints(

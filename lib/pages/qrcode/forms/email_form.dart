@@ -6,6 +6,8 @@ import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
+
 class EmailForm extends StatelessWidget {
   const EmailForm({super.key});
 
@@ -33,7 +35,7 @@ class EmailForm extends StatelessWidget {
                 validator: (v)=>Validator.validateEmail(v),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
-                  hintText: "Enter email address here"
+                  hintText: StringConst.emailHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -43,7 +45,7 @@ class EmailForm extends StatelessWidget {
               TextFormField(
                 controller: subjectController,
                 decoration: const InputDecoration(
-                  hintText: "Enter subject here"
+                  hintText: StringConst.subjectHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -54,7 +56,7 @@ class EmailForm extends StatelessWidget {
                 controller: contentController,
                 maxLines: 6,
                 decoration: const InputDecoration(
-                  hintText: "Enter content here"
+                  hintText: StringConst.bodyHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -76,7 +78,7 @@ class EmailForm extends StatelessWidget {
                     "name": "Email" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

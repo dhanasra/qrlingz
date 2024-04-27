@@ -7,6 +7,8 @@ import 'package:qrlingz_app/utils/validator.dart';
 import 'package:qrlingz_app/widgets/single_select.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
+import '../../../constants/string_const.dart';
+
 class WifiForm extends StatelessWidget {
   const WifiForm({super.key});
 
@@ -35,7 +37,7 @@ class WifiForm extends StatelessWidget {
                 validator: (v)=>Validator.validateNonNullOrEmpty(v,"Network name"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.wifi_outlined),
-                  hintText: "Enter network name"
+                  hintText: StringConst.networkHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -64,7 +66,7 @@ class WifiForm extends StatelessWidget {
                     obscureText: !value,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock_outlined),
-                      hintText: "Enter password",
+                      hintText: StringConst.passwordHint,
                       suffixIcon: IconButton(
                         onPressed: ()=>passwordVisible.value = !passwordVisible.value, 
                         icon: Icon(passwordVisible.value ? Icons.remove_red_eye: Icons.remove_red_eye_outlined))
@@ -91,7 +93,7 @@ class WifiForm extends StatelessWidget {
                     "name": "Wifi" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

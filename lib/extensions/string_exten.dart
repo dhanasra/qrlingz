@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 
 extension TextExtensions on String {
 
-  hm(BuildContext context){
-    return Text(this, style: Theme.of(context).textTheme.headlineMedium).tr();
+  hm(BuildContext context, {TextAlign? align}){
+    return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineMedium).tr();
   }
   
   hs(BuildContext context){
     return Text(this, style: Theme.of(context).textTheme.headlineSmall).tr();
   }
 
-  tl(BuildContext context, {int? maxLines}){
-    return Text(this, maxLines: maxLines, style: Theme.of(context).textTheme.titleLarge).tr();
+  tl(BuildContext context, {int? maxLines, Color? color}){
+    return Text(this, maxLines: maxLines, style: Theme.of(context).textTheme.titleLarge!.copyWith(
+      color: color
+    )).tr();
   }
 
   ts(BuildContext context, {Color? color, TextAlign? align}){

@@ -6,7 +6,8 @@ import 'package:qrlingz_app/utils/validator.dart';
 class DatePickerField extends StatefulWidget {
   final ValueChanged<DateTime> onChanged;
   final String fieldName;
-  const DatePickerField({super.key, required this.onChanged, required this.fieldName});
+  final String hint;
+  const DatePickerField({super.key, required this.onChanged, required this.fieldName, required this.hint});
 
   @override
   State<DatePickerField> createState() => _DatePickerFieldState();
@@ -26,7 +27,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
           validator: (v)=>Validator.validateNonNullOrEmpty(v, widget.fieldName),
           decoration: InputDecoration(
             prefixIcon: const Icon(Icons.calendar_today_outlined),
-            hintText: 'Enter ${widget.fieldName} here'
+            hintText: widget.hint
           ),
           style: Theme.of(context).textTheme.titleMedium,
         ),

@@ -34,7 +34,7 @@ class FavouritesFragment extends StatelessWidget {
                 children: [
                   Lottie.asset(AssetsConst.empty, width: 300),
                   16.h(),
-                  StringConst.noFavTitle.hm(context),
+                  StringConst.noFavTitle.hm(context, align: TextAlign.center),
                   8.h(),
                   ConstrainedBox(
                     constraints: const BoxConstraints(

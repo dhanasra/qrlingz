@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_viewmodel.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/contact_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/crypto_form.dart';
@@ -40,7 +42,7 @@ class _CreateViewState extends State<CreateView> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Generate QR Code"),
+        title: const Text(StringConst.genrateQRCode).tr(),
         centerTitle: false,
       ),
       body: Padding(

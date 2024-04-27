@@ -5,7 +5,8 @@ import '../utils/validator.dart';
 class TimePickerField extends StatefulWidget {
   final ValueChanged<TimeOfDay> onChanged;
   final String fieldName;
-  const TimePickerField({super.key, required this.onChanged, required this.fieldName});
+  final String hint;
+  const TimePickerField({super.key, required this.onChanged, required this.fieldName, required this.hint});
 
   @override
   State<TimePickerField> createState() => _TimePickerFieldState();
@@ -26,7 +27,7 @@ class _TimePickerFieldState extends State<TimePickerField> {
           validator: (v)=>Validator.validateNonNullOrEmpty(v, widget.fieldName),
           decoration: InputDecoration(
             prefixIcon: const Icon(Icons.access_time_outlined),
-            hintText: 'Enter ${widget.fieldName} here'
+            hintText: widget.hint
           ),
           style: Theme.of(context).textTheme.titleMedium,
         ),

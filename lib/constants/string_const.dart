@@ -52,6 +52,41 @@ class StringConst {
   static const addToImageOpt = "addToImageOpt";
 
   // contents
-  static const recommendContent = "Transform your QR codes into stunning works of art with QR Code Generator - Fast & Easy! Choose from a variety of ready-made templates and customize them to match your style effortlessly. Simplify the process and elevate your QR code game today! Download now and see the difference.\n\nhttps://play.google.com/store/apps/details?id=com.spiderlingz.qrlingz";
+  static const recommendContent = "recommendContent";
+
+  // forms
+
+  static const genrateQRCode ="genrateQRCode";
+  static const textHelper ="textHelper";
+  static const textHint ="textHint";
+  static const webHint ="webHint";
+  static const networkHint ="networkHint";
+  static const passwordHint ="passwordHint";
+  static const nameHint ="nameHint";
+  static const phoneHint ="phoneHint";
+  static const emailHint ="emailHint";
+  static const subjectHint ="subjectHint";
+  static const bodyHint ="bodyHint";
+  static const messageHint ="messageHint";
+  static const eventNameHint ="eventNameHint";
+  static const locationHint ="locationHint";
+  static const startTimeHint ="startTimeHint";
+  static const startDateHint ="startDateHint";
+  static const endTimeHint ="endTimeHint";
+  static const endDateHint ="endDateHint";
+  static const descHint ="descHint";
+  static const addrHint ="addrHint";
+  static const companyHint ="companyHint";
+  static const jobTitleHint ="jobTitleHint";
+  static const websiteHint ="websiteHint";
+  static const noteHint ="noteHint";
+
+  // popups
+
+  static const historyPop1 = "historyPop1";
+  static const historyPop2 = "historyPop2";
+  static const historyPop3 = "historyPop3";
+  static const historyPop4 = "historyPop4";
+
 
 }

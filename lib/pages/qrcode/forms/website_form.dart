@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -31,7 +32,7 @@ class WebsiteForm extends StatelessWidget {
                 validator: (v)=>Validator.isValidURL(v,"Website"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.link),
-                  hintText: "Enter link here"
+                  hintText: StringConst.webHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -70,7 +71,7 @@ class WebsiteForm extends StatelessWidget {
                     "name": "Website" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),

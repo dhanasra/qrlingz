@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -33,7 +34,7 @@ class ContactForm extends StatelessWidget {
                 validator: (v)=>Validator.validateNonNullOrEmpty(v, "Name"),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person_outlined),
-                  hintText: "Enter name here"
+                  hintText: StringConst.nameHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -45,7 +46,7 @@ class ContactForm extends StatelessWidget {
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_android_outlined),
-                  hintText: "Enter mobile number here"
+                  hintText: StringConst.phoneHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),  
@@ -57,7 +58,7 @@ class ContactForm extends StatelessWidget {
                 validator: (v)=>Validator.validateEmail(v, required:  false),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
-                  hintText: "Enter email address here"
+                  hintText: StringConst.emailHint
                 ),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
@@ -86,7 +87,7 @@ class ContactForm extends StatelessWidget {
                     "name": "Contact" 
                   });
                 }, 
-                text: "CREATE"
+                text: StringConst.create.toUpperCase()
               )
             ],
           ),
