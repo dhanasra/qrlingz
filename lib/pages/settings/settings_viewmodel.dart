@@ -79,7 +79,7 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   recommendApp()async{
-    await Share.share(StringConst.recommendContent);
+    await Share.share(StringConst.recommendContent.tr());
   }
 
   sendReportOrFeedback(String type)async{

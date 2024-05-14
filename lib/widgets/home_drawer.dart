@@ -51,7 +51,7 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin{
             children: [
               ListTile(
                 onTap: ()async{
-                  await Share.share(StringConst.recommendContent);
+                  await Share.share(StringConst.recommendContent.tr());
                 },
                 leading: const Icon(Icons.thumb_up_alt_outlined, size: 20),
                 title: const Text(StringConst.recommendopt).tr(),
