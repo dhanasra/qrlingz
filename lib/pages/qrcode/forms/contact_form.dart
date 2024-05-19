@@ -44,6 +44,7 @@ class ContactForm extends StatelessWidget {
               8.h(),
               TextFormField(
                 controller: phoneController,
+                keyboardType: TextInputType.phone,
                 validator: (v)=>Validator.validatePhoneNumber(v),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.phone_android_outlined),

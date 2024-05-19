@@ -26,24 +26,19 @@ class Validator {
     }
   }
 
-  static validatePhoneNumber(
+  static String? validatePhoneNumber(
     String? value, {
     String? fieldName,
-    bool required = true
+    bool required = true,
   }) {
     if (value == null || value.toString().trim().isEmpty) {
-      if(!required){
+      if (!required) {
         return null;
       }
       return '${fieldName ?? 'Mobile Number'} is required';
-    } else if (value.length != 10) {
-      return 'Enter a valid mobile number';
-    } else if (!value.startsWith('6') &&
-        !value.startsWith('7') &&
-        !value.startsWith('8') &&
-        !value.startsWith('9')) {
-      return 'Enter a valid mobile number';
-    }else{
+    } else if (!RegExp(r'^\+?[0-9.-]+$').hasMatch(value)) {
+      return 'Enter a valid phone number';
+    } else {
       return null;
     }
   }
