@@ -18,6 +18,7 @@ import '../common/image/image_bloc.dart';
 import '../pages/auth/bloc/auth_bloc.dart';
 import '../pages/auth/login/login_view.dart';
 import '../pages/auth/signup/signup_view.dart';
+import '../pages/settings/bloc/account_bloc.dart';
 import '../pages/splash/splash_view.dart';
 
 class Routes {
@@ -77,7 +78,10 @@ class RouteGenerator {
         return getTransistionPage(
             ScanDataView(data: args['data'], image: args['image']));
       case Routes.settings:
-        return getTransistionPage(const SettingsView());
+        return getTransistionPage(BlocProvider(
+          create: (context) => AccountBloc(),
+          child: const SettingsView(),
+        ));
       case Routes.create:
         return getTransistionPage(BlocProvider(
           create: (context) => ImageBloc(),
