@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:qrlingz_app/constants/color_const.dart';
+
+import '../constants/color_const.dart';
 
 class StyledButton extends StatelessWidget {
   final VoidCallback onClick;
@@ -8,8 +9,9 @@ class StyledButton extends StatelessWidget {
   final double? w;
   final bool rounded;
   final bool outlined;
+  final bool loading;
   final bool secondary;
-  const StyledButton({super.key, required this.onClick, required this.text, this.w, this.rounded = false, this.secondary = false, this.outlined = false});
+  const StyledButton({super.key, this.loading = false, required this.onClick, required this.text, this.w, this.rounded = false, this.secondary = false, this.outlined = false});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,11 @@ class StyledButton extends StatelessWidget {
             ),
             backgroundColor: outlined ? Colors.white: Colors.transparent),
           onPressed: onClick, 
-          child: Text(text, style: TextStyle(
+          child: loading
+          ? const SizedBox(
+            width: 24, height: 24,
+            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+          : Text(text, style: TextStyle(
             color: outlined ? ColorConst.primary: Colors.white
           )).tr()
         )

@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 
 extension TextExtensions on String {
 
+  ds(BuildContext context, {TextAlign? align, String? fontFamily}){
+    return Text(this, textAlign: align, style: Theme.of(context).textTheme.displaySmall!.copyWith(
+      fontFamily: fontFamily
+    )).tr();
+  }
+
+  hl(BuildContext context, {TextAlign? align}){
+    return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineLarge).tr();
+  }
+
   hm(BuildContext context, {TextAlign? align}){
     return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineMedium).tr();
   }
@@ -32,6 +42,13 @@ extension TextExtensions on String {
   ls(BuildContext context, {Color? color}){
     return Text(this, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall!.copyWith(
       color: color
+    )).tr();
+  }
+
+  lxs(BuildContext context, {Color? color}){
+    return Text(this, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall!.copyWith(
+      color: color,
+      fontWeight: FontWeight.w300
     )).tr();
   }
 

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
@@ -36,7 +37,9 @@ class HomeViewModel extends BaseViewModel {
     });
 
     items = [
-      const DashboardFrament(),
+      DashboardFrament(
+        vm: this,
+      ),
       const FavouritesFragment(),
       HistoryFragment(
         controller: controller,
@@ -76,6 +79,14 @@ class HomeViewModel extends BaseViewModel {
       context.goto(Routes.settings);
     }
 
+  }
+
+  checkLoginStatus(String category){
+    if(category.toLowerCase()!='dynamic'){
+      return true;
+    }
+
+    return FirebaseAuth.instance.currentUser!=null;
   }
   
   @override

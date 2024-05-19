@@ -15,11 +15,17 @@ import 'package:qrlingz_app/pages/settings/settings_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
 
 import '../common/image/image_bloc.dart';
+import '../pages/auth/bloc/auth_bloc.dart';
+import '../pages/auth/login/login_view.dart';
+import '../pages/auth/signup/signup_view.dart';
 import '../pages/splash/splash_view.dart';
 
 class Routes {
   static const splash = '/splash';
   static const welcome = '/welcome';
+
+  static const login = '/login';
+  static const signup = '/signup';
 
   static const home = '/home';
 
@@ -43,6 +49,16 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.splash:
         return getTransistionPage(const SplashView());
+      case Routes.login:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AuthBloc(),
+          child: const LoginView(),
+        ));
+      case Routes.signup:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AuthBloc(),
+          child: const SignupView(),
+        ));
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());
       case Routes.home:

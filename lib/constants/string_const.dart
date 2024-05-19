@@ -17,6 +17,10 @@ class StringConst {
   static const rateOpt = "rateOpt";
   static const reportOpt = "reportOpt";
   static const feedbackOpt = "feedbackOpt";
+  
+  static const account = "account";
+  static const signOutOpt = "signOutOpt";
+  static const deleteOpt = "deleteOpt";
 
   // history view
   static const history = "history";

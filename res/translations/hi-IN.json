@@ -60,5 +60,8 @@
   "historyPop1": "पूर्वावलोकन दिखाएं",
   "historyPop2": "QR सजावट करें",
   "historyPop3": "अब साझा करें",
-  "historyPop4": "स्थायी रूप से हटाएं"
+  "historyPop4": "स्थायी रूप से हटाएं",
+  "account": "खाता",
+  "signOutOpt": "साइन आउट",
+  "deleteOpt": "खाता हटाएं"
 }

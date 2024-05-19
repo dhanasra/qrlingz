@@ -114,6 +114,24 @@ class DataConst {
         "text": "VCard"
       }
     ],
+    "DYNAMIC": [
+      {
+        "icon": Icons.insert_drive_file_outlined,
+        "text": "File"
+      },
+      {
+        "icon": Icons.image_outlined,
+        "text": "Picture"
+      },
+      {
+        "icon": Icons.videocam_outlined,
+        "text": "Video"
+      },
+      {
+        "icon": Icons.audio_file_outlined,
+        "text": "Audio"
+      },
+    ],
     "SOCIAL": [
       {
         "image": "res/images/facebook.png",

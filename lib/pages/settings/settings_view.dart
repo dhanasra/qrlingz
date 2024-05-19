@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
@@ -128,6 +129,28 @@ class _SettingsViewState extends State<SettingsView> {
             onTap: ()=>_viewModel.sendReportOrFeedback("Feedback"),
             leading: const Icon(Icons.message_outlined, size: 20),
             title: const Text(StringConst.feedbackOpt).tr(),
+          ),
+
+          Visibility(
+            visible: FirebaseAuth.instance.currentUser!=null,
+            child: Column(
+              children: [
+                StringConst.account.ts(context),
+                8.h(),
+                ListTile(
+                  onTap: () => _viewModel.openConfirmSheet(context, "signout"),
+                  leading: const Icon(Icons.logout, size: 20),
+                  title: const Text(StringConst.signOutOpt).tr(),
+                ),
+                ListTile(
+                  textColor: Colors.red,
+                  iconColor: Colors.red,
+                  onTap: () => _viewModel.openConfirmSheet(context, "delete"),
+                  leading: const Icon(Icons.delete_outline, size: 20),
+                  title: const Text(StringConst.deleteOpt).tr(),
+                )
+              ],
+            ),
           ),
 
         ],
