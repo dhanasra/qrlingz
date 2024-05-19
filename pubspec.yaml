@@ -51,6 +51,8 @@ dependencies:
 
   #file
   open_file_plus: ^3.4.1+1
+  file_picker: ^8.0.3
+  video_player: ^2.8.6
 
   #SML
   bloc: ^8.1.4
@@ -69,6 +71,7 @@ dependencies:
   #widgets
   audioplayers: ^6.0.0
   device_info_plus: ^9.0.1
+  dotted_border: ^2.1.0
   flutter_neumorphic_plus: ^3.3.0
   image_gallery_saver: ^2.0.3
   in_app_review: ^2.0.9

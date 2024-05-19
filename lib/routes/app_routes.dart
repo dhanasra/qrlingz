@@ -18,6 +18,7 @@ import '../common/image/image_bloc.dart';
 import '../pages/auth/bloc/auth_bloc.dart';
 import '../pages/auth/login/login_view.dart';
 import '../pages/auth/signup/signup_view.dart';
+import '../pages/qrcode/bloc/qr_code_bloc.dart';
 import '../pages/settings/bloc/account_bloc.dart';
 import '../pages/splash/splash_view.dart';
 
@@ -89,8 +90,15 @@ class RouteGenerator {
         ));
       case Routes.customize:
         var args = settings.arguments as Map;
-        return getTransistionPage(BlocProvider(
-          create: (context) => ImageBloc(),
+        return getTransistionPage(MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => ImageBloc(),
+            ),
+            BlocProvider(
+              create: (context) => QrCodeBloc(),
+            ),
+          ],
           child: CustomizeView(data: args['data'], name: args['name']),
         ));
       case Routes.preview:

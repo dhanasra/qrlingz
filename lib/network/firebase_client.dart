@@ -17,6 +17,9 @@ class FirebaseClient {
 
   Reference get storageReference =>
       FirebaseStorage.instance.ref().child("free");
+  
+  Reference get myQRStorageRef =>
+      FirebaseStorage.instance.ref().child("users").child(FirebaseAuth.instance.currentUser!.uid).child("QR");
 
   String? get userId => FirebaseAuth.instance.currentUser?.uid;
 

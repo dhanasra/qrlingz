@@ -196,4 +196,6 @@ class DataConst {
     ] 
   };
 
+  static const List dynamics = ["File", "Picture", "Video", "Audio"];
+
 }

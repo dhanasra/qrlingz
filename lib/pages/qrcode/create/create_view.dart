@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_viewmodel.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/audio_upload.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/contact_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/crypto_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/email_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/event_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/facebook_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/file_upload.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/inter_number_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/phone_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/picture_upload.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/sms_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/social_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/spotify_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/text_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/vcard_form.dart';
+import 'package:qrlingz_app/pages/qrcode/forms/video_upload.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/website_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/wifi_form.dart';
 import 'package:qrlingz_app/pages/qrcode/forms/youtube_form.dart';
@@ -119,6 +123,14 @@ class _CreateViewState extends State<CreateView> {
               InterNumberForm(
                 name: "Viber", image: _viewModel.getImagePath("Viber"),
               )
+            else if(widget.type=="File")
+              const FileUpload()
+            else if(widget.type=="Picture")
+              const PictureUpload()
+            else if(widget.type=="Video")
+              const VideoUpload()
+            else if(widget.type=="Audio")
+              const AudioUpload()
           ],
         ),
       ),
