@@ -24,6 +24,11 @@ class QrCodeBloc extends Bloc<QrCodeEvent, QrCodeState> {
       final task = await _client.myQRStorageRef.putFile(File(event.qrData.data["value"]));
       final downloadUrl = await task.ref.getDownloadURL();
       var qrData = event.qrData.copyWith(data: {"value": downloadUrl});
+
+      var dataMap = qrData.toMap();
+      dataMap['createdBy'] = _client.userId;
+      await _client.qrsInfoDB.add(dataMap);
+
       await LocalDB().saveHistory(qrData);
 
       emit(QRCodeCreated(data: qrData));

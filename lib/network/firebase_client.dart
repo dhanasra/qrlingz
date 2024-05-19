@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 class Collection {
   static const String config = 'config';
   static const String users = 'USERS';
+  static const String qrsInfo = 'QRCODE';
 }
 
 class FirebaseClient {
@@ -12,6 +13,7 @@ class FirebaseClient {
   final firestore = FirebaseFirestore.instance;
 
   CollectionReference get userDB => firestore.collection(Collection.users);
+  CollectionReference get qrsInfoDB => firestore.collection(Collection.qrsInfo);
 
   CollectionReference get configDB => firestore.collection(Collection.config);
 
