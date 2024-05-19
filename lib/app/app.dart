@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
+import 'package:qrlingz_app/constants/app_const.dart';
 import 'package:qrlingz_app/constants/theme_const.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/utils.dart';
@@ -20,13 +21,7 @@ class App extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               localizationsDelegates: context.localizationDelegates,
               locale: context.locale,
-              supportedLocales: const [
-                Locale('en', 'US'), 
-                Locale('ta', 'IN'),
-                Locale('ml', 'IN'),
-                Locale('kn', 'IN'),
-                Locale('hi', 'IN')
-              ],
+              supportedLocales: AppConst.locales,
               onGenerateRoute: (s) => RouteGenerator(settings: s).getRoute(),
               initialRoute: Routes.splash,
               theme: ThemeConst.getApplicationTheme(false),

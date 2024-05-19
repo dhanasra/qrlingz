@@ -96,6 +96,14 @@ Locale getLocale(String languageCode){
     case "ml": return const Locale("ml", "IN");
     case "kn": return const Locale("kn", "IN");
     case "hi": return const Locale("hi", "IN");
+    case "bn": return const Locale("bn", "IN"); 
+    case "pt": return const Locale("pt", "BR"); 
+    case "ur": return const Locale("ur", "PK"); 
+    case "ar": return const Locale("ar", "SA");
+    case "my": return const Locale("my", "MM");
+    case "gu": return const Locale("gu", "IN"); 
+    case "fr": return const Locale("fr", "FR");
+    case "de": return const Locale("de", "DE");
     default: return const Locale("en", "US");
   }
 }
@@ -107,6 +115,14 @@ String getLanguage(String languageCode){
     case "ml": return "മലയാളം";
     case "kn": return "ಕನ್ನಡ";
     case "hi": return "हिंदी";
+    case "ar": return "العربية";
+    case "bn": return "বাংলা";
+    case "pt": return "Português";
+    case "de": return "Deutsch";
+    case "fr": return "Français";
+    case "my": return "မြန်မာ";
+    case "ur": return "اردو";
+    case "gu": return "ગુજરાતી";
     default: return "ENGLISH";
   }
 }
