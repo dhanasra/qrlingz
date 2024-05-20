@@ -26,6 +26,7 @@ class HomeViewModel extends BaseViewModel {
   late PageController controller;
   late List<Widget> items;
   late BuildContext ctx;
+  late ValueNotifier<bool> showAll;
 
   final GlobalKey<ScaffoldState> key = GlobalKey();
 
@@ -47,6 +48,7 @@ class HomeViewModel extends BaseViewModel {
       )
     ];
     ctx = context;
+    showAll = ValueNotifier(false);
   }
 
   handleOptionClick(v){

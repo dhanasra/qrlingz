@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
+import 'package:qrlingz_app/pages/barcode/create/barcode_create_view.dart';
+import 'package:qrlingz_app/pages/barcode/customize/barcode_customize_view.dart';
 import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
@@ -36,10 +38,16 @@ class Routes {
 
   static const settings = '/settings';
 
+  // qrcode
+
   static const create = '/create';
   static const customize = '/customize';
   static const preview = '/preview';
   static const editor = '/editor';
+
+  // barcode
+  static const createBarcode = '/createBarcode';
+  static const barcodeCustomize = '/barcodeCustomize';
 }
 
 class RouteGenerator {
@@ -112,6 +120,12 @@ class RouteGenerator {
           create: (context) => ImageBloc(),
           child: EditorView(qrData: args['data'], image: args['image']),
         ));
+      case Routes.createBarcode: 
+        var type = settings.arguments as String;
+        return getTransistionPage(BarcodeCreateView(type: type));
+      case Routes.barcodeCustomize: 
+        var args = settings.arguments as Map;
+        return getTransistionPage(BarcodeCustomizeView(data: args['data'], name: args['name']));
       default:
         return unDefinedRoute();
     }

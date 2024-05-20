@@ -50,8 +50,6 @@ class _CustomizeViewState extends State<CustomizeView> {
       },
       builder: (_, state){
 
-
-
         return ValueListenableBuilder(
           valueListenable: _viewModel.active,
           builder: (_, activeItem, __) {

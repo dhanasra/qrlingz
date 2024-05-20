@@ -134,6 +134,15 @@ class ThemeConst {
         ),
       ),
 
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            textStyle: GoogleFonts.lato(  
+              color: ColorConst.primary,
+              fontSize: 14,
+              fontWeight: FontWeight.w600)
+          ),
+      ),
+
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: !isDark ? ColorConst.primary : ColorConst.primaryLight,

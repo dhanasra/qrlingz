@@ -75,6 +75,89 @@ class DataConst {
     }
   ];
 
+  static const List barcodeItems = [
+      {
+        "id": "codabar",
+        "text": "CODABAR"
+      },
+      {
+        "id": "code_39",
+        "text": "Code 39"
+      },
+      {
+        "id": "code_93",
+        "text": "Code 93"
+      },
+      {
+        "id": "code_128",
+        "text": "Code 128"
+      },
+      {
+        "id": "gs1_128",
+        "text": "GS1-128"
+      },
+      {
+        "id": "itf",
+        "text": "Interleaved 2 of 5 (ITF)"
+      },
+      {
+        "id": "itf_14",
+        "text": "ITF-14"
+      },
+      {
+        "id": "itf_16",
+        "text": "ITF-16"
+      },
+      {
+        "id": "ean_13",
+        "text": "EAN 13"
+      },
+      {
+        "id": "ean_8",
+        "text": "EAN 8"
+      },
+      {
+        "id": "ean_2",
+        "text": "EAN 2"
+      },
+      {
+        "id": "ean_5",
+        "text": "EAN 5"
+      },
+      {
+        "id": "isbn",
+        "text": "ISBN"
+      },
+      {
+        "id": "upc_a",
+        "text": "UPC-A"
+      },
+      {
+        "id": "upc_e",
+        "text": "UPC-E"
+      },
+      {
+        "id": "telepen",
+        "text": "Telepen"
+      },
+      {
+        "id": "rm4scc",
+        "text": "RM4SCC"
+      },
+      {
+        "id": "pdf417",
+        "text": "PDF417"
+      },
+      {
+        "id": "data_matrix",
+        "text": "Data Matrix"
+      },
+      {
+        "id": "aztec",
+        "text": "Aztec"
+      },
+    ];
+
   static const Map<String, List> qrItems = {
     "STANDARD": [
       {

@@ -1,5 +1,6 @@
   import 'dart:io';
 
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file_plus/open_file_plus.dart';
 
@@ -135,4 +136,131 @@ Future<void> saveVCard({required String data}) async {
     await file.writeAsString(data);
     OpenFile.open(file.path);
   } catch (_) {}
+}
+
+getBarcodeType(String type){
+
+   switch(type){
+    case "code_39": return Barcode.code39();
+    case "code_93": return Barcode.code93();
+    case "code_128": return Barcode.code128();
+    case "codabar": return Barcode.codabar();
+    case "gs1_128": return Barcode.gs128();
+    case "itf": return Barcode.itf();
+    case "itf_14": return Barcode.itf14();
+    case "itf_16": return Barcode.itf16();
+    case "ean_13": return Barcode.ean13();
+    case "ean_8": return Barcode.ean8();
+    case "ean_2": return Barcode.ean2();
+    case "ean_5": return Barcode.ean5();
+    case "isbn": return Barcode.isbn();
+    case "upc_a": return Barcode.upcA();
+    case "upc_e": return Barcode.upcE();
+    case "telepen": return Barcode.telepen();
+    case "rm4scc": return Barcode.rm4scc();
+    case "pdf417": return Barcode.pdf417();
+    case "data_matrix": return Barcode.dataMatrix();
+    case "aztec": return Barcode.aztec();
+    default: return Barcode.code39();
+  }
+}
+
+getBarcodeSampleData(String type) {
+    switch(type) {
+        case "code_39": return "CODE39SAMPLE";
+        case "code_93": return "CODE93SAMPLE";
+        case "code_128": return "CODE128SAMPLE";
+        case "codabar": return "0123456789";
+        case "gs1_128": return "123456789012345678";
+        case "itf": return "1234567890";
+        case "itf_14": return "12345678901231";
+        case "itf_16": return "1234567890123452";
+        case "ean_13": return "4006381333931";
+        case "ean_8": return "73513537";
+        case "ean_2": return "12";
+        case "ean_5": return "12345";
+        case "isbn": return "9783161484100";
+        case "upc_a": return "012345678905";
+        case "upc_e": return "0123456";
+        case "telepen": return "TELEPEN1234";
+        case "rm4scc": return "RM4SCC12345";
+        case "pdf417": return "PDF417SAMPLE";
+        case "data_matrix": return "DMATRIX12345";
+        case "aztec": return "AZTEC12345";
+        default: return "DEFAULTSAMPLE";
+    }
+}
+
+String getLabel(String type) {
+    switch(type) {
+        case "code_39": return "Code 39";
+        case "code_93": return "Code 93";
+        case "code_128": return "Code 128";
+        case "codabar": return "CODABAR";
+        case "gs1_128": return "GS1-128";
+        case "itf": return "Interleaved 2 of 5 (ITF)";
+        case "itf_14": return "ITF-14";
+        case "itf_16": return "ITF-16";
+        case "ean_13": return "EAN 13";
+        case "ean_8": return "EAN 8";
+        case "ean_2": return "EAN 2";
+        case "ean_5": return "EAN 5";
+        case "isbn": return "ISBN";
+        case "upc_a": return "UPC-A";
+        case "upc_e": return "UPC-E";
+        case "telepen": return "Telepen";
+        case "rm4scc": return "RM4SCC";
+        case "pdf417": return "PDF417";
+        case "data_matrix": return "Data Matrix";
+        case "aztec": return "Aztec";
+        default: return "Code 39";
+    }
+}
+
+
+String getFormatInstructions(String type) {
+  switch (type) {
+    case "upc_e":
+      return '* Ex. 01234567\n* Charset: Number (0-9)\n* Capacity: 7 digits + 1 check digit';
+    case "upc_a":
+      return '* Ex. 012345678911\n* Charset: Number (0-9)\n* Capacity: 11 digits + 1 check digit';
+    case "pdf417":
+      return '* Ex. PDF417SAMPLE\n* Charset: All 256 ASCII characters\n* Capacity: Upto 800 characters';
+    case "ean_13":
+      return '* Ex. 4006381333931\n* Charset: Number (0-9)\n* Capacity: 12 digits + 1 check digit';
+    case "ean_8":
+      return '* Ex. 73513537\n* Charset: Number (0-9)\n* Capacity: 7 digits + 1 check digit';
+    case "ean_5":
+      return '* Ex. 12345\n* Charset: Number (0-9)\n* Capacity: 4 digits + 1 check digit';
+    case "ean_2":
+      return '* Ex. 12\n* Charset: Number (0-9)\n* Capacity: 1 digit + 1 check digit';
+    case "code_39":
+      return '* Ex. CODE39SAMPLE\n* Charset: Number (0-9) and upper letters (A-Z) and special characters and space\n* Capacity: No specific restrictions.';
+    case "code_93":
+      return '* Ex. CODE93SAMPLE\n* Charset: Number (0-9) and upper letters (A-Z) and special characters and space\n* Capacity: No specific restrictions.';
+    case "code_128":
+      return '* Ex. CODE128SAMPLE\n* Charset: All 128 ASCII characters\n* Capacity: No specific restrictions.';
+    case "codabar":
+      return '* Ex. 0123456789\n* Charset: Number (0-9) and special characters (\$/-:+)\n* Capacity: No specific restrictions.';
+    case "itf":
+      return '* Ex. 0123456789\n* Charset: Number (0-9)\n* Capacity: Even number of digits';
+    case "itf_14":
+      return '* Ex. 01234567890123\n* Charset: Number (0-9)\n* Capacity: 14 digits';
+    case "itf_16":
+      return '* Ex. 0123456789012345\n* Charset: Number (0-9)\n* Capacity: 16 digits';
+    case "telepen":
+      return "* Telepen\n* Charset: All uppercase letters (A-Z), numbers (0-9), and special characters (\$/+%-)";
+    case "rm4scc":
+      return "* RM4SCC\n* Charset: All uppercase letters (A-Z) and numbers (0-9)";
+    case "data_matrix":
+      return "* Data Matrix\n* Charset: All printable ASCII characters";
+    case "aztec":
+      return "* Aztec\n* Charset: All printable ASCII characters";
+    case "isbn":
+      return "* ISBN\n* Ex. 9780132350884\n* Charset: Number (0-9)\n* Capacity: 13 digits";
+    case "gs1_128":
+      return "* GS1-128 (UCC/EAN-128)\n* Charset: All printable ASCII characters";
+    default:
+      return "Barcode type not recognized";
+  }
 }
