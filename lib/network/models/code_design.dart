@@ -60,7 +60,7 @@ class CodeDesign {
     };
   }
 
-  factory CodeDesign.fromMap(Map<String, dynamic> map) {
+  factory CodeDesign.fromMap(map) {
     return CodeDesign(
       showText: map['showText'] ?? true,
       color: map['color'] != null ? map['color'] as String : null,

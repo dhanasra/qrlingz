@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
-import 'package:qrlingz_app/extensions/context_exten.dart';
-import 'package:qrlingz_app/network/firebase_client.dart';
-import 'package:qrlingz_app/network/models/barcode_data.dart';
 import 'package:qrlingz_app/network/models/barcode_design.dart';
-
-import '../../../routes/app_routes.dart';
+import 'package:qrlingz_app/pages/barcode/bloc/barcode_bloc.dart';
 
 class BarcodeCustomizeViewModel extends BaseViewModel {
   late ValueNotifier<BarcodeDesign> design;
@@ -22,16 +19,9 @@ class BarcodeCustomizeViewModel extends BaseViewModel {
 
   saveBarcode(BuildContext context){
 
-    var barcode = BarcodeData(
-      id: 'test', 
-      name: '', 
-      value: barcodeData, 
-      design: design.value, 
-      created: DateTime.now(), 
-      createdBy: FirebaseClient().userId ?? ''
+    context.read<BarcodeBloc>().add(
+      SaveBarcodeEvent(design: design.value, name: barcodeType, value: barcodeData)
     );
-
-    context.goto(Routes.barcodeView, args: barcode);
   }
 
   @override

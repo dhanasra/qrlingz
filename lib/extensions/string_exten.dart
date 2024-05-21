@@ -33,8 +33,9 @@ extension TextExtensions on String {
     )).tr();
   }
 
-  bs(BuildContext context, {Color? color, TextAlign? align}){
-    return Text(this, textAlign: align ?? TextAlign.center, style: Theme.of(context).textTheme.bodySmall!.copyWith(
+  bs(BuildContext context, {Color? color, TextAlign? align, bool elipsis = false}){
+    return Text(this, textAlign: align ?? TextAlign.center, overflow: elipsis ? TextOverflow.ellipsis: null, 
+      style: Theme.of(context).textTheme.bodySmall!.copyWith(
       color: color
     )).tr();
   }

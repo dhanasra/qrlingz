@@ -22,6 +22,7 @@ import '../common/image/image_bloc.dart';
 import '../pages/auth/bloc/auth_bloc.dart';
 import '../pages/auth/login/login_view.dart';
 import '../pages/auth/signup/signup_view.dart';
+import '../pages/barcode/bloc/barcode_bloc.dart';
 import '../pages/qrcode/bloc/qr_code_bloc.dart';
 import '../pages/settings/bloc/account_bloc.dart';
 import '../pages/splash/splash_view.dart';
@@ -123,13 +124,16 @@ class RouteGenerator {
           create: (context) => ImageBloc(),
           child: EditorView(qrData: args['data'], image: args['image']),
         ));
-      case Routes.createBarcode: 
+      case Routes.createBarcode:
         var type = settings.arguments as String;
         return getTransistionPage(BarcodeCreateView(type: type));
-      case Routes.barcodeCustomize: 
+      case Routes.barcodeCustomize:
         var args = settings.arguments as Map;
-        return getTransistionPage(BarcodeCustomizeView(data: args['data'], name: args['name']));
-      case Routes.barcodeView: 
+        return getTransistionPage(BlocProvider(
+          create: (context) => BarcodeBloc(),
+          child: BarcodeCustomizeView(data: args['data'], name: args['name']),
+        ));
+      case Routes.barcodeView:
         var args = settings.arguments as BarcodeData;
         return getTransistionPage(BarcodeView(data: args));
       default:

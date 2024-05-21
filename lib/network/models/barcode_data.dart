@@ -6,37 +6,37 @@ import 'package:qrlingz_app/network/models/barcode_design.dart';
 class BarcodeData {
   final String id;
   final String name;
+  final int type;
   final String value;
   final BarcodeDesign design;
   final DateTime created;
-  final String createdBy;
 
-
+  
   BarcodeData({
     required this.id,
     required this.name,
+    required this.type,
     required this.value,
     required this.design,
     required this.created,
-    required this.createdBy,
   });
-
+  
 
   BarcodeData copyWith({
     String? id,
     String? name,
+    int? type,
     String? value,
     BarcodeDesign? design,
     DateTime? created,
-    String? createdBy,
   }) {
     return BarcodeData(
       id: id ?? this.id,
       name: name ?? this.name,
+      type: type ?? this.type,
       value: value ?? this.value,
       design: design ?? this.design,
       created: created ?? this.created,
-      createdBy: createdBy ?? this.createdBy,
     );
   }
 
@@ -44,21 +44,21 @@ class BarcodeData {
     return <String, dynamic>{
       'id': id,
       'name': name,
+      'type': type,
       'value': value,
       'design': design.toMap(),
       'created': created.millisecondsSinceEpoch,
-      'createdBy': createdBy,
     };
   }
 
-  factory BarcodeData.fromMap(Map<String, dynamic> map) {
+  factory BarcodeData.fromMap(map) {
     return BarcodeData(
       id: map['id'] as String,
       name: map['name'] as String,
+      type: map['type'] as int,
       value: map['value'] as String,
-      design: BarcodeDesign.fromMap(map['design'] as Map<String,dynamic>),
+      design: BarcodeDesign.fromMap(map['design']),
       created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
-      createdBy: map['createdBy'] as String,
     );
   }
 
@@ -68,7 +68,7 @@ class BarcodeData {
 
   @override
   String toString() {
-    return 'BarcodeData(id: $id, name: $name, value: $value, design: $design, created: $created, createdBy: $createdBy)';
+    return 'BarcodeData(id: $id, name: $name, type: $type, value: $value, design: $design, created: $created)';
   }
 
   @override
@@ -78,19 +78,19 @@ class BarcodeData {
     return 
       other.id == id &&
       other.name == name &&
+      other.type == type &&
       other.value == value &&
       other.design == design &&
-      other.created == created &&
-      other.createdBy == createdBy;
+      other.created == created;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
       name.hashCode ^
+      type.hashCode ^
       value.hashCode ^
       design.hashCode ^
-      created.hashCode ^
-      createdBy.hashCode;
+      created.hashCode;
   }
 }

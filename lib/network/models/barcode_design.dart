@@ -69,7 +69,7 @@ class BarcodeDesign {
     };
   }
 
-  factory BarcodeDesign.fromMap(Map<String, dynamic> map) {
+  factory BarcodeDesign.fromMap(map) {
     return BarcodeDesign(
       color: map['color'] != null ? map['color'] as String : null,
       background: map['background'] != null ? map['background'] as String : null,
@@ -78,8 +78,8 @@ class BarcodeDesign {
       border: map['border'] != null ? map['border'] as double : null,
       borderColor: map['borderColor'] != null ? map['borderColor'] as String : null,
       alignment: map['alignment'] != null ? map['alignment'] as String : null,
-      code: map['code'] != null ? CodeDesign.fromMap(map['code'] as Map<String,dynamic>) : null,
-      content: map['content'] != null ? ContentDesign.fromMap(map['content'] as Map<String,dynamic>) : null,
+      code: map['code'] != null ? CodeDesign.fromMap(map['code']) : null,
+      content: map['content'] != null ? ContentDesign.fromMap(map['content']) : null,
     );
   }
 
