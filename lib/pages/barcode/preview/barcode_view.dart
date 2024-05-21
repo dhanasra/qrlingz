@@ -10,7 +10,6 @@ import 'package:qrlingz_app/widgets/barcode_preview.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../common/image/image_bloc.dart';
-import '../../../constants/data_const.dart';
 import '../../../constants/string_const.dart';
 import '../../../routes/app_routes.dart';
 
@@ -43,29 +42,6 @@ class _BarcodeViewState extends State<BarcodeView> {
             title: const Text(StringConst.preview).tr(),
             centerTitle: false,
             actions: [
-              // LikeButton(
-              //   isLiked: _viewModel.qrdata.isFavourite 
-              //     || Global.favourites.value.any((element) => element.id==_viewModel.qrdata.id),
-              //   onTap: (isLiked)async{
-              //     _viewModel.updateFavourite(!isLiked);
-              //     return !isLiked;
-              //   },
-              //   likeBuilder: (bool isLiked) {
-              //   return Icon(
-              //     Icons.favorite,
-              //     color: isLiked ? Colors.deepOrange : Colors.grey,
-              //   );
-              // },
-              // ),
-              // 8.w(),
-              Visibility(
-                visible: !DataConst.dynamics.contains(widget.data.name),
-                child: IconButton(
-                  icon: const Icon(Icons.edit_outlined),
-                  onPressed: ()=>context.goto(Routes.home, clear: true)
-                ),
-              ),
-              8.w(),
               IconButton(
                 icon: const Icon(Icons.home_outlined),
                 onPressed: ()=>context.goto(Routes.home, clear: true)
