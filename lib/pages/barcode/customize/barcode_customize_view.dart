@@ -1,11 +1,12 @@
-import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/pages/barcode/customize/barcode_customize_viewmodel.dart';
-import 'package:qrlingz_app/utils/utils.dart';
-import 'package:qrlingz_app/widgets/styled_wrapper.dart';
+import 'package:qrlingz_app/pages/barcode/customize/fragments/barcode_fragment.dart';
+import 'package:qrlingz_app/pages/barcode/customize/fragments/content_fragment.dart';
+import 'package:qrlingz_app/widgets/barcode_preview.dart';
 
 import '../../../widgets/styled_button.dart';
+import 'fragments/theme_fragment.dart';
 
 class BarcodeCustomizeView extends StatefulWidget {
   final Map data;
@@ -45,23 +46,44 @@ class _BarcodeCustomizeViewState extends State<BarcodeCustomizeView> {
       body: Column(
         children: [
           Expanded(
-            child: Container(
-              alignment: Alignment.center,
-              color: Colors.grey,
-              child: StyledWrapper(
-                p: const EdgeInsets.all(30),
-                child: BarcodeWidget(
-                  width: 200,
-                  height: 100,
-                  padding: const EdgeInsets.all(8),
-                  data: _viewModel.barcodeData, 
-                  barcode: getBarcodeType(_viewModel.barcodeType)
-                ),
-              ),
+            flex: 4,
+            child: ValueListenableBuilder(
+              valueListenable: _viewModel.design,
+              builder: (_, design, __) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.grey,
+                  child: BarcodePreview(
+                    value: _viewModel.barcodeData, 
+                    type: _viewModel.barcodeType, 
+                    design: design
+                  ),
+                );
+              }
             ),
           ),
           Expanded(
-            child: ListView(),
+            flex: 6,
+            child: DefaultTabController(
+              length: 3,
+              child: Column(
+                children: [
+                  const TabBar(tabs: [
+                    Tab(text: "Theme"),
+                    Tab(text: "Barcode"),
+                    Tab(text: "Content")
+                  ]),
+                  Expanded(
+                    flex: 4,
+                    child: TabBarView(children: [
+                      ThemeFragment(vm: _viewModel),
+                      BarcodeFragment(vm: _viewModel),
+                      ContentFragment(vm: _viewModel)
+                    ]),
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),

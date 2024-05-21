@@ -10,6 +10,18 @@ extension ContextExtensions on BuildContext {
     }
   }
 
+  ThemeData theme(){
+    return Theme.of(this);
+  }
+
+  double sw(){
+    return MediaQuery.of(this).size.width;
+  }
+
+  double sh(){
+    return MediaQuery.of(this).size.height;
+  }
+
   back(){
     Navigator.pop(this);
   }
