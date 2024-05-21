@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
+import 'package:qrlingz_app/network/models/barcode_data.dart';
 import 'package:qrlingz_app/pages/barcode/create/barcode_create_view.dart';
 import 'package:qrlingz_app/pages/barcode/customize/barcode_customize_view.dart';
+import 'package:qrlingz_app/pages/barcode/preview/barcode_view.dart';
 import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
@@ -48,6 +50,7 @@ class Routes {
   // barcode
   static const createBarcode = '/createBarcode';
   static const barcodeCustomize = '/barcodeCustomize';
+  static const barcodeView = '/barcodeView';
 }
 
 class RouteGenerator {
@@ -126,6 +129,9 @@ class RouteGenerator {
       case Routes.barcodeCustomize: 
         var args = settings.arguments as Map;
         return getTransistionPage(BarcodeCustomizeView(data: args['data'], name: args['name']));
+      case Routes.barcodeView: 
+        var args = settings.arguments as BarcodeData;
+        return getTransistionPage(BarcodeView(data: args));
       default:
         return unDefinedRoute();
     }

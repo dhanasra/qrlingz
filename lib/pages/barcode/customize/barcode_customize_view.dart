@@ -37,7 +37,7 @@ class _BarcodeCustomizeViewState extends State<BarcodeCustomizeView> {
             width: 92,
             height: 36,
             child: StyledButton(
-              onClick: () => {},
+              onClick: () => _viewModel.saveBarcode(context),
               text: "SAVE")
           ),
           16.w()
