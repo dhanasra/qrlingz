@@ -1,7 +1,5 @@
 import 'package:barcode_widget/barcode_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/constants/data_const.dart';
@@ -50,6 +48,7 @@ class DashboardFrament extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         BarcodeWidget(
+                          drawText: false,
                           padding: const EdgeInsets.all(8),
                           data: getBarcodeSampleData(item['id']), 
                           barcode: getBarcodeType(item['id'])
