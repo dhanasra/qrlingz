@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 // import 'package:barcode_scan2/barcode_scan2.dart';
@@ -23,17 +24,21 @@ class ScanViewModel extends BaseViewModel {
   QRViewController? controller;
 
   String scannedData = "";
+  Timer? debounceTimer;
+  Duration debounceDuration = const Duration(seconds: 2);
 
   void onQRViewCreated(QRViewController controller, BuildContext context) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-
-      if(scanData.format==BarcodeFormat.qrcode && scanData.code!=null && scannedData!=scanData.code){
-        scannedData = scanData.code!;
-        handleScanData(scanData.code!, false, context);
-      }else{
-        handleScanData(scanData.code!, true, context, name: scanData.format.name);
-      }
+      debounceTimer?.cancel();
+      debounceTimer = Timer(debounceDuration, () {
+        if (scanData.format == BarcodeFormat.qrcode && scanData.code != null && scannedData != scanData.code) {
+          scannedData = scanData.code!;
+          handleScanData(scanData.code!, true, context);
+        } else {
+          handleScanData(scanData.code!, false, context, name: scanData.format.name);
+        }
+      });
     });
   }
 
