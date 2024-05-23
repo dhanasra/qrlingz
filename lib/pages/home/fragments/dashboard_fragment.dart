@@ -101,15 +101,8 @@ class DashboardFrament extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16, bottom: 20),
                   itemBuilder: (_, idx){
                     var item = values[idx];
-
                     return InkWell(
-                      onTap: (){
-                        if(enabled){
-                          context.goto(Routes.create, args: item['text']);
-                        }else{
-                          context.goto(Routes.login);
-                        }
-                      },
+                      onTap: ()=>vm.showAd(context, e, item['text']),
                       child: StyledWrapper(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

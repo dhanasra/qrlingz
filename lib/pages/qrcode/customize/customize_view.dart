@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:qrlingz_app/constants/admob_const.dart';
 import 'package:qrlingz_app/constants/data_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -31,10 +35,28 @@ class CustomizeView extends StatefulWidget {
 
 class _CustomizeViewState extends State<CustomizeView> {
   late CustomizeViewModel _viewModel;
+  BannerAd? _bannerAd;
 
   @override
   void initState() {
     _viewModel = CustomizeViewModel(widget.data, widget.name);
+
+    BannerAd(
+      size: AdSize.banner, 
+      adUnitId: AdmobConst.bannerAdTest, 
+      listener: BannerAdListener(
+        onAdLoaded: (ad){
+          setState(() {
+            _bannerAd = ad as BannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error){
+          ad.dispose();
+        }
+      ), 
+      request: const AdRequest()
+    ).load();
+
     super.initState();
   }
 
@@ -248,6 +270,16 @@ class _CustomizeViewState extends State<CustomizeView> {
                           );
                         },
                       )),
+                  
+                  if(_bannerAd!=null)
+                  SizedBox(
+                    height: _bannerAd!.size.height.toDouble(),
+                    width: _bannerAd!.size.width.toDouble(),
+                    child: AdWidget(
+                      ad: _bannerAd!
+                    ),
+                  ),
+
                   Expanded(
                     flex: 6,
                     child: activeItem == 0

@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:qrlingz_app/constants/admob_const.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -24,6 +26,24 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     _viewModel = HomeViewModel(context);
     super.initState();
+    adLoaded();
+  }
+
+  adLoaded()async{
+
+    InterstitialAd.load(
+      adUnitId: AdmobConst.interstitialAdTest, 
+      request: const AdRequest(), 
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad){
+          _viewModel.interstitialAd = ad;
+          _viewModel.isInterstitialAdLoaded = true;
+        }, 
+        onAdFailedToLoad: (error){
+          _viewModel.interstitialAd?.dispose();
+          _viewModel.isInterstitialAdLoaded = false;
+        })
+    );
   }
 
   @override

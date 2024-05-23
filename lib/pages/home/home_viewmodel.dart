@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
@@ -14,6 +15,34 @@ import 'package:share_plus/share_plus.dart';
 import '../../routes/app_routes.dart';
 
 class HomeViewModel extends BaseViewModel {
+
+
+  InterstitialAd? interstitialAd;
+  bool isInterstitialAdLoaded = false;
+
+  showAd(BuildContext context, String category, value){
+    var show = category.toLowerCase()=="dynamic";
+    var enabled = checkLoginStatus(category);
+
+    if(enabled){
+      if(show && isInterstitialAdLoaded && interstitialAd!=null ){
+        interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
+          onAdDismissedFullScreenContent: (InterstitialAd ad) {
+            context.goto(Routes.create, args: value);
+          },
+          onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+            context.goto(Routes.create, args: value);
+            isInterstitialAdLoaded = false;
+          },
+        );
+        interstitialAd!.show();
+        return;
+      }
+      context.goto(Routes.create, args: value);
+    }else{
+      context.goto(Routes.login);
+    }
+  }
 
   final List<Map> bottomNavItems = [
     {'Home': Icons.home},
