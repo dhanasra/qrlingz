@@ -13,9 +13,11 @@ import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_view.dart';
 import 'package:qrlingz_app/pages/qrcode/editor/editor_view.dart';
 import 'package:qrlingz_app/pages/qrcode/preview/qrcode_preview.dart';
+import 'package:qrlingz_app/pages/scan/barcode/barcode_data_view.dart';
 import 'package:qrlingz_app/pages/scan/data/scan_data_view.dart';
 import 'package:qrlingz_app/pages/scan/scanning/scan_view.dart';
 import 'package:qrlingz_app/pages/settings/settings_view.dart';
+import 'package:qrlingz_app/pages/webview/web_search_view.dart';
 import 'package:qrlingz_app/pages/welcome/welcome_view.dart';
 
 import '../common/image/image_bloc.dart';
@@ -52,6 +54,9 @@ class Routes {
   static const createBarcode = '/createBarcode';
   static const barcodeCustomize = '/barcodeCustomize';
   static const barcodeView = '/barcodeView';
+  static const barcodeData = '/barcodeViewData';
+
+  static const webSearch = '/webSearch';
 }
 
 class RouteGenerator {
@@ -90,6 +95,10 @@ class RouteGenerator {
         var args = settings.arguments as Map;
         return getTransistionPage(
             ScanDataView(data: args['data'], image: args['image']));
+      case Routes.barcodeData:
+        var args = settings.arguments as Map;
+        return getTransistionPage(
+            BarcodeDataView(data: args['data'], image: args['image']));
       case Routes.settings:
         return getTransistionPage(BlocProvider(
           create: (context) => AccountBloc(),
@@ -136,6 +145,8 @@ class RouteGenerator {
       case Routes.barcodeView:
         var args = settings.arguments as BarcodeData;
         return getTransistionPage(BarcodeView(data: args));
+      case Routes.webSearch:
+        return getTransistionPage(WebSearchView(value: settings.arguments as String));
       default:
         return unDefinedRoute();
     }

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:lottie/lottie.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -74,7 +72,11 @@ class _ScanViewState extends State<ScanView> {
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 250),
                         child: StringConst.scanInfo.bs(context, color: Colors.white),  
-                      )
+                      ),
+                      // 24.h(),
+                      // SizedBox(
+                      //   width: 200,
+                      //   child: StyledButton(onClick: ()=>scanBarcode(), text: "Scan Barcode"))
                     ],
                   ),
                 ),
@@ -148,7 +150,7 @@ class _ScanViewState extends State<ScanView> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           )

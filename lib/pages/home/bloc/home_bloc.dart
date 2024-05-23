@@ -21,7 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       List<QRData> qrcodes = [];
       List<BarcodeData> barcodes = [];
       stored.values.map((e){
-        if(e['type']==0){
+        if(e['type']==0 || e['type']==1){
           qrcodes.add(QRData.fromMap(e));
         }else{
           barcodes.add(BarcodeData.fromMap(e));
