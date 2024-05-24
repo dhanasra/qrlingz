@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:qrlingz_app/constants/app_const.dart';
 import 'package:qrlingz_app/network/local_db.dart';
+import 'package:qrlingz_app/utils/notifications.dart';
 
 import 'app/app.dart';
 
@@ -26,6 +27,8 @@ void main() async{
       storageBucket: "qrlingz.appspot.com"
     )
   );
+
+  await AppNotification().init();
 
   try{
     final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
