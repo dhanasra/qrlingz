@@ -4,6 +4,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/network/models/barcode_data.dart';
+import 'package:qrlingz_app/utils/notifications.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -26,7 +27,8 @@ class BarcodeViewModel extends BaseViewModel {
   saveToGallery()async{
     var bytes = await controller.capture();
     if(bytes!=null){
-      await ImageGallerySaver.saveImage(bytes);
+      var result = await ImageGallerySaver.saveImage(bytes);
+      AppNotification().showDownloadNotification(filePath: result['filePath']);
     }
   }
   
