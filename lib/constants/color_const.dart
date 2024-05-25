@@ -6,6 +6,7 @@ class ColorConst {
 
   static const primary = Color(0xFF201A3F);
   static const primaryLight = Color(0xFFACA4FE);
+  static const highlight = Color.fromARGB(255, 61, 33, 243);
 
   static const colors = [
     Color(0xFFFF5733),

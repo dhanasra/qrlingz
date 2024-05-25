@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
           if(FirebaseAuth.instance.currentUser!=null){
             context.goto(Routes.home, clear: true);
           }else{
-            context.goto(Routes.signup, clear: true);
+            context.goto(Routes.login, clear: true);
           }
         });
     });

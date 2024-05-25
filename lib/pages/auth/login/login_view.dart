@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
@@ -50,6 +51,16 @@ class _LoginViewState extends State<LoginView> {
                   padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
                   children: [
                     "Login".hl(context, bold: true),
+                    Row(
+                      children: [
+                        "Don't have an account?".ts(context, color: Colors.grey.withOpacity(0.9)),
+                        8.w(),
+                        InkWell(
+                          onTap: () => context.goto(Routes.signup),
+                          child: "SIGNUP".ts(context, color: ColorConst.highlight),
+                        )
+                      ],
+                    ),
                     24.h(),
                     "Email Address".ts(context),
                     8.h(),
@@ -128,18 +139,6 @@ class _LoginViewState extends State<LoginView> {
                             child: Image.asset(AssetsConst.github, width: 54))
                       ],
                     ),
-                    64.h(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        "Don't have an account?".ts(context),
-                        8.w(),
-                        InkWell(
-                          onTap: () => context.back(),
-                          child: "Signup".ts(context),
-                        )
-                      ],
-                    )
                   ],
                 ),
               );

@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 
+import '../../../constants/assets_const.dart';
 import '../../../routes/app_routes.dart';
 import '../../../utils/toast.dart';
 import '../../../utils/validator.dart';
@@ -49,6 +51,16 @@ class _SignupViewState extends State<SignupView> {
                   padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
                   children: [
                     "Signup".hl(context, bold: true),
+                    Row(
+                      children: [
+                        "Already have an account?".ts(context, color: Colors.grey.withOpacity(0.9)),
+                        8.w(),
+                        InkWell(
+                          onTap: () => context.back(),
+                          child: "LOGIN".ts(context, color: ColorConst.highlight),
+                        )
+                      ],
+                    ),
                     24.h(),
                     Row(
                       children: [
@@ -139,14 +151,30 @@ class _SignupViewState extends State<SignupView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        "Already have an account?".ts(context),
+                        const SizedBox(width: 80, child: Divider()),
                         8.w(),
-                        InkWell(
-                          onTap: () => context.goto(Routes.login),
-                          child: "Login".ts(context),
-                        )
+                        "OR".tl(context),
+                        8.w(),
+                        const SizedBox(width: 80, child: Divider())
                       ],
-                    )
+                    ),
+                    32.h(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                            onTap: () => context
+                                .read<AuthBloc>()
+                                .add(GoogleLoginEvent()),
+                            child: Image.asset(AssetsConst.google, width: 54)),
+                        24.w(),
+                        InkWell(
+                            onTap: () => context
+                                .read<AuthBloc>()
+                                .add(GithubLoginEvent()),
+                            child: Image.asset(AssetsConst.github, width: 54))
+                      ],
+                    ),
                   ],
                 ),
               );
