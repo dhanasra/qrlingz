@@ -28,6 +28,14 @@ class LoginEvent extends AuthEvent {
   });
 }
 
+class PasswordForgotEvent extends AuthEvent {
+  final String email;
+  
+  PasswordForgotEvent({
+    required this.email
+  });
+}
+
 class GoogleLoginEvent extends AuthEvent{}
 
 class GithubLoginEvent extends AuthEvent{}

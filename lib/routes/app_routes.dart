@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/network/models/barcode_data.dart';
+import 'package:qrlingz_app/pages/auth/forgot_password/forgot_password_view.dart';
 import 'package:qrlingz_app/pages/barcode/create/barcode_create_view.dart';
 import 'package:qrlingz_app/pages/barcode/customize/barcode_customize_view.dart';
 import 'package:qrlingz_app/pages/barcode/preview/barcode_view.dart';
@@ -35,6 +36,7 @@ class Routes {
 
   static const login = '/login';
   static const signup = '/signup';
+  static const forgotPassword = '/forgotPassword';
 
   static const home = '/home';
 
@@ -77,6 +79,11 @@ class RouteGenerator {
         return getTransistionPage(BlocProvider(
           create: (context) => AuthBloc(),
           child: const SignupView(),
+        ));
+      case Routes.forgotPassword:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AuthBloc(),
+          child: const ForgotPasswordView(),
         ));
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());

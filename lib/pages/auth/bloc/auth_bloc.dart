@@ -14,12 +14,31 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
     on<SignupEvent>(_onSignup);
     on<LoginEvent>(_onLogin);
+    on<PasswordForgotEvent>(_onPasswordForgot);
     on<GoogleLoginEvent>(_onGoogleLogin);
     on<GithubLoginEvent>(_onGithubLogin);
   }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseClient _client = FirebaseClient();
+
+  _onPasswordForgot(PasswordForgotEvent event, Emitter emit)async{
+    try{
+      emit(Loading());
+      await _auth.sendPasswordResetEmail(
+        email: event.email
+      );
+      
+      emit(Success());
+    }catch(e){
+      if(e is FirebaseAuthException){
+        emit(Error(msg: e.message));
+        return;
+      }
+
+      emit(Error(msg: "Something went wrong! Try again later"));
+    }
+  }
   
   _onSignup(SignupEvent event, Emitter emit)async{
     try{

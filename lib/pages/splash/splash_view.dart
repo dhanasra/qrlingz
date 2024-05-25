@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -20,7 +21,11 @@ class _SplashViewState extends State<SplashView> {
       await FirebaseClient().configDB.doc("constants").get().then(
         (snapshots){
           Global.initialize(snapshots.data());
-          context.goto(Routes.home, clear: true);
+          if(FirebaseAuth.instance.currentUser!=null){
+            context.goto(Routes.home, clear: true);
+          }else{
+            context.goto(Routes.signup, clear: true);
+          }
         });
     });
     super.initState();

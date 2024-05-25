@@ -48,7 +48,7 @@ class _SignupViewState extends State<SignupView> {
                 child: ListView(
                   padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
                   children: [
-                    "SIGNUP".hl(context),
+                    "Signup".hl(context, bold: true),
                     24.h(),
                     Row(
                       children: [
@@ -142,7 +142,7 @@ class _SignupViewState extends State<SignupView> {
                         "Already have an account?".ts(context),
                         8.w(),
                         InkWell(
-                          onTap: () => context.back(),
+                          onTap: () => context.goto(Routes.login),
                           child: "Login".ts(context),
                         )
                       ],

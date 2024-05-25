@@ -9,8 +9,10 @@ extension TextExtensions on String {
     )).tr();
   }
 
-  hl(BuildContext context, {TextAlign? align}){
-    return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineLarge).tr();
+  hl(BuildContext context, {TextAlign? align, bool bold = false, Color? color}){
+    return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+      fontWeight: bold ? FontWeight.bold: null, color: color
+    )).tr();
   }
 
   hm(BuildContext context, {TextAlign? align}){

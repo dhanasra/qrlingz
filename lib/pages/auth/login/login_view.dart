@@ -49,7 +49,7 @@ class _LoginViewState extends State<LoginView> {
                 child: ListView(
                   padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
                   children: [
-                    "LOGIN".hl(context),
+                    "Login".hl(context, bold: true),
                     24.h(),
                     "Email Address".ts(context),
                     8.h(),
@@ -85,7 +85,13 @@ class _LoginViewState extends State<LoginView> {
                             style: Theme.of(context).textTheme.titleMedium,
                           );
                         }),
-                    64.h(),
+                    4.h(),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: ()=>context.goto(Routes.forgotPassword), 
+                        child: 'Forgot Password ?'.ts(context))),
+                    56.h(),
                     BlocBuilder<AuthBloc, AuthState>(
                       builder: (context, state) {
                         return StyledButton(
@@ -129,7 +135,7 @@ class _LoginViewState extends State<LoginView> {
                         "Don't have an account?".ts(context),
                         8.w(),
                         InkWell(
-                          onTap: () => context.goto(Routes.signup),
+                          onTap: () => context.back(),
                           child: "Signup".ts(context),
                         )
                       ],
