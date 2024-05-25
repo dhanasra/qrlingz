@@ -10,6 +10,7 @@ import 'package:qrlingz_app/pages/barcode/preview/barcode_view.dart';
 import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
+import 'package:qrlingz_app/pages/profile/view/profile_view.dart';
 import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_view.dart';
 import 'package:qrlingz_app/pages/qrcode/editor/editor_view.dart';
@@ -44,6 +45,7 @@ class Routes {
   static const scanData = '/scanData';
 
   static const settings = '/settings';
+  static const profile = '/profile';
 
   // qrcode
 
@@ -110,6 +112,11 @@ class RouteGenerator {
         return getTransistionPage(BlocProvider(
           create: (context) => AccountBloc(),
           child: const SettingsView(),
+        ));
+      case Routes.profile:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AccountBloc(),
+          child: const ProfileView(),
         ));
       case Routes.create:
         return getTransistionPage(BlocProvider(

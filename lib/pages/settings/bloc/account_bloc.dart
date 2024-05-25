@@ -10,9 +10,24 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   AccountBloc() : super(AccountInitial()) {
     on<DeleteAccountEvent>(_onDeleteAccount);
     on<LogoutEvent>(_onLogout);
+    on<SaveProfileEvent>(_onSaveProfile);
   }
 
   final FirebaseClient _client = FirebaseClient();
+
+  _onSaveProfile(SaveProfileEvent event, Emitter emit)async{
+   try{
+      emit(Loading());
+      await _client.userDB.doc(_client.userId).update({
+        "firstName": event.fname,
+        "lastName": event.lname,
+        "phone": event.phone
+      });
+      emit(ProfileUpdated());
+    }catch(e){
+      emit(Error());
+    }
+  }
 
   _onDeleteAccount(DeleteAccountEvent event, Emitter emit)async{
     try{

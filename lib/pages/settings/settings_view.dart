@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/common/theme/theme_cubit.dart';
 import 'package:qrlingz_app/constants/string_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -43,10 +44,15 @@ class _SettingsViewState extends State<SettingsView> {
           title: const Text(StringConst.settings).tr(),
         ),
         body: ListView(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           children: [
             StringConst.general.ts(context),
             8.h(),
+            ListTile(
+                onTap: () => context.goto(Routes.profile),
+                leading: const Icon(Icons.person_2_outlined, size: 20),
+                contentPadding: const EdgeInsets.only(left: 16, right: 16),
+                title: const Text("My Profile").tr()),
             ListTile(
                 onTap: () => _viewModel.openLanguageSheet(context),
                 leading: const Icon(Icons.language_outlined, size: 20),

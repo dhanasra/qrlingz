@@ -9,6 +9,8 @@ class Loading extends AccountState {}
 
 class AccountDeleted extends AccountState {}
 
+class ProfileUpdated extends AccountState {}
+
 class LoggedOut extends AccountState {}
 
 class Error extends AccountState {}

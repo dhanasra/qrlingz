@@ -6,6 +6,8 @@ import 'package:qrlingz_app/network/firebase_client.dart';
 import 'package:qrlingz_app/routes/app_routes.dart';
 import 'package:qrlingz_app/utils/global.dart';
 
+import '../../network/models/user_data.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -18,11 +20,17 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), ()async{
-      await FirebaseClient().configDB.doc("constants").get().then(
-        (snapshots){
+      var client = FirebaseClient();
+      await client.configDB.doc("constants").get().then(
+        (snapshots)async{
           Global.initialize(snapshots.data());
-          if(FirebaseAuth.instance.currentUser!=null){
-            context.goto(Routes.home, clear: true);
+          var fbuser = FirebaseAuth.instance.currentUser;
+          if(fbuser!=null){
+            await client.userDB.doc(fbuser.uid).get().then(
+              (data){
+                Global.user = UserData.fromMap(data.data());
+                context.goto(Routes.home, clear: true);
+              });
           }else{
             context.goto(Routes.login, clear: true);
           }

@@ -15,6 +15,14 @@ extension TextExtensions on String {
     )).tr();
   }
 
+  hls(BuildContext context, {TextAlign? align, bool bold = false, Color? color, bool elipsis = false}){
+    return Text(this, textAlign: align, overflow: elipsis ? TextOverflow.ellipsis: null, 
+    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+      fontWeight: bold ? FontWeight.bold: null, color: color,
+      fontSize: 26
+    )).tr();
+  }
+
   hm(BuildContext context, {TextAlign? align}){
     return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineMedium).tr();
   }
@@ -29,8 +37,9 @@ extension TextExtensions on String {
     )).tr();
   }
 
-  ts(BuildContext context, {Color? color, TextAlign? align}){
-    return Text(this, textAlign: align, style: Theme.of(context).textTheme.titleSmall!.copyWith(
+  ts(BuildContext context, {Color? color, TextAlign? align, bool elipsis = false}){
+    return Text(this, textAlign: align, overflow: elipsis ? TextOverflow.ellipsis: null, 
+    style: Theme.of(context).textTheme.titleSmall!.copyWith(
       color: color
     )).tr();
   }
