@@ -20,13 +20,14 @@ class AppNotification {
 
 
   Future<void> showDownloadNotification({required String? filePath}) async {
-    await flutterLocalNotificationsPlugin.show(
-      10,
+    try{
+      await flutterLocalNotificationsPlugin.show(
+      11,
       null,
       'Image downloaded successfully ! Click view to open.',
       const NotificationDetails(
         android: AndroidNotificationDetails(
-          '10',
+          '12',
           'DWLN',
           fullScreenIntent: true,
           importance: Importance.high,
@@ -45,6 +46,9 @@ class AppNotification {
       ),
       payload: filePath,
     );
+    }catch(e){
+      print(e);
+    }
   }
 
   Future<void> showProgressNotification({

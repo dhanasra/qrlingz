@@ -1,13 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/utils/global.dart';
-import 'package:qrlingz_app/utils/notifications.dart';
+import 'package:qrlingz_app/utils/toast.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../network/local_db.dart';
 
@@ -37,11 +41,13 @@ class QrCodePreviewModel extends BaseViewModel {
     }
   }
 
-  saveToGallery()async{
+  saveToGallery(BuildContext context)async{
     var bytes = await controller.capture();
     if(bytes!=null){
       final result = await ImageGallerySaver.saveImage(bytes);
-      AppNotification().showDownloadNotification(filePath: result['filePath']);
+      Toast.show(context, message: 'Image downloaded successfully !', onOk: (){
+        launchUrlString(result['filePath']);
+      });
     }
   }
 

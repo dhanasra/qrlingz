@@ -220,7 +220,7 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                               children: [
                                 InkWell(
                                   onTap: (){
-                                    _viewModel.saveToGallery();
+                                    _viewModel.saveToGallery(context);
                                   },
                                   child: Container(
                                     width: 60,

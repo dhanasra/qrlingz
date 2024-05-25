@@ -7,16 +7,19 @@ class StyledButton extends StatelessWidget {
   final VoidCallback onClick;
   final String text;
   final double? w;
+  final double? h;
+  final bool isSmall;
   final bool rounded;
   final bool outlined;
   final bool loading;
   final bool secondary;
-  const StyledButton({super.key, this.loading = false, required this.onClick, required this.text, this.w, this.rounded = false, this.secondary = false, this.outlined = false});
+  const StyledButton({super.key,this.h, this.isSmall = false, this.loading = false, required this.onClick, required this.text, this.w, this.rounded = false, this.secondary = false, this.outlined = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         width: w,
+        height: h,
         padding: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(rounded? 30: 8),
@@ -40,6 +43,7 @@ class StyledButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             elevation: outlined ? 0 : null,
+            padding: isSmall ? const EdgeInsets.all(4) : null,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(rounded? 30: 6),
             ),
@@ -50,6 +54,7 @@ class StyledButton extends StatelessWidget {
             width: 24, height: 24,
             child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
           : Text(text, style: TextStyle(
+            fontSize: isSmall ? 13: null,
             color: outlined ? ColorConst.primary: Colors.white
           )).tr()
         )
