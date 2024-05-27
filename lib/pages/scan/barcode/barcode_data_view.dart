@@ -24,7 +24,7 @@ class _BarcodeDataViewState extends State<BarcodeDataView> {
 
   @override
   void initState() {
-    _viewModel = BarcodeDataViewModel(barcode: widget.data);
+    _viewModel = BarcodeDataViewModel(context: context, barcode: widget.data);
     super.initState();
   }
 

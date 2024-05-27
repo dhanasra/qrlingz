@@ -22,7 +22,7 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
 
       var barcode = BarcodeData(
         id: "${DateTime.now().millisecondsSinceEpoch}", 
-        type: 2, 
+        type: event.type, 
         name: event.name, 
         value: event.value, 
         design: event.design, 

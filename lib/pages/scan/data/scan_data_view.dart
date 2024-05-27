@@ -23,7 +23,7 @@ class _ScanDataViewState extends State<ScanDataView> {
 
   @override
   void initState() {
-    _viewModel = ScanDataViewModel(qr: widget.data);
+    _viewModel = ScanDataViewModel(context: context, qr: widget.data);
     super.initState();
   }
 

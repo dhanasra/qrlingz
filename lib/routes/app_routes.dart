@@ -102,12 +102,16 @@ class RouteGenerator {
         return getTransistionPage(const ScanView());
       case Routes.scanData:
         var args = settings.arguments as Map;
-        return getTransistionPage(
-            ScanDataView(data: args['data'], image: args['image']));
+        return getTransistionPage(BlocProvider(
+          create: (context) => QrCodeBloc(),
+          child: ScanDataView(data: args['data'], image: args['image']),
+        ));
       case Routes.barcodeData:
         var args = settings.arguments as Map;
-        return getTransistionPage(
-            BarcodeDataView(data: args['data'], image: args['image']));
+        return getTransistionPage(BlocProvider(
+          create: (context) => BarcodeBloc(),
+          child: BarcodeDataView(data: args['data'], image: args['image']),
+        ));
       case Routes.settings:
         return getTransistionPage(BlocProvider(
           create: (context) => AccountBloc(),
@@ -160,7 +164,8 @@ class RouteGenerator {
         var args = settings.arguments as BarcodeData;
         return getTransistionPage(BarcodeView(data: args));
       case Routes.webSearch:
-        return getTransistionPage(WebSearchView(value: settings.arguments as String));
+        return getTransistionPage(
+            WebSearchView(value: settings.arguments as String));
       default:
         return unDefinedRoute();
     }

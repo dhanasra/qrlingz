@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
+import 'package:qrlingz_app/pages/qrcode/bloc/qr_code_bloc.dart';
 import 'package:qrlingz_app/utils/toast.dart';
 import 'package:qrlingz_app/utils/utils.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import '../../../network/local_db.dart';
 import '../../../utils/global.dart';
 
 class ScanDataViewModel extends BaseViewModel {
   final QRData qr;
   late String dataType;
-  ScanDataViewModel({required this.qr}){
+  ScanDataViewModel({required BuildContext context, required this.qr}){
     dataType = getDataType(qr.data["value"]);
     if(dataType=="Website" && Global.openLinkOnScan){
       launchUrlString(qr.data['value']);
     }
 
     if(Global.addScanToHistory){
-      LocalDB().saveHistory(qr.toMap());
+      context.read<QrCodeBloc>().add(SaveQREvent(qrData: qr));
     }
   }
   

@@ -73,10 +73,6 @@ class _ScanViewState extends State<ScanView> {
                         constraints: const BoxConstraints(maxWidth: 250),
                         child: StringConst.scanInfo.bs(context, color: Colors.white),  
                       ),
-                      // 24.h(),
-                      // SizedBox(
-                      //   width: 200,
-                      //   child: StyledButton(onClick: ()=>scanBarcode(), text: "Scan Barcode"))
                     ],
                   ),
                 ),
@@ -135,18 +131,6 @@ class _ScanViewState extends State<ScanView> {
                               icon: Icon(!flip ? Icons.camera_front_outlined : Icons.camera_rear_outlined, color: flip ? ColorConst.primary : Colors.white, size: 20)),
                           ),
                         ),
-                        // 24.w(),
-                        // CircleAvatar(
-                        //   radius: 28,
-                        //   backgroundColor: ColorConst.primary,
-                        //   child: CircleAvatar(
-                        //     radius: 26,
-                        //     backgroundColor: ColorConst.primary,
-                        //     child: IconButton(
-                        //     onPressed: (){}, 
-                        //     icon: const Icon(Icons.layers_outlined, color: Colors.white, size: 20,)),
-                        //   ),
-                        // )
                       ],
                     ),
                   ),
