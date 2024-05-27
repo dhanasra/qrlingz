@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/utils/global.dart';
 import 'package:qrlingz_app/utils/utils.dart';
 
@@ -31,7 +30,7 @@ class LocalDB {
     Global.mode = ThemeMode.values.firstWhere((element) => element.name == data?['theme']?['mode'], orElse: ()=>ThemeMode.light);
   }
 
-  Future<void> saveHistory(QRData qrData) async =>await history?.put(qrData.id, qrData.toMap());
+  Future<void> saveHistory(Map data) async =>await history?.put(data['id'], data);
   removeHistory(String id) async =>await history?.delete(id);
   clearHistory() async =>await history?.clear();
 

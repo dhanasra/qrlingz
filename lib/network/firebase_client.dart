@@ -6,6 +6,8 @@ class Collection {
   static const String config = 'config';
   static const String users = 'USERS';
   static const String qrsInfo = 'QRCODE';
+  static const String history = 'HISTORY';
+  static const String favourites = 'FAVOURITES';
 }
 
 class FirebaseClient {
@@ -13,6 +15,8 @@ class FirebaseClient {
   final firestore = FirebaseFirestore.instance;
 
   CollectionReference get userDB => firestore.collection(Collection.users);
+  CollectionReference get historyDB => firestore.collection(Collection.history);
+  CollectionReference get favouritesDB => firestore.collection(Collection.favourites);
   CollectionReference get qrsInfoDB => firestore.collection(Collection.qrsInfo);
 
   CollectionReference get configDB => firestore.collection(Collection.config);

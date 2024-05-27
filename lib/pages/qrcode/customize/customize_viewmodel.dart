@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/base/base_viewmodel.dart';
-import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
-import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/pages/qrcode/bloc/qr_code_bloc.dart';
 
 import '../../../constants/data_const.dart';
-import '../../../routes/app_routes.dart';
 
 class CustomizeViewModel extends BaseViewModel {
 
@@ -86,15 +83,8 @@ class CustomizeViewModel extends BaseViewModel {
   }
 
   saveQRCode(BuildContext context){
-
-    if(DataConst.dynamics.contains(qrData.name)){
-      context.read<QrCodeBloc>().add(SaveFileQREvent(qrData: qrData));
-      return;
-    }
-
-    LocalDB().saveHistory(qrData).then((v){
-      context.goto(Routes.preview, args: qrData);
-    });
+    var isDynamic = DataConst.dynamics.contains(qrData.name);
+    context.read<QrCodeBloc>().add(SaveQREvent(qrData: qrData, isDynamic: isDynamic));
   }
   
   @override

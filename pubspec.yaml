@@ -120,7 +120,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "res/logo/app_logo.png"
+  image_path: "res/logo/color-logo.png"
 
 flutter:
 

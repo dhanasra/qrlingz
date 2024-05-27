@@ -12,24 +12,28 @@ part 'qr_code_state.dart';
 
 class QrCodeBloc extends Bloc<QrCodeEvent, QrCodeState> {
   QrCodeBloc() : super(QrCodeInitial()) {
-    on<SaveFileQREvent>(_onSaveFileQR);
+    on<SaveQREvent>(_onSaveQR);
   }
 
   final FirebaseClient _client = FirebaseClient();
 
-  _onSaveFileQR(SaveFileQREvent event, Emitter emit)async{
+  _onSaveQR(SaveQREvent event, Emitter emit)async{
     emit(Loading());
     try{
 
-      final task = await _client.myQRStorageRef.putFile(File(event.qrData.data["value"]));
-      final downloadUrl = await task.ref.getDownloadURL();
-      var qrData = event.qrData.copyWith(data: {"value": downloadUrl});
+      var qrData = event.qrData;
+
+      if(event.isDynamic){
+        final task = await _client.myQRStorageRef.putFile(File(event.qrData.data["value"]));
+        final downloadUrl = await task.ref.getDownloadURL();
+        qrData = event.qrData.copyWith(data: {"value": downloadUrl});
+      }
 
       var dataMap = qrData.toMap();
       dataMap['createdBy'] = _client.userId;
-      await _client.qrsInfoDB.add(dataMap);
+      await _client.historyDB.add(dataMap);
 
-      await LocalDB().saveHistory(qrData);
+      await LocalDB().saveHistory(dataMap);
 
       emit(QRCodeCreated(data: qrData));
     }catch(error){

@@ -25,7 +25,7 @@ class QrCodePreviewModel extends BaseViewModel {
 
   updateFavourite(isLiked){
     qrdata = qrdata.copyWith(isFavourite: isLiked);
-    LocalDB().saveHistory(qrdata);
+    LocalDB().saveHistory(qrdata.toMap());
     if(isLiked){
       Global.favourites.value = [ ...Global.favourites.value, qrdata ];
     }else{

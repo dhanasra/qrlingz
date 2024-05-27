@@ -20,7 +20,7 @@ class ScanDataViewModel extends BaseViewModel {
     }
 
     if(Global.addScanToHistory){
-      LocalDB().saveHistory(qr);
+      LocalDB().saveHistory(qr.toMap());
     }
   }
   
