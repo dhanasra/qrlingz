@@ -5,6 +5,7 @@ import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/pages/qrcode/bloc/qr_code_bloc.dart';
 
 import '../../../constants/data_const.dart';
+import '../../../utils/utils.dart';
 
 class CustomizeViewModel extends BaseViewModel {
 
@@ -27,7 +28,7 @@ class CustomizeViewModel extends BaseViewModel {
   String? bgg;
 
   CustomizeViewModel(Map data, String name){
-    qrData = QRData(id: "${DateTime.now().millisecondsSinceEpoch}", type: 0, name: name, data: data, created: DateTime.now());
+    qrData = QRData(id: "${DateTime.now().millisecondsSinceEpoch}", linkId: generateUniqueString(), type: 0, name: name, data: data, created: DateTime.now());
     tempData = ValueNotifier(QRData.fromMap(qrData.toMap()));
 
     textController = TextEditingController();

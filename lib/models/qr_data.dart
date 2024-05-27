@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 import '../constants/data_const.dart';
 
@@ -18,12 +19,14 @@ class QRData {
   final DateTime created;
   final IconData? icon;
   final String? image;
+  final String linkId;
 
   QRData({
     required this.id,
     required this.type,
     required this.name,
     required this.data,
+    required this.linkId,
     this.logo,
     this.text,
     this.color,
@@ -48,9 +51,11 @@ class QRData {
     DateTime? created,
     IconData? icon,
     String? image,
+    String? linkId
   }) {
     return QRData(
       id: id ?? this.id,
+      linkId: linkId ?? this.linkId,
       type: type ?? this.type,
       name: name ?? this.name,
       data: data ?? this.data,
@@ -71,6 +76,7 @@ class QRData {
       'type': type,
       'name': name,
       'data': data,
+      'linkId': linkId,
       'logo': logo,
       'text': text,
       'color': color,
@@ -103,6 +109,7 @@ class QRData {
       id: map['id'] as String,
       type: map['type'] as int,
       name: map['name'] as String,
+      linkId: map['linkId'] ?? generateUniqueString(),
       data: Map.from((map['data'] as Map)),
       logo: map['logo'] != null ? map['logo'] as String : null,
       text: map['text'],

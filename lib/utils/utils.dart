@@ -1,4 +1,5 @@
   import 'dart:io';
+import 'dart:math';
 
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
@@ -263,4 +264,18 @@ String getFormatInstructions(String type) {
     default:
       return "Barcode type not recognized";
   }
+}
+
+
+String generateUniqueString() {
+  String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+  String randomChars = generateRandomChars(4);
+  String uniqueString = timestamp.substring(timestamp.length - 4) + randomChars;
+  return uniqueString;
+}
+
+String generateRandomChars(int length) {
+  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  final random = Random();
+  return String.fromCharCodes(Iterable.generate(length, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
 }

@@ -81,11 +81,23 @@ class ScanViewModel extends BaseViewModel {
 
     if(isQR){
       var qrCode = QRData(
-        id: "${DateTime.now().millisecondsSinceEpoch}", type: 1, name: getDataType(data), data: {"value": data}, created: DateTime.now());
+        id: "${DateTime.now().millisecondsSinceEpoch}", 
+        linkId: generateUniqueString(),
+        type: 1, 
+        name: getDataType(data), 
+        data: {"value": data}, 
+        created: DateTime.now()
+      );
       context.goto(Routes.scanData, args: { 'data': qrCode, 'image': image});
     }else{
       var barcode = BarcodeData(
-        id: "${DateTime.now().millisecondsSinceEpoch}", name: name??'', type: 3, value: data, design: BarcodeDesign(), created: DateTime.now());
+        id: "${DateTime.now().millisecondsSinceEpoch}", 
+        linkId: generateUniqueString(),
+        name: name??'', 
+        type: 3, 
+        value: data, 
+        design: BarcodeDesign(), 
+        created: DateTime.now());
       context.goto(Routes.barcodeData, args: { 'data': barcode, 'image': image});
     }
   }

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/network/models/barcode_data.dart';
 import 'package:qrlingz_app/network/models/barcode_design.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 import '../../../network/firebase_client.dart';
 import '../../../network/local_db.dart';
@@ -23,6 +24,7 @@ class BarcodeBloc extends Bloc<BarcodeEvent, BarcodeState> {
       var barcode = BarcodeData(
         id: "${DateTime.now().millisecondsSinceEpoch}", 
         type: event.type, 
+        linkId: generateUniqueString(),
         name: event.name, 
         value: event.value, 
         design: event.design, 

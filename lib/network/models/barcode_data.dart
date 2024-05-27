@@ -2,11 +2,13 @@
 import 'dart:convert';
 
 import 'package:qrlingz_app/network/models/barcode_design.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 class BarcodeData {
   final String id;
   final String name;
   final int type;
+  final String linkId;
   final String value;
   final BarcodeDesign design;
   final DateTime created;
@@ -15,6 +17,7 @@ class BarcodeData {
   BarcodeData({
     required this.id,
     required this.name,
+    required this.linkId,
     required this.type,
     required this.value,
     required this.design,
@@ -26,12 +29,14 @@ class BarcodeData {
     String? id,
     String? name,
     int? type,
+    String? linkId,
     String? value,
     BarcodeDesign? design,
     DateTime? created,
   }) {
     return BarcodeData(
       id: id ?? this.id,
+      linkId: linkId ?? this.linkId,
       name: name ?? this.name,
       type: type ?? this.type,
       value: value ?? this.value,
@@ -45,6 +50,7 @@ class BarcodeData {
       'id': id,
       'name': name,
       'type': type,
+      'linkId': linkId,
       'value': value,
       'design': design.toMap(),
       'created': created.millisecondsSinceEpoch,
@@ -55,6 +61,7 @@ class BarcodeData {
     return BarcodeData(
       id: map['id'] as String,
       name: map['name'] as String,
+      linkId: map['linkId'] ?? generateUniqueString(),
       type: map['type'] as int,
       value: map['value'] as String,
       design: BarcodeDesign.fromMap(map['design']),
