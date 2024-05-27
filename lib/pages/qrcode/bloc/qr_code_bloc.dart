@@ -24,7 +24,8 @@ class QrCodeBloc extends Bloc<QrCodeEvent, QrCodeState> {
       var qrData = event.qrData;
 
       if(event.isDynamic){
-        final task = await _client.myQRStorageRef.putFile(File(event.qrData.data["value"]));
+        final task = await _client.myQRStorageRef
+          .child('${DateTime.now().millisecondsSinceEpoch}').putFile(File(event.qrData.data["value"]));
         final downloadUrl = await task.ref.getDownloadURL();
         qrData = event.qrData.copyWith(data: {"value": downloadUrl});
       }
