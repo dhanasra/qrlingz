@@ -45,6 +45,44 @@ class Validator {
     }
   }
 
+  static isValidSimplePassword(value, {bool required = true}) {
+    if (value == null || value.toString().trim().isEmpty) {
+      if(!required){
+        return null;
+      }
+      return 'Password is required';
+    } 
+    if(value.toString().length<4){
+      return 'Password must be at least 4 characters long.';
+    }else{
+      return null;
+    }
+  }
+
+  static String? isValidPositiveNumber(String? value, {bool required = true}) {
+    final RegExp positiveNumberRegex = RegExp(
+      r'^\d*\.?\d+$',
+    );
+
+    if (value == null || value.trim().isEmpty) {
+      if (!required) {
+        return null;
+      }
+      return 'Number is required';
+    }
+
+    if (!positiveNumberRegex.hasMatch(value)) {
+      return 'Please enter a valid number';
+    }
+
+    double number = double.tryParse(value) ?? -1;
+    if (number <= 0) {
+      return 'Please enter a number greater than 0';
+    }
+
+    return null;
+  }
+
   static String? validatePhoneNumber(
     String? value, {
     String? fieldName,

@@ -110,7 +110,7 @@ class ThemeConst {
       ),
 
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStatePropertyAll(!isDark ? ColorConst.primary : ColorConst.primaryLight),
+        // fillColor: MaterialStatePropertyAll(!isDark ? ColorConst.w : ColorConst.primaryLight),
         checkColor: MaterialStatePropertyAll(!isDark ? Colors.white : ColorConst.primary),
       ),
 
@@ -211,6 +211,13 @@ class ThemeConst {
           borderRadius: BorderRadius.circular(4),
         ),
         enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: isDark ? Colors.white30: Colors.black12,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: isDark ? Colors.white30: Colors.black12,
             width: 1,

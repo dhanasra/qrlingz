@@ -15,6 +15,7 @@ import 'package:qrlingz_app/pages/qrcode/create/create_view.dart';
 import 'package:qrlingz_app/pages/qrcode/customize/customize_view.dart';
 import 'package:qrlingz_app/pages/qrcode/editor/editor_view.dart';
 import 'package:qrlingz_app/pages/qrcode/preview/qrcode_preview.dart';
+import 'package:qrlingz_app/pages/qrcode/settings/qr_settings_view.dart';
 import 'package:qrlingz_app/pages/scan/barcode/barcode_data_view.dart';
 import 'package:qrlingz_app/pages/scan/data/scan_data_view.dart';
 import 'package:qrlingz_app/pages/scan/scanning/scan_view.dart';
@@ -51,6 +52,7 @@ class Routes {
 
   static const create = '/create';
   static const customize = '/customize';
+  static const qrSettings = '/qrSettings';
   static const preview = '/preview';
   static const editor = '/editor';
 
@@ -139,6 +141,12 @@ class RouteGenerator {
             ),
           ],
           child: CustomizeView(data: args['data'], name: args['name']),
+        ));
+      case Routes.qrSettings:
+        var args = settings.arguments as QRData;
+        return getTransistionPage(BlocProvider(
+          create: (context) => QrCodeBloc(),
+          child: QRSettingsView(qrData: args),
         ));
       case Routes.preview:
         return getTransistionPage(BlocProvider(

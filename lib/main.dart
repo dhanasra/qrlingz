@@ -20,7 +20,7 @@ void main() async{
   MobileAds.instance.initialize();
 
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
+    options: const FirebaseOptions( 
       apiKey: "AIzaSyAJMazs8SsnxvS8xgJIaHOqDVj2of7h88c", 
       appId: "1:1054371633362:android:ecb77d7a1920f3731bb50b", 
       messagingSenderId: "1054371633362", 
@@ -28,11 +28,13 @@ void main() async{
       storageBucket: "qrlingz.appspot.com"
     )
   );
-  await FirebaseMessaging.instance.getToken();
 
   await AppNotification().init();
 
   try{
+
+    await FirebaseMessaging.instance.getToken();
+
     final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.fetchAndActivate();
     remoteConfig.getString('data');

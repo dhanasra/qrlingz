@@ -8,3 +8,8 @@ class SaveQREvent extends QrCodeEvent {
   final bool isDynamic;
   SaveQREvent({required this.qrData, this.isDynamic = false});
 }
+
+class SaveQRConfigurationEvent extends QrCodeEvent {
+ final QRData qrData;
+  SaveQRConfigurationEvent({required this.qrData});
+} 

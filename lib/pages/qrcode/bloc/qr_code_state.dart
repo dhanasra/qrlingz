@@ -12,5 +12,10 @@ final class QRCodeCreated extends QrCodeState {
   QRCodeCreated({required this.data});
 }
 
+final class QRCodeConfigured extends QrCodeState {
+  final QRData data;
+  QRCodeConfigured({required this.data});
+}
+
 final class Failure extends QrCodeState {}
 

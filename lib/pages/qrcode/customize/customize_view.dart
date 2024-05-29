@@ -65,7 +65,8 @@ class _CustomizeViewState extends State<CustomizeView> {
     return BlocConsumer<QrCodeBloc, QrCodeState>(
       listener: (context, state) {
         if(state is QRCodeCreated){
-          context.goto(Routes.preview, args: state.data);
+          // context.goto(Routes.preview, args: state.data);
+          context.goto(Routes.qrSettings, args: state.data);
         }else if(state is Failure){
           Toast.show(context, message: "Something wrong ! Try again later.", type: "error");
         }

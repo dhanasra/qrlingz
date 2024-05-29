@@ -41,6 +41,14 @@ class LocalDB {
     return data ?? {};
   }
 
+  Future<void> updateHistory(String id, Map newData) async {
+    Map? existingData = await history?.get(id);
+    if (existingData != null) {
+      existingData.addAll(newData);
+      await history?.put(id, existingData);
+    }
+  }
+
   Future<Locale> getLangcode()async{
     var data = await settings?.getAllValues();
     var languageCode = data?['language']?['code']??"en";

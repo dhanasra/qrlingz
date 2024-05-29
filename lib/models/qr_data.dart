@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/network/models/configuration.dart';
 import 'package:qrlingz_app/utils/utils.dart';
 
 import '../constants/data_const.dart';
@@ -20,6 +21,7 @@ class QRData {
   final IconData? icon;
   final String? image;
   final String linkId;
+  final Configuration? configuration;
 
   QRData({
     required this.id,
@@ -35,6 +37,7 @@ class QRData {
     required this.created,
     this.icon,
     this.image,
+    this.configuration
   });
 
 
@@ -51,7 +54,8 @@ class QRData {
     DateTime? created,
     IconData? icon,
     String? image,
-    String? linkId
+    String? linkId,
+    Configuration? configuration
   }) {
     return QRData(
       id: id ?? this.id,
@@ -67,6 +71,7 @@ class QRData {
       created: created ?? this.created,
       icon: icon ?? this.icon,
       image: image ?? this.image,
+      configuration: configuration ?? this.configuration
     );
   }
 
@@ -82,7 +87,8 @@ class QRData {
       'color': color,
       'pixels': pixels,
       'isFavourite': isFavourite,
-      'created': created.millisecondsSinceEpoch
+      'created': created.millisecondsSinceEpoch,
+      'configuration': configuration?.toMap()
     };
   }
 
@@ -119,6 +125,7 @@ class QRData {
       created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
       icon: item?['icon'],
       image: item?['image'],
+      configuration: item?['configuration']
     );
   }
 
@@ -141,6 +148,7 @@ class QRData {
       mapEquals(other.data, data) &&
       other.logo == logo &&
       other.text == text &&
+      other.configuration == configuration &&
       other.color == color &&
       other.pixels == pixels &&
       other.isFavourite == isFavourite &&
@@ -155,6 +163,7 @@ class QRData {
       name.hashCode ^
       data.hashCode ^
       logo.hashCode ^
+      configuration.hashCode ^
       text.hashCode ^
       color.hashCode ^
       pixels.hashCode ^
