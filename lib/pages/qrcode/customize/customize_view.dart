@@ -27,7 +27,8 @@ import '../../../routes/app_routes.dart';
 class CustomizeView extends StatefulWidget {
   final Map data;
   final String name;
-  const CustomizeView({super.key, required this.data, required this.name});
+  final bool isDynamic;
+  const CustomizeView({super.key, required this.data, required this.name, this.isDynamic = false});
 
   @override
   State<CustomizeView> createState() => _CustomizeViewState();
@@ -65,8 +66,11 @@ class _CustomizeViewState extends State<CustomizeView> {
     return BlocConsumer<QrCodeBloc, QrCodeState>(
       listener: (context, state) {
         if(state is QRCodeCreated){
-          // context.goto(Routes.preview, args: state.data);
-          context.goto(Routes.qrSettings, args: state.data);
+          if(widget.isDynamic){
+            context.goto(Routes.qrSettings, args: state.data);
+          }else{
+            context.goto(Routes.preview, args: state.data);
+          }
         }else if(state is Failure){
           Toast.show(context, message: "Something wrong ! Try again later.", type: "error");
         }

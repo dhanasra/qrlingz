@@ -104,7 +104,7 @@ class FileUpload extends StatelessWidget {
               visible: file!=null,
               child: StyledButton(
                 onClick: ()async{
-                  context.goto(Routes.customize, args: { "data": {"value": file?.path}, "name": "File" });         
+                  context.goto(Routes.customize, args: { "data": {"value": file?.path}, "name": "File", "isDynamic": true });         
                 }, 
                 text: StringConst.create.toUpperCase())
             )

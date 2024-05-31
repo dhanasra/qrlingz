@@ -109,7 +109,7 @@ class AudioUpload extends StatelessWidget {
               child: StyledButton(
                 onClick: ()async{
                   await player.stop().then((v){
-                    context.goto(Routes.customize, args: { "data": {"value": file?.path}, "name": "Audio" });   
+                    context.goto(Routes.customize, args: { "data": {"value": file?.path}, "name": "Audio", "isDynamic": true });   
                   });
                 }, 
                 text: StringConst.create.toUpperCase())

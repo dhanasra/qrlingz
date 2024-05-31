@@ -100,7 +100,7 @@ class PictureUpload extends StatelessWidget {
               visible: file!=null,
               child: StyledButton(
                 onClick: ()async{
-                  context.goto(Routes.customize, args: { "data": {"value": file!.path}, "name": "Picture" });         
+                  context.goto(Routes.customize, args: { "data": {"value": file!.path}, "name": "Picture", "isDynamic": true });         
                 }, 
                 text: StringConst.create.toUpperCase())
             )

@@ -117,7 +117,7 @@ class _VideoUploadState extends State<VideoUpload> {
           child: StyledButton(
             onClick: ()async{
               await _controller.pause().then((value){
-                context.goto(Routes.customize, args: { "data": {"value": _file?.path}, "name": "Video" });   
+                context.goto(Routes.customize, args: { "data": {"value": _file?.path}, "name": "Video", "isDynamic": true });   
               });
             }, 
             text: StringConst.create.toUpperCase())

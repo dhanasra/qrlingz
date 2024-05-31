@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:qrlingz_app/constants/url_const.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/network/firebase_client.dart';
 
@@ -29,7 +30,7 @@ class QrCodeBloc extends Bloc<QrCodeEvent, QrCodeState> {
         final task = await _client.myQRStorageRef
           .child(docId).putFile(File(event.qrData.data["value"]));
         final downloadUrl = await task.ref.getDownloadURL();
-        qrData = event.qrData.copyWith(data: {"value": downloadUrl});
+        qrData = event.qrData.copyWith(data: {"value": "${UrlConst.domain}/q/${qrData.linkId}", "og": downloadUrl});
       }
 
       var dataMap = qrData.toMap();
