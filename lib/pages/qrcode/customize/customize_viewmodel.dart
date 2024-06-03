@@ -27,8 +27,8 @@ class CustomizeViewModel extends BaseViewModel {
   String? bg;
   String? bgg;
 
-  CustomizeViewModel(Map data, String name){
-    qrData = QRData(id: "${DateTime.now().millisecondsSinceEpoch}", linkId: generateUniqueString(), type: 0, name: name, data: data, created: DateTime.now());
+  CustomizeViewModel(Map data, String name, { String? linkId }){
+    qrData = QRData(id: "${DateTime.now().millisecondsSinceEpoch}", linkId: linkId ?? generateUniqueString(), type: 0, name: name, data: data, created: DateTime.now());
     tempData = ValueNotifier(QRData.fromMap(qrData.toMap()));
 
     textController = TextEditingController();

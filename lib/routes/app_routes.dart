@@ -149,7 +149,7 @@ class RouteGenerator {
               create: (context) => QrCodeBloc(),
             ),
           ],
-          child: CustomizeView(data: args['data'], name: args['name'], isDynamic: args['isDynamic'] ?? false),
+          child: CustomizeView(data: args['data'], name: args['name'], isDynamic: args['isDynamic'] ?? false, linkId: args['linkId'],),
         ));
       case Routes.qrSettings:
         var args = settings.arguments as QRData;

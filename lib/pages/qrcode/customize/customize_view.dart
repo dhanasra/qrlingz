@@ -28,7 +28,8 @@ class CustomizeView extends StatefulWidget {
   final Map data;
   final String name;
   final bool isDynamic;
-  const CustomizeView({super.key, required this.data, required this.name, this.isDynamic = false});
+  final String? linkId;
+  const CustomizeView({super.key, required this.data, required this.name, this.isDynamic = false, this.linkId});
 
   @override
   State<CustomizeView> createState() => _CustomizeViewState();
@@ -40,7 +41,7 @@ class _CustomizeViewState extends State<CustomizeView> {
 
   @override
   void initState() {
-    _viewModel = CustomizeViewModel(widget.data, widget.name);
+    _viewModel = CustomizeViewModel(widget.data, widget.name, linkId: widget.linkId);
 
     BannerAd(
       size: AdSize.banner, 

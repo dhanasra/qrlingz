@@ -54,7 +54,7 @@ class _FeedbackDesignViewState extends State<FeedbackDesignView> {
                       ),
                     ),
                     IconButton(
-                        onPressed: () => {},
+                        onPressed: () => _viewModel.handleSave(context),
                         icon: const Icon(Icons.check))
                   ],
                 ),
