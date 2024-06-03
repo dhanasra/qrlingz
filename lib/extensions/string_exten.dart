@@ -23,17 +23,26 @@ extension TextExtensions on String {
     )).tr();
   }
 
-  hm(BuildContext context, {TextAlign? align}){
-    return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineMedium).tr();
+  hm(BuildContext context, {TextAlign? align, Color? color}){
+    return Text(this, textAlign: align, style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+      color: color,
+    )).tr();
   }
   
   hs(BuildContext context){
     return Text(this, style: Theme.of(context).textTheme.headlineSmall).tr();
   }
 
-  tl(BuildContext context, {int? maxLines, Color? color}){
-    return Text(this, maxLines: maxLines, style: Theme.of(context).textTheme.titleLarge!.copyWith(
+  tl(BuildContext context, {int? maxLines, TextAlign? align, Color? color}){
+    return Text(this, textAlign: align, maxLines: maxLines, style: Theme.of(context).textTheme.titleLarge!.copyWith(
       color: color
+    )).tr();
+  }
+
+  tm(BuildContext context, {int? maxLines, TextAlign? align, Color? color}){
+    return Text(this, textAlign: align, maxLines: maxLines, style: Theme.of(context).textTheme.titleLarge!.copyWith(
+      color: color,
+      fontSize: 15
     )).tr();
   }
 
@@ -44,14 +53,15 @@ extension TextExtensions on String {
     )).tr();
   }
 
-  bs(BuildContext context, {Color? color, TextAlign? align, bool elipsis = false}){
+  bs(BuildContext context, {Color? color, TextAlign? align, bool elipsis = false, bool bold = true}){
     return Text(this, textAlign: align ?? TextAlign.center, overflow: elipsis ? TextOverflow.ellipsis: null, 
       style: Theme.of(context).textTheme.bodySmall!.copyWith(
-      color: color
+      color: color,
+      fontWeight: bold ? null :FontWeight.w500
     )).tr();
   }
 
-  ls(BuildContext context, {Color? color}){
+  ls(BuildContext context, {Color? color, bool bold = false, }){
     return Text(this, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall!.copyWith(
       color: color
     )).tr();

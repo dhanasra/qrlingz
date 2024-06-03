@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -22,25 +21,28 @@ class HomeViewModel extends BaseViewModel {
 
   showAd(BuildContext context, String category, value){
     var show = category.toLowerCase()=="dynamic";
-    var enabled = checkLoginStatus(category);
 
-    if(enabled){
-      if(show && isInterstitialAdLoaded && interstitialAd!=null ){
-        interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-          onAdDismissedFullScreenContent: (InterstitialAd ad) {
-            context.goto(Routes.create, args: value);
-          },
-          onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-            context.goto(Routes.create, args: value);
-            isInterstitialAdLoaded = false;
-          },
-        );
-        interstitialAd!.show();
-        return;
-      }
-      context.goto(Routes.create, args: value);
+    if(show && isInterstitialAdLoaded && interstitialAd!=null ){
+      interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
+        onAdDismissedFullScreenContent: (InterstitialAd ad) {
+          createQRCode(context, value);
+        },
+        onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+          createQRCode(context, value);
+          isInterstitialAdLoaded = false;
+        },
+      );
+      interstitialAd!.show();
+      return;
+    }
+    createQRCode(context, value);
+  }
+
+  createQRCode(BuildContext context, value){
+    if(value == "Feedback"){
+      context.goto(Routes.createFeedback, args: value);
     }else{
-      context.goto(Routes.login);
+      context.goto(Routes.create, args: value);
     }
   }
 
@@ -110,14 +112,6 @@ class HomeViewModel extends BaseViewModel {
       context.goto(Routes.settings);
     }
 
-  }
-
-  checkLoginStatus(String category){
-    if(category.toLowerCase()!='dynamic'){
-      return true;
-    }
-
-    return FirebaseAuth.instance.currentUser!=null;
   }
   
   @override

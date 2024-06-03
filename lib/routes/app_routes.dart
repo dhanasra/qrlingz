@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:qrlingz_app/feedback/create/create_feedback_view.dart';
+import 'package:qrlingz_app/feedback/design/feedback_design_view.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/network/models/barcode_data.dart';
+import 'package:qrlingz_app/network/models/feedback_data.dart';
 import 'package:qrlingz_app/pages/auth/forgot_password/forgot_password_view.dart';
 import 'package:qrlingz_app/pages/barcode/create/barcode_create_view.dart';
 import 'package:qrlingz_app/pages/barcode/customize/barcode_customize_view.dart';
@@ -55,6 +58,12 @@ class Routes {
   static const qrSettings = '/qrSettings';
   static const preview = '/preview';
   static const editor = '/editor';
+
+  // dynamic
+
+  // feedback
+  static const createFeedback = '/createFeedback';
+  static const feedbackDesign = '/feedbackDesign';
 
   // barcode
   static const createBarcode = '/createBarcode';
@@ -174,6 +183,11 @@ class RouteGenerator {
       case Routes.webSearch:
         return getTransistionPage(
             WebSearchView(value: settings.arguments as String));
+      case Routes.createFeedback:
+        return getTransistionPage(const CreateFeedbackView());
+      case Routes.feedbackDesign:
+        var args = settings.arguments as FeedbackData;
+        return getTransistionPage(FeedbackDesignView(data: args));
       default:
         return unDefinedRoute();
     }

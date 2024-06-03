@@ -1,7 +1,6 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
-import 'package:qrlingz_app/constants/color_const.dart';
 import 'package:qrlingz_app/constants/data_const.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -79,16 +78,12 @@ class DashboardFrament extends StatelessWidget {
         ...items.keys.map(
           (e){
 
-            var enabled = vm.checkLoginStatus(e);
             List values = items[e]!; 
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 e.ts(context),
-                Visibility(
-                  visible: !enabled,
-                  child: '* Login to access this feature'.bs(context, color: ColorConst.primary)),
                 GridView.builder(
                   itemCount: values.length,
                   shrinkWrap: true,

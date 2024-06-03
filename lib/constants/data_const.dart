@@ -214,6 +214,10 @@ class DataConst {
         "icon": Icons.audio_file_outlined,
         "text": "Audio"
       },
+      {
+        "icon": Icons.feedback_outlined,
+        "text": "Feedback"
+      },
     ],
     "SOCIAL": [
       {
