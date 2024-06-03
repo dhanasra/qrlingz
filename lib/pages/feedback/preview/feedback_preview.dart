@@ -4,7 +4,7 @@ import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/network/models/feedback_data.dart';
 import 'package:qrlingz_app/utils/utils.dart';
 
-import '../../constants/color_const.dart';
+import '../../../constants/color_const.dart';
 
 class FeebackPreview extends StatelessWidget {
   final FeedbackData data;
@@ -23,6 +23,13 @@ class FeebackPreview extends StatelessWidget {
     var borderColor = stringToColor(data.design?.theme?.borderColor) ?? Colors.transparent;
     double borderWidth = data.design?.theme?.border !=null
       ? data.design!.theme!.border!/10 : 0; 
+
+    var nameColor = stringToColor(data.design?.content?.companyColor);
+    var titleColor = stringToColor(data.design?.content?.titleColor);
+    var descColor = stringToColor(data.design?.content?.descColor);
+    var categoryColor = stringToColor(data.design?.content?.categoryColor);
+    var iconColor = stringToColor(data.design?.content?.iconColor);
+    var showNav = data.design?.content?.showNav ?? true;
 
     return Container(
       width: double.infinity,
@@ -43,7 +50,7 @@ class FeebackPreview extends StatelessWidget {
               color: headerColor
             ),
             child: Center(
-              child: data.company.hm(context, color: Colors.white),
+              child: data.company.hm(context, color: nameColor ?? Colors.white),
             ),
           ),
 
@@ -69,9 +76,9 @@ class FeebackPreview extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  data.title?.tl(context),
+                  data.title?.tl(context, color: titleColor),
                   Divider(color: Colors.grey.withOpacity(0.1)),
-                  data.description?.ls(context, color: Colors.grey, bold: false),
+                  data.description?.ls(context, color: descColor ?? Colors.grey, bold: false),
 
                   16.h(),
 
@@ -86,9 +93,11 @@ class FeebackPreview extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            child: e.name.bs(context, align: TextAlign.start),
+                            child: e.name.bs(context, color: categoryColor, align: TextAlign.start),
                           ),
-                          const Icon(Icons.arrow_forward_ios_outlined, size: 12)
+                          Visibility(
+                            visible: showNav,
+                            child: Icon(Icons.arrow_forward_ios_outlined, size: 12, color: iconColor))
                         ],
                       ))
                   )

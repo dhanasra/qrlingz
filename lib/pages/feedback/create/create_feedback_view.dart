@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:qrlingz_app/feedback/create/create_feedback_viewmodel.dart';
-import 'package:qrlingz_app/feedback/create/fragments/category_fragment.dart';
-import 'package:qrlingz_app/feedback/create/fragments/intro_fragment.dart';
-import 'package:qrlingz_app/feedback/create/fragments/submit_fragment.dart';
+import 'package:qrlingz_app/pages/feedback/create/create_feedback_viewmodel.dart';
+import 'package:qrlingz_app/pages/feedback/create/fragments/category_fragment.dart';
+import 'package:qrlingz_app/pages/feedback/create/fragments/intro_fragment.dart';
+import 'package:qrlingz_app/pages/feedback/create/fragments/submit_fragment.dart';
 import 'package:qrlingz_app/widgets/custom_stepper.dart';
 
 class CreateFeedbackView extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:qrlingz_app/feedback/create/create_feedback_view.dart';
-import 'package:qrlingz_app/feedback/design/feedback_design_view.dart';
+import 'package:qrlingz_app/pages/feedback/create/create_feedback_view.dart';
+import 'package:qrlingz_app/pages/feedback/design/feedback_design_view.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/network/models/barcode_data.dart';
 import 'package:qrlingz_app/network/models/feedback_data.dart';

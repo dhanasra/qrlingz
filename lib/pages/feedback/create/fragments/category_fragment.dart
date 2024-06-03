@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
-import 'package:qrlingz_app/feedback/create/create_feedback_viewmodel.dart';
+import 'package:qrlingz_app/pages/feedback/create/create_feedback_viewmodel.dart';
 import 'package:qrlingz_app/widgets/feedback_category_item.dart';
 
-import '../../../widgets/styled_button.dart';
+import '../../../../widgets/styled_button.dart';
 
 class CategoryFragment extends StatelessWidget {
   final CreateFeedbackViewModel vm;

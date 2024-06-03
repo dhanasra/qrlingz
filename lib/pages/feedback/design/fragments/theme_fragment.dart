@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
-import 'package:qrlingz_app/feedback/design/feedback_design_viewmodel.dart';
+import 'package:qrlingz_app/pages/feedback/design/feedback_design_viewmodel.dart';
 import 'package:qrlingz_app/network/models/feedback_data.dart';
 
-import '../../../utils/utils.dart';
-import '../../../widgets/color_picker.dart';
-import '../../../widgets/font_picker.dart';
-import '../../../widgets/gradient_picker.dart';
-import '../../../widgets/slide_picker.dart';
+import '../../../../utils/utils.dart';
+import '../../../../widgets/color_picker.dart';
+import '../../../../widgets/font_picker.dart';
+import '../../../../widgets/gradient_picker.dart';
+import '../../../../widgets/slide_picker.dart';
 
 class ThemeFragment extends StatelessWidget {
   final FeedbackDesignViewModel vm;

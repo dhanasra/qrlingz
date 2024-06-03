@@ -8,6 +8,7 @@ class FeedbackContent {
   final String? descColor;
   final String? categoryColor;
   final String? iconColor;
+  final bool showNav;
 
   FeedbackContent({
     this.companyColor,
@@ -15,6 +16,7 @@ class FeedbackContent {
     this.descColor,
     this.categoryColor,
     this.iconColor,
+    this.showNav = true
   });
 
 
@@ -24,6 +26,7 @@ class FeedbackContent {
     String? descColor,
     String? categoryColor,
     String? iconColor,
+    bool? showNav
   }) {
     return FeedbackContent(
       companyColor: companyColor ?? this.companyColor,
@@ -31,6 +34,7 @@ class FeedbackContent {
       descColor: descColor ?? this.descColor,
       categoryColor: categoryColor ?? this.categoryColor,
       iconColor: iconColor ?? this.iconColor,
+      showNav: showNav ?? this.showNav
     );
   }
 
@@ -41,16 +45,18 @@ class FeedbackContent {
       'descColor': descColor,
       'categoryColor': categoryColor,
       'iconColor': iconColor,
+      'showNav': showNav
     };
   }
 
-  factory FeedbackContent.fromMap(Map<String, dynamic> map) {
+  factory FeedbackContent.fromMap(map) {
     return FeedbackContent(
       companyColor: map['companyColor'] != null ? map['companyColor'] as String : null,
       titleColor: map['titleColor'] != null ? map['titleColor'] as String : null,
       descColor: map['descColor'] != null ? map['descColor'] as String : null,
       categoryColor: map['categoryColor'] != null ? map['categoryColor'] as String : null,
       iconColor: map['iconColor'] != null ? map['iconColor'] as String : null,
+      showNav: map['showNav'] ?? true
     );
   }
 
@@ -72,6 +78,7 @@ class FeedbackContent {
       other.titleColor == titleColor &&
       other.descColor == descColor &&
       other.categoryColor == categoryColor &&
+      other.showNav == showNav &&
       other.iconColor == iconColor;
   }
 
@@ -81,6 +88,7 @@ class FeedbackContent {
       titleColor.hashCode ^
       descColor.hashCode ^
       categoryColor.hashCode ^
+      showNav.hashCode ^
       iconColor.hashCode;
   }
 }

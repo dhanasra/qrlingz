@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
-import 'package:qrlingz_app/feedback/create/create_feedback_viewmodel.dart';
+import 'package:qrlingz_app/pages/feedback/create/create_feedback_viewmodel.dart';
 import 'package:qrlingz_app/widgets/styled_button.dart';
 
-import '../../../utils/validator.dart';
+import '../../../../utils/validator.dart';
 
 class IntroFragment extends StatelessWidget {
   final CreateFeedbackViewModel vm;

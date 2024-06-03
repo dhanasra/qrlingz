@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
-import 'package:qrlingz_app/feedback/design/feedback_design_viewmodel.dart';
-import 'package:qrlingz_app/feedback/preview/feedback_preview.dart';
+import 'package:qrlingz_app/pages/feedback/design/feedback_design_viewmodel.dart';
+import 'package:qrlingz_app/pages/feedback/design/fragments/content_fragment.dart';
+import 'package:qrlingz_app/pages/feedback/preview/feedback_preview.dart';
 import 'package:qrlingz_app/network/models/feedback_data.dart';
 
 import 'fragments/theme_fragment.dart';
@@ -27,7 +28,7 @@ class _FeedbackDesignViewState extends State<FeedbackDesignView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           body: Column(
             children: [
@@ -60,15 +61,13 @@ class _FeedbackDesignViewState extends State<FeedbackDesignView> {
               ),
               const TabBar(tabs: [
                 Tab(text: "Theme"),
-                Tab(text: "Block"),
-                Tab(text: "Profile")
+                Tab(text: "Content")
               ]),
               Expanded(
                 flex: 4,
                 child: TabBarView(children: [
                   ThemeFragment(vm: _viewModel),
-                  ThemeFragment(vm: _viewModel),
-                  ThemeFragment(vm: _viewModel)
+                  ContentFragment(vm: _viewModel)
                 ]),
               )
             ],

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
-import 'package:qrlingz_app/feedback/create/create_feedback_viewmodel.dart';
+import 'package:qrlingz_app/pages/feedback/create/create_feedback_viewmodel.dart';
 import 'package:qrlingz_app/widgets/custom_switch.dart';
 
-import '../../../widgets/styled_button.dart';
+import '../../../../widgets/styled_button.dart';
 
 class SubmitFragment extends StatelessWidget {
   final CreateFeedbackViewModel vm;
