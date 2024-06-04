@@ -27,10 +27,21 @@ class QrCodeBloc extends Bloc<QrCodeEvent, QrCodeState> {
       var docId = '${DateTime.now().millisecondsSinceEpoch}';
 
       if(event.isDynamic){
+        
         final task = await _client.myQRStorageRef
           .child(docId).putFile(File(event.qrData.data["value"]));
         final downloadUrl = await task.ref.getDownloadURL();
         qrData = event.qrData.copyWith(data: {"value": "${UrlConst.domain}/q/${qrData.linkId}", "og": downloadUrl});
+        
+      }else if(event.qrData.name=="Feedback"){
+          
+        var feedback = event.qrData.data['data']['feedback'];
+        var res = await _client.feedbackDB.add(feedback);
+        var data = {
+          "value": event.qrData.data['data']['value'],
+          "id": res.id
+        };
+        qrData = event.qrData.copyWith(data: data);
       }
 
       var dataMap = qrData.toMap();

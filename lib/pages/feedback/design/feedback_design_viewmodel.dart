@@ -13,12 +13,12 @@ class FeedbackDesignViewModel extends BaseViewModel {
   FeedbackDesignViewModel(FeedbackData feedback){
     data = ValueNotifier(feedback);
   }
-
+  
   handleSave(BuildContext context){
     var linkId = generateUniqueString();
-    var data = {"value": "${UrlConst.domain}/f/$linkId" };
+    var map = {"value": "${UrlConst.domain}/f/$linkId", "feedback": data.value };
     context.goto(Routes.customize, args: { 
-                    "data": data, 
+                    "data": map, 
                     "name": "Feedback",
                     "linkId": linkId 
                   });
