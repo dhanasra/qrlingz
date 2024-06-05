@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
 import 'package:qrlingz_app/widgets/barcodes_list.dart';
+import 'package:qrlingz_app/widgets/feedback_list.dart';
 import 'package:qrlingz_app/widgets/qrcodes_list.dart';
 
 class HistoryFragment extends StatelessWidget {
@@ -20,12 +21,13 @@ class HistoryFragment extends StatelessWidget {
         }
         if(state is HistoryFetched){
           return DefaultTabController(
-            length: 2,
+            length: 3,
             child: Column(
               children: [
                 const TabBar(tabs: [
                   Tab(text: "QR Codes"),
-                  Tab(text: "Barcodes")
+                  Tab(text: "Barcodes"),
+                  Tab(text: "Feedbacks")
                 ]),
                 Expanded(
                   child: TabBarView(children: [
@@ -36,6 +38,10 @@ class HistoryFragment extends StatelessWidget {
                     ),
                     BarcodesList(
                       barcodes: state.barcodes, 
+                      controller: controller
+                    ),
+                    FeedbackList(
+                      feedbacks: state.feedbacks, 
                       controller: controller
                     )
                   ]),

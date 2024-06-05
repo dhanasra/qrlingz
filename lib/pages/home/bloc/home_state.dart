@@ -9,6 +9,7 @@ final class HistoryLoading extends HomeState {}
 
 final class HistoryFetched extends HomeState {
   final List<QRData> qrcodes;
+  final List<QRData> feedbacks;
   final List<BarcodeData> barcodes;
-  HistoryFetched({required this.barcodes, required this.qrcodes});
+  HistoryFetched({required this.barcodes, required this.qrcodes, required this.feedbacks});
 }

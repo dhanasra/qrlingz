@@ -99,7 +99,11 @@ class HistoryItem extends StatelessWidget {
                 ],
               )),
             6.w(),
-            Container(
+            (item.name=="Feedback")
+            ? IconButton(
+              onPressed: ()=>{}, 
+              icon: const Icon(Icons.edit_square))
+            : Container(
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
@@ -107,7 +111,7 @@ class HistoryItem extends StatelessWidget {
               ),
               child: (item.type==0 ? "Generated" : "Scanned").ls(context)),
             PopupMenuButton(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              padding: EdgeInsets.fromLTRB( item.name=="Feedback" ? 0 :16, 10, 16, 10),
               constraints: const BoxConstraints(
                 minWidth: 200
               ),
@@ -122,6 +126,18 @@ class HistoryItem extends StatelessWidget {
                       const Icon(Icons.remove_red_eye_outlined, size: 20,),
                       24.w(),
                       StringConst.historyPop1.tl(context)
+                    ],
+                  ),
+                ),
+                if(item.name=='Feedback')
+                PopupMenuItem<String>(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  value: 'ratings',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.star_outline_rounded, size: 20,),
+                      24.w(),
+                      "View Ratings".tl(context)
                     ],
                   ),
                 ),

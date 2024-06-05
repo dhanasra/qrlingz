@@ -20,9 +20,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       var stored = await LocalDB().getHistory();
       List<QRData> qrcodes = [];
       List<BarcodeData> barcodes = [];
+      List<QRData> feedbacks = [];
       stored.values.map((e){
+
         if(e['type']==0 || e['type']==1){
-          qrcodes.add(QRData.fromMap(e));
+          if(e['name']=='Feedback'){
+            feedbacks.add(QRData.fromMap(e));
+          }else{
+            qrcodes.add(QRData.fromMap(e));
+          }
         }else{
           barcodes.add(BarcodeData.fromMap(e));
         }
@@ -31,9 +37,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       var favourites = qrcodes.where((element) => element.isFavourite).toList();
       Global.favourites.value = favourites;
 
-      emit(HistoryFetched(qrcodes: qrcodes, barcodes: barcodes));
+      emit(HistoryFetched(qrcodes: qrcodes, barcodes: barcodes, feedbacks: feedbacks));
     }catch(e){
-      emit(HistoryFetched(barcodes: const [], qrcodes: const []));
+      emit(HistoryFetched(barcodes: const [], qrcodes: const [], feedbacks: const []));
     }
   }
 

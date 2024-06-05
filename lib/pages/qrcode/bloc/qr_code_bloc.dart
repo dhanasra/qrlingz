@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:qrlingz_app/constants/url_const.dart';
 import 'package:qrlingz_app/models/qr_data.dart';
 import 'package:qrlingz_app/network/firebase_client.dart';
+import 'package:qrlingz_app/network/models/feedback_data.dart';
 
 import '../../../network/local_db.dart';
 
@@ -35,10 +36,10 @@ class QrCodeBloc extends Bloc<QrCodeEvent, QrCodeState> {
         
       }else if(event.qrData.name=="Feedback"){
           
-        var feedback = event.qrData.data['data']['feedback'];
+        var feedback = (event.qrData.data['feedback'] as FeedbackData).toMap();
         var res = await _client.feedbackDB.add(feedback);
         var data = {
-          "value": event.qrData.data['data']['value'],
+          "value": event.qrData.data['value'],
           "id": res.id
         };
         qrData = event.qrData.copyWith(data: data);
