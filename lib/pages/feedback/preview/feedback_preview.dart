@@ -77,9 +77,11 @@ class FeebackPreview extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   data.title?.tl(context, color: titleColor),
+                  if(data.title!=null && data.title!.isNotEmpty)
                   Divider(color: Colors.grey.withOpacity(0.1)),
                   data.description?.ls(context, color: descColor ?? Colors.grey, bold: false),
 
+                  if(data.title!=null && data.title!.isNotEmpty && data.description!=null && data.description!.isNotEmpty)
                   16.h(),
 
                   ...data.categories.map((e) => 
@@ -92,6 +94,10 @@ class FeebackPreview extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
+                          if(e.icon!=null)
+                          Icon(getFeedbackIcons()[e.icon], size: 15,),
+                          if(e.icon!=null)
+                          8.w(),
                           Expanded(
                             child: e.name.bs(context, color: categoryColor, align: TextAlign.start),
                           ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/pages/feedback/create/create_feedback_viewmodel.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 import 'package:qrlingz_app/widgets/feedback_category_item.dart';
 
 import '../../../../widgets/styled_button.dart';
@@ -25,7 +26,14 @@ class CategoryFragment extends StatelessWidget {
             
             ...val.map((e) => FeedbackCategoryItem(
               controller: e['name'],
-              icon: e['icon'],
+              icon: getFeedbackIcons()[e['icon']],
+              onIconAdd: (icon){
+                var index = val.indexOf(e);
+                var item = val[index];
+                item['icon'] = icon;
+                vm.items.value[index] = item;
+                vm.items.notifyListeners();
+              },
               onDelete: (){
                 vm.items.value.remove(e);
                 vm.items.notifyListeners();

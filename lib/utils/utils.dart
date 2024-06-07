@@ -218,6 +218,32 @@ String getLabel(String type) {
     }
 }
 
+Map<String, IconData> getFeedbackIcons() {
+
+  return {
+    "star": Icons.star_outline,
+    "light": Icons.light_outlined,
+    "check": Icons.check_circle_outline_outlined,
+    "history": Icons.history_outlined,
+    "calendar": Icons.calendar_month_outlined,
+    "info": Icons.info_outline_rounded,
+    "kitchen": Icons.kitchen_outlined,
+    "drink": Icons.local_drink_outlined,
+    "ac_unit": Icons.ac_unit_outlined,
+    "alarm": Icons.access_alarms_outlined,
+    "building": Icons.account_balance_wallet_outlined,
+    "person": Icons.account_circle_outlined,
+    "travel": Icons.card_travel_outlined,
+    "location": Icons.location_city_outlined,
+    "shopping_bag": Icons.shopping_bag_outlined,
+    "wine": Icons.wine_bar_outlined,
+    "wind_power": Icons.wind_power_outlined,
+    "weekend": Icons.weekend_outlined,
+    "wifi": Icons.wifi,
+    "bed": Icons.bed_outlined,
+    "people": Icons.people_outline
+  };
+}
 
 String getFormatInstructions(String type) {
   switch (type) {

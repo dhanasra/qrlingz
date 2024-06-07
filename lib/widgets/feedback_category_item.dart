@@ -1,12 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
+import 'package:qrlingz_app/extensions/string_exten.dart';
+import 'package:qrlingz_app/utils/utils.dart';
 
 class FeedbackCategoryItem extends StatelessWidget {
   final TextEditingController controller;
   final IconData? icon;
   final VoidCallback onDelete;
-  const FeedbackCategoryItem({super.key, required this.controller, this.icon, required this.onDelete});
+  final ValueChanged onIconAdd;
+  const FeedbackCategoryItem({super.key, required this.controller, this.icon, required this.onDelete, required this.onIconAdd});
+
+
+  openIconSheet(BuildContext context){
+
+    var icons = getFeedbackIcons();
+
+    showModalBottomSheet(
+      context: context, 
+      backgroundColor: Colors.transparent,
+      builder: (_){ 
+        return Container(
+          color: context.theme().cardColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
+                child: "Add Icon".hm(context),  
+              ),
+              const Divider(),
+              Expanded(
+                child: GridView(
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5
+                  ), 
+                  children: [
+                    ...icons.keys.map(
+                      (e) => IconButton(
+                        onPressed: (){
+                          onIconAdd(e);
+                          context.back();
+                        }, 
+                        icon: Icon(icons[e]))
+                      )
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +77,15 @@ class FeedbackCategoryItem extends StatelessWidget {
             ),  
             child: Row(
               children: [
-                icon !=null 
+                InkWell(
+                  onTap: ()=>openIconSheet(context),
+                  child: icon !=null 
                   ? Icon(icon) 
                   : const SizedBox(
                     width: 24, 
                     height: 24,
                   ),
+                ),
                 const Icon(Icons.keyboard_arrow_down_outlined, size: 16,)
               ],
             )),
