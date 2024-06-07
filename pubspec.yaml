@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.17.1
   firebase_storage: ^11.7.4
   google_sign_in: ^6.2.1
+  flutter_rating_bar: ^4.0.1
 
   #style
   google_fonts: ^6.2.1

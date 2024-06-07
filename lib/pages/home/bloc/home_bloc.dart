@@ -5,6 +5,8 @@ import 'package:qrlingz_app/network/local_db.dart';
 import 'package:qrlingz_app/network/models/barcode_data.dart';
 import 'package:qrlingz_app/utils/global.dart';
 
+import '../../../network/firebase_client.dart';
+
 part 'home_event.dart';
 part 'home_state.dart';
 
@@ -13,15 +15,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetHistory>(_onGetHistory);
     on<RemoveHistory>(_onRemoveHistory);
   }
+  
+  final FirebaseClient _client = FirebaseClient();
 
   _onGetHistory(GetHistory event, Emitter emit)async{
     emit(HistoryLoading());
     try{
-      var stored = await LocalDB().getHistory();
+      // var stored = await LocalDB().getHistory();
+
+      var data = await _client.historyDB.where('createdBy', isEqualTo: _client.userId).get();
+
+      var values = data.docs.map((e) => e.data() as Map).toList();
+
       List<QRData> qrcodes = [];
       List<BarcodeData> barcodes = [];
       List<QRData> feedbacks = [];
-      stored.values.map((e){
+      values.map((e){
 
         if(e['type']==0 || e['type']==1){
           if(e['name']=='Feedback'){

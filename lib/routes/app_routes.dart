@@ -10,6 +10,7 @@ import 'package:qrlingz_app/pages/auth/forgot_password/forgot_password_view.dart
 import 'package:qrlingz_app/pages/barcode/create/barcode_create_view.dart';
 import 'package:qrlingz_app/pages/barcode/customize/barcode_customize_view.dart';
 import 'package:qrlingz_app/pages/barcode/preview/barcode_view.dart';
+import 'package:qrlingz_app/pages/feedback/review/feedback_review.dart';
 import 'package:qrlingz_app/pages/home/bloc/home_bloc.dart';
 import 'package:qrlingz_app/pages/home/cubit/home_cubit.dart';
 import 'package:qrlingz_app/pages/home/home_view.dart';
@@ -31,6 +32,7 @@ import '../pages/auth/bloc/auth_bloc.dart';
 import '../pages/auth/login/login_view.dart';
 import '../pages/auth/signup/signup_view.dart';
 import '../pages/barcode/bloc/barcode_bloc.dart';
+import '../pages/feedback/bloc/feedback_bloc.dart';
 import '../pages/qrcode/bloc/qr_code_bloc.dart';
 import '../pages/settings/bloc/account_bloc.dart';
 import '../pages/splash/splash_view.dart';
@@ -64,6 +66,7 @@ class Routes {
   // feedback
   static const createFeedback = '/createFeedback';
   static const feedbackDesign = '/feedbackDesign';
+  static const feedbackReview = '/feedbackReview';
 
   // barcode
   static const createBarcode = '/createBarcode';
@@ -149,7 +152,12 @@ class RouteGenerator {
               create: (context) => QrCodeBloc(),
             ),
           ],
-          child: CustomizeView(data: args['data'], name: args['name'], isDynamic: args['isDynamic'] ?? false, linkId: args['linkId'],),
+          child: CustomizeView(
+            data: args['data'],
+            name: args['name'],
+            isDynamic: args['isDynamic'] ?? false,
+            linkId: args['linkId'],
+          ),
         ));
       case Routes.qrSettings:
         var args = settings.arguments as QRData;
@@ -188,6 +196,12 @@ class RouteGenerator {
       case Routes.feedbackDesign:
         var args = settings.arguments as FeedbackData;
         return getTransistionPage(FeedbackDesignView(data: args));
+      case Routes.feedbackReview:
+        var args = settings.arguments as String;
+        return getTransistionPage(BlocProvider(
+          create: (context) => FeedbackBloc(),
+          child: FeedbackReview(id: args),
+        ));
       default:
         return unDefinedRoute();
     }

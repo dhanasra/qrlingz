@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
@@ -116,7 +115,7 @@ class FeedbackItem extends StatelessWidget {
                           SizedBox(
                             height: 30,
                             child: OutlinedButton(
-                              onPressed: (){},
+                              onPressed: ()=>context.goto(Routes.feedbackReview, args: data.data["id"]),
                               child: const Text("View Ratings"),
                             ),
                           ),

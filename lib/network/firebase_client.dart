@@ -9,6 +9,7 @@ class Collection {
   static const String history = 'HISTORY';
   static const String favourites = 'FAVOURITES';
   static const String feedback = 'FEEDBACK';
+  static const String reviews = 'Reviews';
 }
 
 class FirebaseClient {
