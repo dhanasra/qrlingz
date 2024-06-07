@@ -7,6 +7,10 @@ final class FeedbackInitial extends FeedbackState {}
 
 class Loading extends FeedbackState {}
 
+class Exporting extends FeedbackState {}
+
+class ExportSuccess extends FeedbackState {}
+
 class ReviewsFetched extends FeedbackState {
   final String rating;
   final Map categories;

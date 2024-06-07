@@ -10,3 +10,10 @@ class GetReviewsEvent extends FeedbackEvent {
     required this.id,
   });
 }
+
+class DownloadReviewReportEvent extends FeedbackEvent {
+  final String id;
+  DownloadReviewReportEvent({
+    required this.id,
+  });
+}

@@ -32,17 +32,34 @@ class _FeedbackReviewState extends State<FeedbackReview> {
       appBar: AppBar(
         title: const Text("Reviews"),
         centerTitle: false,
+        actions: [
+          BlocBuilder<FeedbackBloc, FeedbackState>(
+            builder: (context, state) {
+              return state is Exporting
+              ? Container(
+                width: 30, height: 30,
+                margin: const EdgeInsets.only(right: 12),
+                child: const CircularProgressIndicator(strokeWidth: 2,),
+              )
+              : IconButton(
+                  onPressed: () => context
+                      .read<FeedbackBloc>()
+                      .add(DownloadReviewReportEvent(id: widget.id)),
+                  icon: const Icon(Icons.download));
+            },
+          ),
+          16.w()
+        ],
       ),
       body: BlocBuilder<FeedbackBloc, FeedbackState>(
         builder: (context, state) {
-
-          if(state is ReviewsFetched){
+          if (state is ReviewsFetched) {
             _viewModel.oaRating = state.rating;
             _viewModel.categories = state.categories;
             _viewModel.reviews = state.reviews;
           }
 
-          if(state is Loading){
+          if (state is Loading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -50,70 +67,54 @@ class _FeedbackReviewState extends State<FeedbackReview> {
 
           return ListView(
             children: [
-
-              
-
               StyledWrapper(
-                m: const EdgeInsets.all(20),
-                p: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-
-                    "Overall Rating".bs(context),
-
-                    _viewModel.oaRating.ds(context),
-
-                    RatingBarIndicator(
+                  m: const EdgeInsets.all(20),
+                  p: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      "Overall Rating".bs(context),
+                      _viewModel.oaRating.ds(context),
+                      RatingBarIndicator(
                         rating: double.parse(_viewModel.oaRating),
                         itemBuilder: (context, index) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
+                          Icons.star,
+                          color: Colors.amber,
                         ),
                         itemCount: 5,
                         itemSize: 20.0,
                         direction: Axis.horizontal,
-                    ),
-
-
-                    12.h(),
-
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: "CATEGORIES".bs(context, color: Colors.grey),
-                    ),
-
-                    12.h(),
-
-                    ..._viewModel.categories.keys.map((e)
-                     => Padding(
-                       padding: const EdgeInsets.symmetric(
-                        vertical: 6, horizontal: 16
                       ),
-                       child: Row(
-                        children: [
-                          "$e".ts(context),
-                          const Spacer(),
-                          "${_viewModel.categories[e]}".ts(context),
-                          12.w(),
-                          RatingBarIndicator(
-                            rating: _viewModel.categories[e],
-                            itemBuilder: (context, index) => const Icon(
-                                Icons.star,
-                                color: Colors.amber,
+                      12.h(),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: "CATEGORIES".bs(context, color: Colors.grey),
+                      ),
+                      12.h(),
+                      ..._viewModel.categories.keys.map((e) => Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 6, horizontal: 16),
+                            child: Row(
+                              children: [
+                                "$e".ts(context),
+                                const Spacer(),
+                                "${_viewModel.categories[e]}".ts(context),
+                                12.w(),
+                                RatingBarIndicator(
+                                  rating: _viewModel.categories[e],
+                                  itemBuilder: (context, index) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 16.0,
+                                  direction: Axis.horizontal,
+                                ),
+                              ],
                             ),
-                            itemCount: 5,
-                            itemSize: 16.0,
-                            direction: Axis.horizontal,
-                          ),
-                        ],
-                       ),
-                     ))
-                    
-                  ],
-                )),
-
-                ReviewItem(reviews: _viewModel.reviews)
-
+                          ))
+                    ],
+                  )),
+              ReviewItem(reviews: _viewModel.reviews)
             ],
           );
         },

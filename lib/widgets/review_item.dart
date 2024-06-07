@@ -19,7 +19,7 @@ class ReviewItem extends StatelessWidget {
         ...reviews.map(
           (e) => Container(
             padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            margin: const EdgeInsets.fromLTRB(20, 4, 20, 4),
             color: Colors.grey.shade100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

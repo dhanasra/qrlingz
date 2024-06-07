@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
+import 'package:open_file_plus/open_file_plus.dart';
+import 'package:qrlingz_app/network/models/feedback_data.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../network/firebase_client.dart';
@@ -11,9 +16,59 @@ part 'feedback_state.dart';
 class FeedbackBloc extends Bloc<FeedbackEvent, FeedbackState> {
   FeedbackBloc() : super(FeedbackInitial()) {
     on<GetReviewsEvent>(_onGetReviews);
+    on<DownloadReviewReportEvent>(_onDownloadReviewReport);
   }
   
   final FirebaseClient _client = FirebaseClient();
+
+  _onDownloadReviewReport(DownloadReviewReportEvent event, Emitter emit)async{
+    try{
+      emit(Exporting());
+
+      var result = await _client.feedbackDB.doc(event.id).get();
+      var feedback = FeedbackData.fromMap(result.data());
+
+      var res = await _client.feedbackDB.doc(event.id).collection(Collection.reviews).get();
+      var data =  res.docs.map((e){
+        var review = ReviewData.fromMap(e.data());
+        var map = {
+          "email": review.email ?? "Unknown",
+          "phone": review.phone ?? "Unknown",
+        };
+
+        for (var item in feedback.categories) {
+          map[item.name] = "rating: ${review.reviews[item.name]?["rating"]?? ''}, comment: ${review.reviews[item.name]?["comment"]?? ''}";
+        }
+        return map;
+      }).toList();
+
+      exportListToExcel(data);
+
+      emit(ExportSuccess());
+    }catch(e){
+      emit(Failure());
+    }
+  }
+
+  Future<void> exportListToExcel(List<Map> dataList) async {
+    
+    final excel = Excel.createExcel();
+    final Sheet sheet = excel['Feedback Reviews'];
+    for (var key in dataList.first.keys) {
+      sheet.cell(CellIndex.indexByString('${String.fromCharCode('A'.codeUnitAt(0) + dataList.first.keys.toList().indexOf(key) + 1)}1')).value = TextCellValue(key);
+    }
+    for (int i = 0; i < dataList.length; i++) {
+      final rowData = dataList[i];
+      rowData.forEach((key, value) {
+        sheet.cell(CellIndex.indexByString('${String.fromCharCode('A'.codeUnitAt(0) + rowData.keys.toList().indexOf(key) + 1)}${i + 2}')).value = TextCellValue(value);
+      });
+    }
+    final directory = Directory('/storage/emulated/0/Download');
+    final file = File('${directory.path}/feedback-reviews-qrlingz.xlsx');
+    var fileBytes = excel.save();
+    await file.writeAsBytes(fileBytes??[]);
+    OpenFile.open(file.path);
+  }
 
   _onGetReviews(GetReviewsEvent event, Emitter emit) async {
     try{
