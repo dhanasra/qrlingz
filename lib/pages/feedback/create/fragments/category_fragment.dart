@@ -50,7 +50,7 @@ class CategoryFragment extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: 140,
+                        width: 150,
                         child: OutlinedButton(
                           onPressed: (){
                             vm.items.value.add({

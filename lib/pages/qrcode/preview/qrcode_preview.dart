@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:like_button/like_button.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qrlingz_app/extensions/context_exten.dart';
@@ -14,6 +15,7 @@ import 'package:qrlingz_app/utils/global.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../common/image/image_bloc.dart';
+import '../../../constants/admob_const.dart';
 import '../../../constants/color_const.dart';
 import '../../../constants/data_const.dart';
 import '../../../constants/string_const.dart';
@@ -29,10 +31,28 @@ class QRCodePreview extends StatefulWidget {
 
 class _QRCodePreviewState extends State<QRCodePreview> {
   late QrCodePreviewModel _viewModel;
+  BannerAd? _bannerAd;
 
   @override
   void initState() {
     _viewModel = QrCodePreviewModel(data: widget.qrData);
+
+    BannerAd(
+      size: AdSize.banner, 
+      adUnitId: AdmobConst.bannerAd2, 
+      listener: BannerAdListener(
+        onAdLoaded: (ad){
+          setState(() {
+            _bannerAd = ad as BannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error){
+          ad.dispose();
+        }
+      ), 
+      request: const AdRequest()
+    ).load();
+
     super.initState();
   }
 
@@ -184,7 +204,18 @@ class _QRCodePreviewState extends State<QRCodePreview> {
                   flex: 5,
                   child: Column(
                     children: [
-                      32.h(),
+
+                      if(_bannerAd!=null)
+                      SizedBox(
+                        height: _bannerAd!.size.height.toDouble(),
+                        width: _bannerAd!.size.width.toDouble(),
+                        child: AdWidget(
+                          ad: _bannerAd!
+                        ),
+                      ),
+                      16.h(),
+
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

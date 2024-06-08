@@ -45,7 +45,7 @@ class _CustomizeViewState extends State<CustomizeView> {
 
     BannerAd(
       size: AdSize.banner, 
-      adUnitId: AdmobConst.bannerAdTest, 
+      adUnitId: AdmobConst.bannerAd1, 
       listener: BannerAdListener(
         onAdLoaded: (ad){
           setState(() {

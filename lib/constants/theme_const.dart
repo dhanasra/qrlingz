@@ -53,47 +53,47 @@ class ThemeConst {
       ),
 
       textTheme: TextTheme(
-        titleSmall: GoogleFonts.roboto(
+        titleSmall: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w600,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        titleMedium: GoogleFonts.roboto(
+        titleMedium: GoogleFonts.inter(
           fontSize: 18,
           height: 1,
           fontWeight: FontWeight.w500,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        titleLarge: GoogleFonts.roboto(
+        titleLarge: GoogleFonts.inter(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        headlineMedium: GoogleFonts.roboto(
+        headlineMedium: GoogleFonts.inter(
           fontSize: 20,
           fontWeight: FontWeight.w600,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        headlineSmall: GoogleFonts.roboto(
+        headlineSmall: GoogleFonts.inter(
           fontSize: 18,
           fontWeight: FontWeight.w600,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        bodySmall: GoogleFonts.roboto(
+        bodySmall: GoogleFonts.inter(
           fontSize: 12,
           fontWeight: FontWeight.w600,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ), 
-        bodyMedium: GoogleFonts.roboto(
+        bodyMedium: GoogleFonts.inter(
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        bodyLarge: GoogleFonts.roboto(
+        bodyLarge: GoogleFonts.inter(
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        labelLarge: GoogleFonts.roboto(
+        labelLarge: GoogleFonts.inter(
           color: !isDark ? const Color(0xFF383838) : Colors.white,
         ),
-        labelSmall: GoogleFonts.roboto(
+        labelSmall: GoogleFonts.inter(
           fontSize: 10,
           fontWeight: FontWeight.w600,
           color: !isDark ? const Color(0xFF383838) : Colors.white,
