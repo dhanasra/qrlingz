@@ -3,13 +3,15 @@ import 'package:qrlingz_app/extensions/context_exten.dart';
 import 'package:qrlingz_app/extensions/number_exten.dart';
 import 'package:qrlingz_app/extensions/string_exten.dart';
 import 'package:qrlingz_app/utils/utils.dart';
+import 'package:qrlingz_app/utils/validator.dart';
 
 class FeedbackCategoryItem extends StatelessWidget {
   final TextEditingController controller;
   final IconData? icon;
   final VoidCallback onDelete;
   final ValueChanged onIconAdd;
-  const FeedbackCategoryItem({super.key, required this.controller, this.icon, required this.onDelete, required this.onIconAdd});
+  final int index;
+  const FeedbackCategoryItem({super.key, required this.controller, this.icon, required this.onDelete, required this.onIconAdd, required this.index});
 
 
   openIconSheet(BuildContext context){
@@ -64,6 +66,7 @@ class FeedbackCategoryItem extends StatelessWidget {
         color: Colors.grey.withOpacity(0.1)
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
           Container(
@@ -95,9 +98,12 @@ class FeedbackCategoryItem extends StatelessWidget {
           Expanded(
             child: TextFormField(
               controller: controller,
+              validator: (v)=> Validator.validateNonNullOrEmpty(v, 'Field'),
               decoration: InputDecoration(
                 hintText: "Enter category name",
-                suffixIcon: IconButton(
+                suffixIcon: index==0
+                ? null
+                : IconButton(
                   onPressed: ()=>onDelete(), 
                   icon: const Icon(Icons.delete_outline_outlined)
                 ),

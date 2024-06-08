@@ -20,6 +20,8 @@ class CreateFeedbackViewModel extends BaseViewModel {
 
   // step 2
   late ValueNotifier<List<Map>> items;
+  final GlobalKey<FormState> step2formkey = GlobalKey();
+  late ValueNotifier<AutovalidateMode> step2mode;
 
   // step 3
   bool emailMandatory = false;
@@ -37,6 +39,8 @@ class CreateFeedbackViewModel extends BaseViewModel {
     websiteController = TextEditingController();
     step1mode = ValueNotifier(AutovalidateMode.disabled);
 
+    step2mode = ValueNotifier(AutovalidateMode.disabled);
+
     items = ValueNotifier(
       [
         {
@@ -50,6 +54,15 @@ class CreateFeedbackViewModel extends BaseViewModel {
     
 
     if(index<3){
+
+      if(index==1 && !step1formkey.currentState!.validate()){
+        step1mode.value = AutovalidateMode.always;
+        return; 
+      }else if(index==2 && !step2formkey.currentState!.validate()){
+        step2mode.value = AutovalidateMode.always;
+        return; 
+      }
+
       activeStep.value = index;
       pageController.jumpToPage(index);
     }else{

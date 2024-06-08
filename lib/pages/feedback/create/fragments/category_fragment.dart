@@ -16,59 +16,69 @@ class CategoryFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: vm.items,
-      builder: (_, val, __) {
-        return ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            "Review Categories".tl(context),
-            16.h(),
-            
-            ...val.map((e) => FeedbackCategoryItem(
-              controller: e['name'],
-              icon: getFeedbackIcons()[e['icon']],
-              onIconAdd: (icon){
-                var index = val.indexOf(e);
-                var item = val[index];
-                item['icon'] = icon;
-                vm.items.value[index] = item;
-                vm.items.notifyListeners();
-              },
-              onDelete: (){
-                vm.items.value.remove(e);
-                vm.items.notifyListeners();
-              },
-            )),
-        
-            Row(
-              children: [
-                SizedBox(
-                  width: 140,
-                  child: OutlinedButton(
-                    onPressed: (){
-                      vm.items.value.add({
-                        'icon': null, 'name': TextEditingController()
-                      });
+      valueListenable: vm.step2mode,
+      builder: (_, autoValidate, __) {
+        return Form(
+          key: vm.step2formkey,
+          autovalidateMode: autoValidate,
+          child: ValueListenableBuilder(
+            valueListenable: vm.items,
+            builder: (_, val, __) {
+              return ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  "Review Categories".tl(context),
+                  16.h(),
+                  
+                  ...val.map((e) => FeedbackCategoryItem(
+                    index: val.indexOf(e),
+                    controller: e['name'],
+                    icon: getFeedbackIcons()[e['icon']],
+                    onIconAdd: (icon){
+                      var index = val.indexOf(e);
+                      var item = val[index];
+                      item['icon'] = icon;
+                      vm.items.value[index] = item;
                       vm.items.notifyListeners();
-                    }, 
-                    child: const Text("Add Category")
+                    },
+                    onDelete: (){
+                      vm.items.value.remove(e);
+                      vm.items.notifyListeners();
+                    },
+                  )),
+              
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 140,
+                        child: OutlinedButton(
+                          onPressed: (){
+                            vm.items.value.add({
+                              'icon': null, 'name': TextEditingController()
+                            });
+                            vm.items.notifyListeners();
+                          }, 
+                          child: const Text("Add Category")
+                        ),
+                      ),
+              
+                    ],
                   ),
-                ),
-        
-              ],
-            ),
-
-            50.h(),
-            Align(
-              alignment: Alignment.centerRight,
-              child: StyledButton(
-                w: 120,
-                onClick: ()=>vm.goNext(context, 2),
-                text: "Next",
-              ),
-            )
-            
-          ],
+          
+                  50.h(),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: StyledButton(
+                      w: 120,
+                      onClick: ()=>vm.goNext(context, 2),
+                      text: "Next",
+                    ),
+                  )
+                  
+                ],
+              );
+            }
+          ),
         );
       }
     );
